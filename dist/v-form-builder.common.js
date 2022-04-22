@@ -25338,24 +25338,24 @@ var section_views_TabSectionView_component = Object(componentNormalizer["a" /* d
 
 var SECTION_TYPES = {
   normal: {
-    name: undefined.$ml.get('NORMAL_BLOCK'),
-    description: undefined.$ml.get('NORMAL_BLOCK_DESC'),
+    name: "Normal Block",
+    description: "Normal block with a headline",
     value: 'normal',
     rowType: row["b" /* ROW_TYPES */].normal,
     builderView: NormalSectionView,
     rendererView: section_views_NormalSectionView
   },
   toggleable: {
-    name: undefined.$ml.get('TOGGLE_BLOCK'),
-    description: undefined.$ml.get('TOGGLE_BLOCK_DESC'),
+    name: "Toggleable Block",
+    description: "Section block with toggle (display/hide) feature",
     value: 'toggleable',
     rowType: row["b" /* ROW_TYPES */].normal,
     builderView: ToggleableSectionView,
     rendererView: section_views_ToggleableSectionView
   },
   tab: {
-    name: undefined.$ml.get('TAB_BLOCK_DESC'),
-    description: undefined.$ml.get('TAB_BLOCK_DESC'),
+    name: "Tab Block",
+    description: "A block with multiple tabs feature",
     value: "tab",
     rowType: row["b" /* ROW_TYPES */].tabRow,
     builderView: TabSectionView,

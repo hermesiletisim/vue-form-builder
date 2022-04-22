@@ -26,8 +26,8 @@ import RendererTabSectionView from "@/views/renderer/section-views/TabSectionVie
 
 const SECTION_TYPES = {
     normal: {
-        name: this.$ml.get('NORMAL_BLOCK'),
-        description: this.$ml.get('NORMAL_BLOCK_DESC'),
+        name: "Normal Block",
+        description: "Normal block with a headline",
         value: 'normal',
 
         rowType: ROW_TYPES.normal,
@@ -36,8 +36,8 @@ const SECTION_TYPES = {
     },
 
     toggleable: {
-        name: this.$ml.get('TOGGLE_BLOCK'),
-        description: this.$ml.get('TOGGLE_BLOCK_DESC'),
+        name: "Toggleable Block",
+        description: "Section block with toggle (display/hide) feature",
         value: 'toggleable',
 
         rowType: ROW_TYPES.normal,
@@ -46,8 +46,8 @@ const SECTION_TYPES = {
     },
 
     tab: {
-        name: this.$ml.get('TAB_BLOCK_DESC'),
-        description: this.$ml.get('TAB_BLOCK_DESC'),
+        name: "Tab Block",
+        description: "A block with multiple tabs feature",
         value: "tab",
 
         rowType: ROW_TYPES.tabRow,
