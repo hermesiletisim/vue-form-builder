@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar-form-configuration">
 
-        <h5>Add Control to your Section</h5>
+        <h5>{{$ml.get("ADD_CONTROL_TO_YOUR_SECTION")}}</h5>
 
 
         <div :class="[styles.LIST_GROUP.CONTAINER]">

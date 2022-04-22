@@ -41,8 +41,8 @@ import FileUploaderConfigView from "@/views/control-configs/FileUploaderConfigVi
 
 const CONTROLS = {
     input: {
-        name: "Input Field",
-        description: "Input text single line",
+        name: $ml.get("INPUT_FIELD"),
+        description: $ml.get("INPUT_FIELD_DESC"),
         icon: 'editPencil', // Follow ICON in `icon-facade.js` to see how it works.
 
         configData: {

@@ -15434,8 +15434,8 @@ var FileUploaderConfigView_component = Object(componentNormalizer["a" /* default
 
 var CONTROLS = {
   input: {
-    name: "Input Field",
-    description: "Input text single line",
+    name: $ml.get("INPUT_FIELD"),
+    description: $ml.get("INPUT_FIELD_DESC"),
     icon: 'editPencil',
     // Follow ICON in `icon-facade.js` to see how it works.
     configData: {
@@ -22918,22 +22918,22 @@ var events = __webpack_require__("fbe6");
 var vuedraggable_common = __webpack_require__("310e");
 var vuedraggable_common_default = /*#__PURE__*/__webpack_require__.n(vuedraggable_common);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/add-controls/AddControlControl.vue?vue&type=template&id=438725ce&
-var AddControlControlvue_type_template_id_438725ce_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"add-control-outer",class:_vm.styles.COLUMNS.COL12},[_c('div',{staticClass:"add-control-container",on:{"click":_vm.openAddControl}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '32px', '32px', '#000'))}}),_c('span',[_vm._v("Add Control")])])])}
-var AddControlControlvue_type_template_id_438725ce_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/add-controls/AddControlControl.vue?vue&type=template&id=0e38a482&
+var AddControlControlvue_type_template_id_0e38a482_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"add-control-outer",class:_vm.styles.COLUMNS.COL12},[_c('div',{staticClass:"add-control-container",on:{"click":_vm.openAddControl}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '32px', '32px', '#000'))}}),_c('span',[_vm._v(_vm._s(_vm.$ml.get("ADD_CONTROL")))])])])}
+var AddControlControlvue_type_template_id_0e38a482_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/add-controls/AddControlControl.vue?vue&type=template&id=438725ce&
+// CONCATENATED MODULE: ./src/views/builder/add-controls/AddControlControl.vue?vue&type=template&id=0e38a482&
 
 // EXTERNAL MODULE: ./src/libraries/sidebar-renderer.class.js
 var sidebar_renderer_class = __webpack_require__("1ec8");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/SidebarControlSelectList.vue?vue&type=template&id=01c01b26&scoped=true&
-var SidebarControlSelectListvue_type_template_id_01c01b26_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-form-configuration"},[_c('h5',[_vm._v("Add Control to your Section")]),_c('div',{class:[_vm.styles.LIST_GROUP.CONTAINER]},_vm._l((_vm.controlTypes),function(controlInfo,controlKey){return _c('a',{directives:[{name:"show",rawName:"v-show",value:(!controlInfo.isHidden),expression:"!controlInfo.isHidden"}],class:_vm.styles.LIST_GROUP.SINGLE_ITEM,attrs:{"href":"javascript:void(0)"},on:{"click":function($event){return _vm.selectedControl(controlKey)}}},[_c('p',{staticClass:"type-headline",domProps:{"textContent":_vm._s(controlInfo.name)}}),_c('p',{staticClass:"type-desc",domProps:{"textContent":_vm._s(controlInfo.description)}})])}),0)])}
-var SidebarControlSelectListvue_type_template_id_01c01b26_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/SidebarControlSelectList.vue?vue&type=template&id=600c0900&scoped=true&
+var SidebarControlSelectListvue_type_template_id_600c0900_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-form-configuration"},[_c('h5',[_vm._v(_vm._s(_vm.$ml.get("ADD_CONTROL_TO_YOUR_SECTION")))]),_c('div',{class:[_vm.styles.LIST_GROUP.CONTAINER]},_vm._l((_vm.controlTypes),function(controlInfo,controlKey){return _c('a',{directives:[{name:"show",rawName:"v-show",value:(!controlInfo.isHidden),expression:"!controlInfo.isHidden"}],class:_vm.styles.LIST_GROUP.SINGLE_ITEM,attrs:{"href":"javascript:void(0)"},on:{"click":function($event){return _vm.selectedControl(controlKey)}}},[_c('p',{staticClass:"type-headline",domProps:{"textContent":_vm._s(controlInfo.name)}}),_c('p',{staticClass:"type-desc",domProps:{"textContent":_vm._s(controlInfo.description)}})])}),0)])}
+var SidebarControlSelectListvue_type_template_id_600c0900_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlSelectList.vue?vue&type=template&id=01c01b26&scoped=true&
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlSelectList.vue?vue&type=template&id=600c0900&scoped=true&
 
 // EXTERNAL MODULE: ./src/configs/controls.js + 113 modules
 var controls = __webpack_require__("8dbe");
@@ -23012,11 +23012,11 @@ var sidebar_body_mixin = __webpack_require__("cbce");
 
 var SidebarControlSelectList_component = Object(componentNormalizer["a" /* default */])(
   sidebar_config_views_SidebarControlSelectListvue_type_script_lang_js_,
-  SidebarControlSelectListvue_type_template_id_01c01b26_scoped_true_render,
-  SidebarControlSelectListvue_type_template_id_01c01b26_scoped_true_staticRenderFns,
+  SidebarControlSelectListvue_type_template_id_600c0900_scoped_true_render,
+  SidebarControlSelectListvue_type_template_id_600c0900_scoped_true_staticRenderFns,
   false,
   null,
-  "01c01b26",
+  "600c0900",
   null
   
 )
@@ -23120,8 +23120,8 @@ var SidebarControlSelectList_component = Object(componentNormalizer["a" /* defau
 
 var AddControlControl_component = Object(componentNormalizer["a" /* default */])(
   add_controls_AddControlControlvue_type_script_lang_js_,
-  AddControlControlvue_type_template_id_438725ce_render,
-  AddControlControlvue_type_template_id_438725ce_staticRenderFns,
+  AddControlControlvue_type_template_id_0e38a482_render,
+  AddControlControlvue_type_template_id_0e38a482_staticRenderFns,
   false,
   null,
   null,
