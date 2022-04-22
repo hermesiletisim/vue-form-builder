@@ -6,7 +6,7 @@
             :disabled="!permissions.canEditFormConfigurations"
         >
             <span v-html="$form.getIcon('cog')"></span>
-            <span>{{$ml("FORM_CONFIGURATIONS")}}</span>
+            <span>{{$ml.get("FORM_CONFIGURATIONS")}}</span>
         </button>
     </div>
 </template>
