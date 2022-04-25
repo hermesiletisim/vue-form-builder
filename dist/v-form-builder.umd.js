@@ -25447,7 +25447,7 @@ function createNewSection(type) {
   var newSectionData = helper["a" /* HELPER */].cloneDeep(SECTION_DEFAULT_DATA);
   newSectionData.type = type;
   newSectionData.uniqueId = "section-" + helper["a" /* HELPER */].getUUIDv4();
-  newSectionData.headline = "New Section";
+  newSectionData.headline = this.$ml.get("NEW_SECTION");
   newSectionData.subHeadline = "This is the sub-headline of the new section";
   newSectionData.sortOrder = sortOrder;
   return newSectionData;
