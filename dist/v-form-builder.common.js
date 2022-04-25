@@ -15443,7 +15443,7 @@ var CONTROLS = {
   },
   number: {
     name: "NUMBER_INPUT_FIELD",
-    description: "_NUMBER_INPUT_FIELD_DESC",
+    description: "NUMBER_INPUT_FIELD_DESC",
     // name: "Number Input Field",
     // description: "Input text single line - Number Only",
     configData: {
@@ -15488,10 +15488,10 @@ var CONTROLS = {
   //     description: "Multiple line text field - Rich Editor (WYSIWYG)",
   // },
   date: {
-    // name: this.$ml.get("DATE_PICKER"),
-    // description: this.$ml.get("DATE_PICKER_DESC"),
-    name: "Date Picker",
-    description: "Simple date picker field",
+    name: "DATE_PICKER",
+    description: "DATE_PICKER_DESC",
+    // name: "Date Picker",
+    // description: "Simple date picker field",
     configData: {
       format: "DD/MM/YYYY",
       firstDay: DATE_PICKER_START_DATES.monday.val,
