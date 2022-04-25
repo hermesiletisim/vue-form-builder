@@ -12,8 +12,8 @@
                v-for="(sectionInfo, sectionKey) in sectionTypes"
                @click="addNew(sectionKey)">
 
-                <p class="type-headline" v-text="sectionInfo.name"></p>
-                <p class="type-desc" v-text="sectionInfo.description"></p>
+                <p class="type-headline" v-text="$ml.get(sectionInfo.name)"></p>
+                <p class="type-desc" v-text="$ml.get(sectionInfo.description)"></p>
 
             </a>
 
