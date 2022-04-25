@@ -1,9 +1,9 @@
 <template>
     <div>
         <div :class="styles.FORM.FORM_GROUP">
-            <label>Number of Rows</label>
+            <label>Number of Rows{{$ml.get("NUMBER_OF_ROWS")}}</label>
             <input type="number" step="1" :class="styles.FORM.FORM_CONTROL" v-model.number="control.rows" />
-            <small>`row` HTML Attribute Configuration</small>
+            <small>`row` HTML Attribute Configuration{{$ml.get("ROW_HTML_ATTRIBUTE_CONFIGURATION")}}</small>
         </div>
 
     </div>
