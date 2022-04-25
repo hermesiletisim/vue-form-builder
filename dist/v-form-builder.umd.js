@@ -7717,12 +7717,12 @@ var SectionContainervue_type_template_id_100bea57_scoped_true_staticRenderFns = 
 
 // CONCATENATED MODULE: ./src/views/builder/SectionContainer.vue?vue&type=template&id=100bea57&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/SectionNavigationBar.vue?vue&type=template&id=648e69ef&
-var SectionNavigationBarvue_type_template_id_648e69ef_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section-config"},[_c('div',{staticClass:"buttons"},[(_vm.preCustomButtonView)?_c(_vm.preCustomButtonView,{tag:"component",attrs:{"section":_vm.section,"permissions":_vm.permissions}}):_vm._e(),_c('button',{class:_vm.styles.BUTTON.PRIMARY,attrs:{"title":"Push Up","disabled":!_vm.permissions.canReOrderingSection},domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('arrowUp'))},on:{"click":_vm.pushUp}}),_c('button',{class:_vm.styles.BUTTON.SECONDARY,attrs:{"title":"Push Down","disabled":!_vm.permissions.canReOrderingSection},domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('arrowDown'))},on:{"click":_vm.pushDown}}),_c('button',{class:_vm.styles.BUTTON.INFO,attrs:{"disabled":!_vm.permissions.canEditSection},on:{"click":_vm.openConfiguration}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('cog'))}}),_c('span',[_vm._v("Configuration")])]),_c('button',{class:_vm.styles.BUTTON.DANGER,attrs:{"disabled":!_vm.permissions.canDeleteSection},on:{"click":_vm.deleteSection}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('trash'))}}),_c('span',[_vm._v("Delete")])]),(_vm.postCustomButtonView)?_c(_vm.postCustomButtonView,{tag:"component",attrs:{"section":_vm.section,"permissions":_vm.permissions}}):_vm._e()],1)])}
-var SectionNavigationBarvue_type_template_id_648e69ef_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/SectionNavigationBar.vue?vue&type=template&id=63a64b03&
+var SectionNavigationBarvue_type_template_id_63a64b03_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section-config"},[_c('div',{staticClass:"buttons"},[(_vm.preCustomButtonView)?_c(_vm.preCustomButtonView,{tag:"component",attrs:{"section":_vm.section,"permissions":_vm.permissions}}):_vm._e(),_c('button',{class:_vm.styles.BUTTON.PRIMARY,attrs:{"title":"Push Up","disabled":!_vm.permissions.canReOrderingSection},domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('arrowUp'))},on:{"click":_vm.pushUp}}),_c('button',{class:_vm.styles.BUTTON.SECONDARY,attrs:{"title":"Push Down","disabled":!_vm.permissions.canReOrderingSection},domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('arrowDown'))},on:{"click":_vm.pushDown}}),_c('button',{class:_vm.styles.BUTTON.INFO,attrs:{"disabled":!_vm.permissions.canEditSection},on:{"click":_vm.openConfiguration}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('cog'))}}),_c('span',[_vm._v(_vm._s(_vm.$ml.get("CONFIGURATION")))])]),_c('button',{class:_vm.styles.BUTTON.DANGER,attrs:{"disabled":!_vm.permissions.canDeleteSection},on:{"click":_vm.deleteSection}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('trash'))}}),_c('span',[_vm._v(_vm._s(_vm.$ml.get("DELETE")))])]),(_vm.postCustomButtonView)?_c(_vm.postCustomButtonView,{tag:"component",attrs:{"section":_vm.section,"permissions":_vm.permissions}}):_vm._e()],1)])}
+var SectionNavigationBarvue_type_template_id_63a64b03_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/SectionNavigationBar.vue?vue&type=template&id=648e69ef&
+// CONCATENATED MODULE: ./src/views/builder/SectionNavigationBar.vue?vue&type=template&id=63a64b03&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.assign.js
 var es6_object_assign = __webpack_require__("f751");
@@ -8060,8 +8060,8 @@ var SidebarSectionConfiguration_component = Object(componentNormalizer["a" /* de
 
 var SectionNavigationBar_component = Object(componentNormalizer["a" /* default */])(
   builder_SectionNavigationBarvue_type_script_lang_js_,
-  SectionNavigationBarvue_type_template_id_648e69ef_render,
-  SectionNavigationBarvue_type_template_id_648e69ef_staticRenderFns,
+  SectionNavigationBarvue_type_template_id_63a64b03_render,
+  SectionNavigationBarvue_type_template_id_63a64b03_staticRenderFns,
   false,
   null,
   null,
@@ -15605,8 +15605,8 @@ var CONTROLS = {
     configComponent: RadioCheckboxConfigView
   },
   fileUploader: {
-    name: "File Uploader",
-    description: "File Uploader Control from vue-upload-component",
+    name: "FILE_UPLOADER",
+    description: "FILE_UPLOADER_DESC",
     disableValidation: true,
     // config data
     configData: {

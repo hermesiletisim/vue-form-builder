@@ -214,8 +214,8 @@ const CONTROLS = {
     },
 
     fileUploader: {
-        name: "File Uploader",
-        description: "File Uploader Control from vue-upload-component",
+        name: "FILE_UPLOADER",
+        description: "FILE_UPLOADER_DESC",
         disableValidation: true,
 
         // config data
