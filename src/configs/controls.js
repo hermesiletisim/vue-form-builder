@@ -27,6 +27,7 @@ import NumberControl from "@/views/controls/NumberControl";
 import DropdownControl from "@/views/controls/DropdownControl";
 import FileUploaderControl from "@/views/controls/FileUploaderControl";
 
+
 // Control-Config-Component
 import InputConfigView from "@/views/control-configs/InputConfigView";
 import TextBlockConfigView from "@/views/control-configs/TextBlockConfigView";
@@ -38,11 +39,13 @@ import DatePickerConfigView from "@/views/control-configs/DatePickerConfigView";
 import TextConfigView from "@/views/control-configs/TextConfigView";
 import DropdownConfigView from "@/views/control-configs/DropdownConfigView";
 import FileUploaderConfigView from "@/views/control-configs/FileUploaderConfigView";
+// import $ml from "../../../../src/language/ml.js"
+// import "../../../../src/language/ml.js"
 
 const CONTROLS = {
     input: {
-        name: $ml.get("INPUT_FIELD"),
-        description: $ml.get("INPUT_FIELD_DESC"),
+        name: this.$ml.get("INPUT_FIELD"),
+        description: this.$ml.get("INPUT_FIELD_DESC"),
         icon: 'editPencil', // Follow ICON in `icon-facade.js` to see how it works.
 
         configData: {
@@ -55,8 +58,8 @@ const CONTROLS = {
     },
 
     number: {
-        name: "Number Input Field",
-        description: "Input text single line - Number Only",
+        name: this.$ml.get("NUMBER_INPUT_FIELD"),
+        description: this.$ml.get("_NUMBER_INPUT_FIELD_DESC"),
 
         configData: {
             isReal: false, // integer or real (float/double)
@@ -78,8 +81,8 @@ const CONTROLS = {
     },
 
     text: {
-        name: "Text Field",
-        description: "Multiple line text field",
+        name: this.$ml.get("TEXT_FIELD"),
+        description: this.$ml.get("TEXT_FIELD_DESC"),
 
         // config data for the input field - it will be merge with the CONTROL_DEFAULT_DATA
         configData: {
@@ -101,8 +104,8 @@ const CONTROLS = {
     // },
 
     date: {
-        name: "Date Picker",
-        description: "Simple date picker field",
+        name: this.$ml.get("DATE_PICKER"),
+        description: this.$ml.get("DATE_PICKER_DESC"),
 
         configData: {
             format: "DD/MM/YYYY",
@@ -136,8 +139,8 @@ const CONTROLS = {
     // },
 
     dropDown: {
-        name: "Dropdown",
-        description: "Dropdown select from a list",
+        name: this.$ml.get("DROPDOWN"),
+        description: this.$ml.get("DROPDOWN_DESC"),
 
         configData: {
             dataMode: DROPDOWN_DATA_MODES.list.val, // normal - api
@@ -159,8 +162,8 @@ const CONTROLS = {
 
 
     checkbox: {
-        name: "Checkbox List",
-        description: "Checkbox list items (Multiple Select)",
+        name: this.$ml.get("CHECKBOX_LIST"),
+        description: this.$ml.get("CHECKBOX_LIST_DESC"),
 
         configData: {
             displayMode: RADIO_CHECKBOX_STYLE.line.val, // line by line / next to each others / 2 items per line
@@ -180,8 +183,8 @@ const CONTROLS = {
     },
 
     radio: {
-        name: "Radio List",
-        description: "Radio-Button list items (Single Select)",
+        name: this.$ml.get("RADIO_LIST"),
+        description: this.$ml.get("RADIO_LIST_DESC"),
 
         configData: {
             displayMode: RADIO_CHECKBOX_STYLE.line.val, // line by line / next to each others / 2 items per line
@@ -227,8 +230,8 @@ const CONTROLS = {
     },
 
     label: {
-        name: "Label",
-        description: "Simple label text show up in your Form",
+        name: this.$ml.get("LABEL"),
+        description: this.$ml.get("LABEL_DESC"),
         disableValue: true,
         
         configData: {
@@ -245,8 +248,8 @@ const CONTROLS = {
     },
 
     button: {
-        name: "Button",
-        description: "Simple button for your own purpose",
+        name: this.$ml.get("BUTTON"),
+        description: this.$ml.get("BUTTON_DESC"),
         disableValidation: true,
         disableValue: true,
 
@@ -269,8 +272,8 @@ const CONTROLS = {
     },
 
     emptyBlock: {
-        name: "Empty Block",
-        description: "Empty block to design your section/row.",
+        name: this.$ml.get("EMPTY_BLOCK"),
+        description: this.$ml.get("EMPTY_BLOCK_DESC"),
         disableValidation: true,
         disableValue: true,
 
@@ -283,8 +286,8 @@ const CONTROLS = {
     },
 
     textBlock: {
-        name: "Text Block",
-        description: "Block with text only (without any controls)",
+        name: this.$ml.get("TEXT_BLOCK"),
+        description: this.$ml.get("TEXT_BLOCK_DESC"),
         disableValidation: true,
         disableValue: true, // if you provide this, the control field value will not be recorded.
 

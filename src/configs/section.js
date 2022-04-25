@@ -20,14 +20,16 @@ import TabSectionPreButtons from "@/views/builder/section-navigation-buttons/Tab
 import RendererNormalSectionView from "@/views/renderer/section-views/NormalSectionView";
 import RendererToggleableSectionView from "@/views/renderer/section-views/ToggleableSectionView";
 import RendererTabSectionView from "@/views/renderer/section-views/TabSectionView";
+// import $ml from "../../../../src/language/ml.js"
+// import "../../../../src/language/ml.js"
 
 
 
 
 const SECTION_TYPES = {
     normal: {
-        name: "Normal Block",
-        description: "Normal block with a headline",
+        name: this.$ml.get("NORMAL_BLOCK"),
+        description: this.$ml.get("NORMAL_BLOCK_DESC"),
         value: 'normal',
 
         rowType: ROW_TYPES.normal,
@@ -36,8 +38,8 @@ const SECTION_TYPES = {
     },
 
     toggleable: {
-        name: "Toggleable Block",
-        description: "Section block with toggle (display/hide) feature",
+        name: this.$ml.get("TOGGLEABLE_BLOCK"),
+        description: this.$ml.get("TOGGLEABLE_BLOCK_DESC"),
         value: 'toggleable',
 
         rowType: ROW_TYPES.normal,
@@ -46,8 +48,8 @@ const SECTION_TYPES = {
     },
 
     tab: {
-        name: "Tab Block",
-        description: "A block with multiple tabs feature",
+        name: this.$ml.get("TAB_BLOCK"),
+        description: this.$ml.get("TAB_BLOCK_DESC"),
         value: "tab",
 
         rowType: ROW_TYPES.tabRow,

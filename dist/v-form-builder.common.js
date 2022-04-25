@@ -15422,11 +15422,13 @@ var FileUploaderConfigView_component = Object(componentNormalizer["a" /* default
 
 
 
+ // import $ml from "../../../../src/language/ml.js"
+// import "../../../../src/language/ml.js"
 
 var CONTROLS = {
   input: {
-    name: $ml.get("INPUT_FIELD"),
-    description: $ml.get("INPUT_FIELD_DESC"),
+    name: undefined.$ml.get("INPUT_FIELD"),
+    description: undefined.$ml.get("INPUT_FIELD_DESC"),
     icon: 'editPencil',
     // Follow ICON in `icon-facade.js` to see how it works.
     configData: {
@@ -15438,8 +15440,8 @@ var CONTROLS = {
     configComponent: InputConfigView
   },
   number: {
-    name: "Number Input Field",
-    description: "Input text single line - Number Only",
+    name: undefined.$ml.get("NUMBER_INPUT_FIELD"),
+    description: undefined.$ml.get("_NUMBER_INPUT_FIELD_DESC"),
     configData: {
       isReal: false,
       // integer or real (float/double)
@@ -15460,8 +15462,8 @@ var CONTROLS = {
     }
   },
   text: {
-    name: "Text Field",
-    description: "Multiple line text field",
+    name: undefined.$ml.get("TEXT_FIELD"),
+    description: undefined.$ml.get("TEXT_FIELD_DESC"),
     // config data for the input field - it will be merge with the CONTROL_DEFAULT_DATA
     configData: {
       rows: 3 // numeric
@@ -15480,8 +15482,8 @@ var CONTROLS = {
   //     description: "Multiple line text field - Rich Editor (WYSIWYG)",
   // },
   date: {
-    name: "Date Picker",
-    description: "Simple date picker field",
+    name: undefined.$ml.get("DATE_PICKER"),
+    description: undefined.$ml.get("DATE_PICKER_DESC"),
     configData: {
       format: "DD/MM/YYYY",
       firstDay: DATE_PICKER_START_DATES.monday.val,
@@ -15517,8 +15519,8 @@ var CONTROLS = {
   //     },
   // },
   dropDown: {
-    name: "Dropdown",
-    description: "Dropdown select from a list",
+    name: undefined.$ml.get("DROPDOWN"),
+    description: undefined.$ml.get("DROPDOWN_DESC"),
     configData: {
       dataMode: DROPDOWN_DATA_MODES.list.val,
       // normal - api
@@ -15541,8 +15543,8 @@ var CONTROLS = {
     configComponent: DropdownConfigView
   },
   checkbox: {
-    name: "Checkbox List",
-    description: "Checkbox list items (Multiple Select)",
+    name: undefined.$ml.get("CHECKBOX_LIST"),
+    description: undefined.$ml.get("CHECKBOX_LIST_DESC"),
     configData: {
       displayMode: RADIO_CHECKBOX_STYLE.line.val,
       // line by line / next to each others / 2 items per line
@@ -15562,8 +15564,8 @@ var CONTROLS = {
     }
   },
   radio: {
-    name: "Radio List",
-    description: "Radio-Button list items (Single Select)",
+    name: undefined.$ml.get("RADIO_LIST"),
+    description: undefined.$ml.get("RADIO_LIST_DESC"),
     configData: {
       displayMode: RADIO_CHECKBOX_STYLE.line.val,
       // line by line / next to each others / 2 items per line
@@ -15606,8 +15608,8 @@ var CONTROLS = {
     configComponent: FileUploaderConfigView
   },
   label: {
-    name: "Label",
-    description: "Simple label text show up in your Form",
+    name: undefined.$ml.get("LABEL"),
+    description: undefined.$ml.get("LABEL_DESC"),
     disableValue: true,
     configData: {
       forAttribute: null,
@@ -15621,8 +15623,8 @@ var CONTROLS = {
     configComponent: LabelConfigView
   },
   button: {
-    name: "Button",
-    description: "Simple button for your own purpose",
+    name: undefined.$ml.get("BUTTON"),
+    description: undefined.$ml.get("BUTTON_DESC"),
     disableValidation: true,
     disableValue: true,
     configData: {
@@ -15642,8 +15644,8 @@ var CONTROLS = {
     configComponent: ButtonConfigView
   },
   emptyBlock: {
-    name: "Empty Block",
-    description: "Empty block to design your section/row.",
+    name: undefined.$ml.get("EMPTY_BLOCK"),
+    description: undefined.$ml.get("EMPTY_BLOCK_DESC"),
     disableValidation: true,
     disableValue: true,
     fieldComponent: EmptyBlockControl,
@@ -15653,8 +15655,8 @@ var CONTROLS = {
     }
   },
   textBlock: {
-    name: "Text Block",
-    description: "Block with text only (without any controls)",
+    name: undefined.$ml.get("TEXT_BLOCK"),
+    description: undefined.$ml.get("TEXT_BLOCK_DESC"),
     disableValidation: true,
     disableValue: true,
     // if you provide this, the control field value will not be recorded.
@@ -25335,27 +25337,29 @@ var section_views_TabSectionView_component = Object(componentNormalizer["a" /* d
 
 
 
+ // import $ml from "../../../../src/language/ml.js"
+// import "../../../../src/language/ml.js"
 
 var SECTION_TYPES = {
   normal: {
-    name: "Normal Block",
-    description: "Normal block with a headline",
+    name: undefined.$ml.get("NORMAL_BLOCK"),
+    description: undefined.$ml.get("NORMAL_BLOCK_DESC"),
     value: 'normal',
     rowType: row["b" /* ROW_TYPES */].normal,
     builderView: NormalSectionView,
     rendererView: section_views_NormalSectionView
   },
   toggleable: {
-    name: "Toggleable Block",
-    description: "Section block with toggle (display/hide) feature",
+    name: undefined.$ml.get("TOGGLEABLE_BLOCK"),
+    description: undefined.$ml.get("TOGGLEABLE_BLOCK_DESC"),
     value: 'toggleable',
     rowType: row["b" /* ROW_TYPES */].normal,
     builderView: ToggleableSectionView,
     rendererView: section_views_ToggleableSectionView
   },
   tab: {
-    name: "Tab Block",
-    description: "A block with multiple tabs feature",
+    name: undefined.$ml.get("TAB_BLOCK"),
+    description: undefined.$ml.get("TAB_BLOCK_DESC"),
     value: "tab",
     rowType: row["b" /* ROW_TYPES */].tabRow,
     builderView: TabSectionView,
