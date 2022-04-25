@@ -1,5 +1,5 @@
 <template>
-    <SidebarToggleableContainer headline="$ml.get('BASIC_DETAIL')">
+    <SidebarToggleableContainer headline="Basic Detail">
         <div :class="styles.FORM.FORM_GROUP">
             <label>{{$ml.get("UNIQUE_ID")}}</label>
             <input type="text" :class="styles.FORM.FORM_CONTROL" :value="control.uniqueId" readonly>
