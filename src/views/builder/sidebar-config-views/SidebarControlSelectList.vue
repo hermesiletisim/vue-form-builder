@@ -12,8 +12,8 @@
                v-show="!controlInfo.isHidden"
                @click="selectedControl(controlKey)">
 
-                <p class="type-headline" v-text="controlInfo.name"></p>
-                <p class="type-desc" v-text="controlInfo.description"></p>
+                <p class="type-headline" v-text="$ml.get(controlInfo.name)"></p>
+                <p class="type-desc" v-text="$ml.get(controlInfo.description)"></p>
 
             </a>
 

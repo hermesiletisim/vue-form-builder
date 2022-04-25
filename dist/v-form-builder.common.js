@@ -15427,10 +15427,10 @@ var FileUploaderConfigView_component = Object(componentNormalizer["a" /* default
 
 var CONTROLS = {
   input: {
-    // name: this.$ml.get("INPUT_FIELD"),
-    // description: this.$ml.get("INPUT_FIELD_DESC"),
-    name: "Input Field",
-    description: "Input text single line",
+    name: "INPUT_FIELD",
+    description: "INPUT_FIELD_DESC",
+    // name: "Input Field",
+    // description: "Input text single line",
     icon: 'editPencil',
     // Follow ICON in `icon-facade.js` to see how it works.
     configData: {
@@ -15442,10 +15442,10 @@ var CONTROLS = {
     configComponent: InputConfigView
   },
   number: {
-    // name: this.$ml.get("NUMBER_INPUT_FIELD"),
-    // description: this.$ml.get("_NUMBER_INPUT_FIELD_DESC"),
-    name: "Number Input Field",
-    description: "Input text single line - Number Only",
+    name: "NUMBER_INPUT_FIELD",
+    description: "_NUMBER_INPUT_FIELD_DESC",
+    // name: "Number Input Field",
+    // description: "Input text single line - Number Only",
     configData: {
       isReal: false,
       // integer or real (float/double)
@@ -15466,10 +15466,10 @@ var CONTROLS = {
     }
   },
   text: {
-    // name: this.$ml.get("TEXT_FIELD"),
-    // description: this.$ml.get("TEXT_FIELD_DESC"),
-    name: "Text Field",
-    description: "Multiple line text field",
+    name: "TEXT_FIELD",
+    description: "TEXT_FIELD_DESC",
+    // name: "Text Field",
+    // description: "Multiple line text field",
     // config data for the input field - it will be merge with the CONTROL_DEFAULT_DATA
     configData: {
       rows: 3 // numeric
@@ -15527,10 +15527,10 @@ var CONTROLS = {
   //     },
   // },
   dropDown: {
-    // name: this.$ml.get("DROPDOWN"),
-    // description: this.$ml.get("DROPDOWN_DESC"),
-    name: "Dropdown",
-    description: "Dropdown select from a list",
+    name: "DROPDOWN",
+    description: "DROPDOWN_DESC",
+    // name: "Dropdown",
+    // description: "Dropdown select from a list",
     configData: {
       dataMode: DROPDOWN_DATA_MODES.list.val,
       // normal - api
@@ -15553,10 +15553,10 @@ var CONTROLS = {
     configComponent: DropdownConfigView
   },
   checkbox: {
-    // name: this.$ml.get("CHECKBOX_LIST"),
-    // description: this.$ml.get("CHECKBOX_LIST_DESC"),
-    name: "Checkbox List",
-    description: "Checkbox list items (Multiple Select)",
+    name: "CHECKBOX_LIST",
+    description: "CHECKBOX_LIST_DESC",
+    // name: "Checkbox List",
+    // description: "Checkbox list items (Multiple Select)",
     configData: {
       displayMode: RADIO_CHECKBOX_STYLE.line.val,
       // line by line / next to each others / 2 items per line
@@ -15576,10 +15576,10 @@ var CONTROLS = {
     }
   },
   radio: {
-    // name: this.$ml.get("RADIO_LIST"),
-    // description: this.$ml.get("RADIO_LIST_DESC"),
-    name: "Radio List",
-    description: "Radio-Button list items (Single Select)",
+    name: "RADIO_LIST",
+    description: "RADIO_LIST_DESC",
+    // name: "Radio List",
+    // description: "Radio-Button list items (Single Select)",
     configData: {
       displayMode: RADIO_CHECKBOX_STYLE.line.val,
       // line by line / next to each others / 2 items per line
@@ -15622,10 +15622,10 @@ var CONTROLS = {
     configComponent: FileUploaderConfigView
   },
   label: {
-    // name: this.$ml.get("LABEL"),
-    // description: this.$ml.get("LABEL_DESC"),
-    name: "Label",
-    description: "Simple label text show up in your Form",
+    name: "LABEL",
+    description: "LABEL_DESC",
+    // name: "Label",
+    // description: "Simple label text show up in your Form",
     disableValue: true,
     configData: {
       forAttribute: null,
@@ -15639,10 +15639,10 @@ var CONTROLS = {
     configComponent: LabelConfigView
   },
   button: {
-    // name: this.$ml.get("BUTTON"),
-    // description: this.$ml.get("BUTTON_DESC"),
-    name: "Button",
-    description: "Simple button for your own purpose",
+    name: "BUTTON",
+    description: "BUTTON_DESC",
+    // name: "Button",
+    // description: "Simple button for your own purpose",
     disableValidation: true,
     disableValue: true,
     configData: {
@@ -15662,10 +15662,10 @@ var CONTROLS = {
     configComponent: ButtonConfigView
   },
   emptyBlock: {
-    // name: this.$ml.get("EMPTY_BLOCK"),
-    // description: this.$ml.get("EMPTY_BLOCK_DESC"),
-    name: "Empty Block",
-    description: "empty block to design your section/row.",
+    name: "EMPTY_BLOCK",
+    description: "EMPTY_BLOCK_DESC",
+    // name: "Empty Block",
+    // description: "empty block to design your section/row.",
     disableValidation: true,
     disableValue: true,
     fieldComponent: EmptyBlockControl,
@@ -15675,10 +15675,10 @@ var CONTROLS = {
     }
   },
   textBlock: {
-    // name: this.$ml.get("TEXT_BLOCK"),
-    // description: this.$ml.get("TEXT_BLOCK_DESC"),
-    name: "Text Block",
-    description: "Block with text only (without any controls)",
+    name: "TEXT_BLOCK",
+    description: "TEXT_BLOCK_DESC",
+    // name: "Text Block",
+    // description: "Block with text only (without any controls)",
     disableValidation: true,
     disableValue: true,
     // if you provide this, the control field value will not be recorded.
@@ -22852,12 +22852,12 @@ var helper = __webpack_require__("43b3");
 // EXTERNAL MODULE: ./src/configs/row.js
 var row = __webpack_require__("7d7e");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/section-views/NormalSectionView.vue?vue&type=template&id=0cc531ba&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"normal-section"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.section.isShowHeadline),expression:"section.isShowHeadline"}],staticClass:"headline-block p5"},[_c('h2',{class:_vm.section.headlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.headline)}}),_c('p',{class:_vm.section.subHeadlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.subHeadline)}})]),_c('draggable',{class:_vm.draggableClasses,attrs:{"ghost-class":"ghost","handle":_vm.dragControlHandle,"list":_vm.section.controls,"group":_vm.dragGroup,"disabled":!_vm.permissions.canReOrderingControl}},[_vm._l((_vm.section.controls),function(controlId){return _c('ControlView',{key:controlId,attrs:{"control":_vm.controls[controlId],"parent-id":_vm.section.uniqueId,"permissions":_vm.permissions}})}),(!_vm.hasControl)?_c('p',[_vm._v(" Droppable Zone / Controls will be showed here... ")]):_vm._e()],2),(_vm.permissions.canAddControl)?_c('AddControlControl',{attrs:{"section":_vm.section}}):_vm._e()],1)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/section-views/NormalSectionView.vue?vue&type=template&id=1337058c&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"normal-section"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.section.isShowHeadline),expression:"section.isShowHeadline"}],staticClass:"headline-block p5"},[_c('h2',{class:_vm.section.headlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.headline)}}),_c('p',{class:_vm.section.subHeadlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.subHeadline)}})]),_c('draggable',{class:_vm.draggableClasses,attrs:{"ghost-class":"ghost","handle":_vm.dragControlHandle,"list":_vm.section.controls,"group":_vm.dragGroup,"disabled":!_vm.permissions.canReOrderingControl}},[_vm._l((_vm.section.controls),function(controlId){return _c('ControlView',{key:controlId,attrs:{"control":_vm.controls[controlId],"parent-id":_vm.section.uniqueId,"permissions":_vm.permissions}})}),(!_vm.hasControl)?_c('p',[_vm._v(" "+_vm._s(_vm.$ml.get("DROPPABLE_ZONE"))+" ")]):_vm._e()],2),(_vm.permissions.canAddControl)?_c('AddControlControl',{attrs:{"section":_vm.section}}):_vm._e()],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/section-views/NormalSectionView.vue?vue&type=template&id=0cc531ba&
+// CONCATENATED MODULE: ./src/views/builder/section-views/NormalSectionView.vue?vue&type=template&id=1337058c&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/add-controls/AddRowControl.vue?vue&type=template&id=12c0063a&scoped=true&
 var AddRowControlvue_type_template_id_12c0063a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"add-row-outer"},[_c('div',{staticClass:"add-row-container",class:_vm.styles.COLUMNS.COL12,on:{"click":_vm.addNew}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '32px', '32px', '#000'))}}),_c('span',[_vm._v("Add Row")])])])}
@@ -22943,12 +22943,12 @@ var AddControlControlvue_type_template_id_0e38a482_staticRenderFns = []
 // EXTERNAL MODULE: ./src/libraries/sidebar-renderer.class.js
 var sidebar_renderer_class = __webpack_require__("1ec8");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/SidebarControlSelectList.vue?vue&type=template&id=600c0900&scoped=true&
-var SidebarControlSelectListvue_type_template_id_600c0900_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-form-configuration"},[_c('h5',[_vm._v(_vm._s(_vm.$ml.get("ADD_CONTROL_TO_YOUR_SECTION")))]),_c('div',{class:[_vm.styles.LIST_GROUP.CONTAINER]},_vm._l((_vm.controlTypes),function(controlInfo,controlKey){return _c('a',{directives:[{name:"show",rawName:"v-show",value:(!controlInfo.isHidden),expression:"!controlInfo.isHidden"}],class:_vm.styles.LIST_GROUP.SINGLE_ITEM,attrs:{"href":"javascript:void(0)"},on:{"click":function($event){return _vm.selectedControl(controlKey)}}},[_c('p',{staticClass:"type-headline",domProps:{"textContent":_vm._s(controlInfo.name)}}),_c('p',{staticClass:"type-desc",domProps:{"textContent":_vm._s(controlInfo.description)}})])}),0)])}
-var SidebarControlSelectListvue_type_template_id_600c0900_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/SidebarControlSelectList.vue?vue&type=template&id=7f5d0a26&scoped=true&
+var SidebarControlSelectListvue_type_template_id_7f5d0a26_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-form-configuration"},[_c('h5',[_vm._v(_vm._s(_vm.$ml.get("ADD_CONTROL_TO_YOUR_SECTION")))]),_c('div',{class:[_vm.styles.LIST_GROUP.CONTAINER]},_vm._l((_vm.controlTypes),function(controlInfo,controlKey){return _c('a',{directives:[{name:"show",rawName:"v-show",value:(!controlInfo.isHidden),expression:"!controlInfo.isHidden"}],class:_vm.styles.LIST_GROUP.SINGLE_ITEM,attrs:{"href":"javascript:void(0)"},on:{"click":function($event){return _vm.selectedControl(controlKey)}}},[_c('p',{staticClass:"type-headline",domProps:{"textContent":_vm._s(_vm.$ml.get(controlInfo.name))}}),_c('p',{staticClass:"type-desc",domProps:{"textContent":_vm._s(_vm.$ml.get(controlInfo.description))}})])}),0)])}
+var SidebarControlSelectListvue_type_template_id_7f5d0a26_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlSelectList.vue?vue&type=template&id=600c0900&scoped=true&
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlSelectList.vue?vue&type=template&id=7f5d0a26&scoped=true&
 
 // EXTERNAL MODULE: ./src/configs/controls.js + 113 modules
 var controls = __webpack_require__("8dbe");
@@ -23027,11 +23027,11 @@ var sidebar_body_mixin = __webpack_require__("cbce");
 
 var SidebarControlSelectList_component = Object(componentNormalizer["a" /* default */])(
   sidebar_config_views_SidebarControlSelectListvue_type_script_lang_js_,
-  SidebarControlSelectListvue_type_template_id_600c0900_scoped_true_render,
-  SidebarControlSelectListvue_type_template_id_600c0900_scoped_true_staticRenderFns,
+  SidebarControlSelectListvue_type_template_id_7f5d0a26_scoped_true_render,
+  SidebarControlSelectListvue_type_template_id_7f5d0a26_scoped_true_staticRenderFns,
   false,
   null,
-  "600c0900",
+  "7f5d0a26",
   null
   
 )
@@ -24121,12 +24121,12 @@ var NormalSectionView_component = Object(componentNormalizer["a" /* default */])
 )
 
 /* harmony default export */ var NormalSectionView = (NormalSectionView_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/section-views/ToggleableSectionView.vue?vue&type=template&id=8159c7ec&
-var ToggleableSectionViewvue_type_template_id_8159c7ec_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"toggleable-section"},[_c('div',{staticClass:"headline-block p5"},[_c('h2',{class:_vm.section.headlineAdditionalClass},[_c('span',{staticClass:"toggle-item",domProps:{"innerHTML":_vm._s(_vm.isVisible ? _vm.iconClose : _vm.iconOpen)},on:{"click":function($event){_vm.isVisible = !_vm.isVisible}}}),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.section.isShowHeadline),expression:"section.isShowHeadline"}],domProps:{"textContent":_vm._s(_vm.section.headline)}}),_c('small',{directives:[{name:"show",rawName:"v-show",value:(_vm.section.isShowHeadline),expression:"section.isShowHeadline"}],class:[_vm.section.subHeadlineAdditionalClass, 'toggleable-sub-headline'],domProps:{"textContent":_vm._s(_vm.section.subHeadline)}})])]),_c('transition',{attrs:{"name":"slide"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isVisible),expression:"isVisible"}]},[_c('draggable',{class:_vm.draggableClasses,attrs:{"ghost-class":"ghost","handle":_vm.dragControlHandle,"list":_vm.section.controls,"group":_vm.dragGroup,"disabled":!_vm.permissions.canReOrderingControl}},[_vm._l((_vm.section.controls),function(controlId){return _c('ControlView',{key:controlId,attrs:{"control":_vm.controls[controlId],"parent-id":_vm.section.uniqueId,"permissions":_vm.permissions}})}),(!_vm.hasControl)?_c('p',[_vm._v(" Droppable Zone / Controls will be showed here... ")]):_vm._e()],2),(_vm.permissions.canAddControl)?_c('AddControlControl',{attrs:{"section":_vm.section}}):_vm._e()],1)])],1)}
-var ToggleableSectionViewvue_type_template_id_8159c7ec_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/section-views/ToggleableSectionView.vue?vue&type=template&id=5d86fe3d&
+var ToggleableSectionViewvue_type_template_id_5d86fe3d_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"toggleable-section"},[_c('div',{staticClass:"headline-block p5"},[_c('h2',{class:_vm.section.headlineAdditionalClass},[_c('span',{staticClass:"toggle-item",domProps:{"innerHTML":_vm._s(_vm.isVisible ? _vm.iconClose : _vm.iconOpen)},on:{"click":function($event){_vm.isVisible = !_vm.isVisible}}}),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.section.isShowHeadline),expression:"section.isShowHeadline"}],domProps:{"textContent":_vm._s(_vm.section.headline)}}),_c('small',{directives:[{name:"show",rawName:"v-show",value:(_vm.section.isShowHeadline),expression:"section.isShowHeadline"}],class:[_vm.section.subHeadlineAdditionalClass, 'toggleable-sub-headline'],domProps:{"textContent":_vm._s(_vm.section.subHeadline)}})])]),_c('transition',{attrs:{"name":"slide"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isVisible),expression:"isVisible"}]},[_c('draggable',{class:_vm.draggableClasses,attrs:{"ghost-class":"ghost","handle":_vm.dragControlHandle,"list":_vm.section.controls,"group":_vm.dragGroup,"disabled":!_vm.permissions.canReOrderingControl}},[_vm._l((_vm.section.controls),function(controlId){return _c('ControlView',{key:controlId,attrs:{"control":_vm.controls[controlId],"parent-id":_vm.section.uniqueId,"permissions":_vm.permissions}})}),(!_vm.hasControl)?_c('p',[_vm._v(" "+_vm._s(_vm.$ml.get("DROPPABLE_ZONE"))+" ")]):_vm._e()],2),(_vm.permissions.canAddControl)?_c('AddControlControl',{attrs:{"section":_vm.section}}):_vm._e()],1)])],1)}
+var ToggleableSectionViewvue_type_template_id_5d86fe3d_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/section-views/ToggleableSectionView.vue?vue&type=template&id=8159c7ec&
+// CONCATENATED MODULE: ./src/views/builder/section-views/ToggleableSectionView.vue?vue&type=template&id=5d86fe3d&
 
 // EXTERNAL MODULE: ./src/mixins/toggleable-mixin.js
 var toggleable_mixin = __webpack_require__("37d5");
@@ -24216,8 +24216,8 @@ var toggleable_mixin = __webpack_require__("37d5");
 
 var ToggleableSectionView_component = Object(componentNormalizer["a" /* default */])(
   section_views_ToggleableSectionViewvue_type_script_lang_js_,
-  ToggleableSectionViewvue_type_template_id_8159c7ec_render,
-  ToggleableSectionViewvue_type_template_id_8159c7ec_staticRenderFns,
+  ToggleableSectionViewvue_type_template_id_5d86fe3d_render,
+  ToggleableSectionViewvue_type_template_id_5d86fe3d_staticRenderFns,
   false,
   null,
   null,
@@ -24236,12 +24236,12 @@ var TabSectionViewvue_type_template_id_595b3044_staticRenderFns = []
 // EXTERNAL MODULE: ./src/libraries/alert-dialog.js
 var alert_dialog = __webpack_require__("caca");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/row-views/TabContentRowView.vue?vue&type=template&id=e28854e6&
-var TabContentRowViewvue_type_template_id_e28854e6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[_c('div',{staticClass:"pl-15"},[_c('button',{staticClass:"mr-15",class:_vm.styles.BUTTON.INFO,on:{"click":_vm.openTabSetting}},[_vm._v(" Tab Settings ")]),_c('button',{class:_vm.styles.BUTTON.DANGER,on:{"click":_vm.deleteRow}},[_vm._v(" Delete Tab ")])]),_c('draggable',{class:_vm.draggableClasses,attrs:{"ghost-class":"ghost","handle":_vm.dragControlHandle,"list":_vm.row.controls,"group":_vm.dragGroup,"disabled":!_vm.permissions.canReOrderingControl}},[_vm._l((_vm.row.controls),function(controlId){return _c('ControlView',{key:controlId,attrs:{"control":_vm.controls[controlId],"parent-id":_vm.row.uniqueId,"permissions":_vm.permissions}})}),(!_vm.hasControls)?_c('p',[_vm._v(" Droppable Zone / Controls will be showed here... ")]):_vm._e()],2),(_vm.permissions.canAddControl)?_c('AddControlToRowControl',{attrs:{"row":_vm.row}}):_vm._e()],1)}
-var TabContentRowViewvue_type_template_id_e28854e6_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5deab289-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/row-views/TabContentRowView.vue?vue&type=template&id=76e80266&
+var TabContentRowViewvue_type_template_id_76e80266_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[_c('div',{staticClass:"pl-15"},[_c('button',{staticClass:"mr-15",class:_vm.styles.BUTTON.INFO,on:{"click":_vm.openTabSetting}},[_vm._v(" Tab Settings ")]),_c('button',{class:_vm.styles.BUTTON.DANGER,on:{"click":_vm.deleteRow}},[_vm._v(" Delete Tab ")])]),_c('draggable',{class:_vm.draggableClasses,attrs:{"ghost-class":"ghost","handle":_vm.dragControlHandle,"list":_vm.row.controls,"group":_vm.dragGroup,"disabled":!_vm.permissions.canReOrderingControl}},[_vm._l((_vm.row.controls),function(controlId){return _c('ControlView',{key:controlId,attrs:{"control":_vm.controls[controlId],"parent-id":_vm.row.uniqueId,"permissions":_vm.permissions}})}),(!_vm.hasControls)?_c('p',[_vm._v(" "+_vm._s(_vm.$ml.get("DROPPABLE_ZONE"))+" ")]):_vm._e()],2),(_vm.permissions.canAddControl)?_c('AddControlToRowControl',{attrs:{"row":_vm.row}}):_vm._e()],1)}
+var TabContentRowViewvue_type_template_id_76e80266_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/row-views/TabContentRowView.vue?vue&type=template&id=e28854e6&
+// CONCATENATED MODULE: ./src/views/builder/row-views/TabContentRowView.vue?vue&type=template&id=76e80266&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.assign.js
 var es6_object_assign = __webpack_require__("f751");
@@ -24664,8 +24664,8 @@ var TabRowConfigurationView_component = Object(componentNormalizer["a" /* defaul
 
 var TabContentRowView_component = Object(componentNormalizer["a" /* default */])(
   row_views_TabContentRowViewvue_type_script_lang_ts_,
-  TabContentRowViewvue_type_template_id_e28854e6_render,
-  TabContentRowViewvue_type_template_id_e28854e6_staticRenderFns,
+  TabContentRowViewvue_type_template_id_76e80266_render,
+  TabContentRowViewvue_type_template_id_76e80266_staticRenderFns,
   false,
   null,
   null,
@@ -25364,30 +25364,30 @@ var section_views_TabSectionView_component = Object(componentNormalizer["a" /* d
 
 var SECTION_TYPES = {
   normal: {
-    // name: this.$ml.get("NORMAL_BLOCK"),
-    // description: this.$ml.get("NORMAL_BLOCK_DESC"),
-    name: "Normal Block",
-    description: "Normal block with a headline",
+    name: "NORMAL_BLOCK",
+    description: "NORMAL_BLOCK_DESC",
+    // name: "Normal Block",
+    // description: "Normal block with a headline",
     value: 'normal',
     rowType: row["b" /* ROW_TYPES */].normal,
     builderView: NormalSectionView,
     rendererView: section_views_NormalSectionView
   },
   toggleable: {
-    // name: this.$ml.get("TOGGLEABLE_BLOCK"),
-    // description: this.$ml.get("TOGGLEABLE_BLOCK_DESC"),
-    name: "Toggle Block",
-    description: "Section block with toggle (display/hide) feature",
+    name: "TOGGLEABLE_BLOCK",
+    description: "TOGGLEABLE_BLOCK_DESC",
+    // name: "Toggle Block",
+    // description: "Section block with toggle (display/hide) feature",
     value: 'toggleable',
     rowType: row["b" /* ROW_TYPES */].normal,
     builderView: ToggleableSectionView,
     rendererView: section_views_ToggleableSectionView
   },
   tab: {
-    // name: this.$ml.get("TAB_BLOCK"),
-    // description: this.$ml.get("TAB_BLOCK_DESC"),
-    name: "Tab Block",
-    description: "A block with multiple tabs feature",
+    name: "TAB_BLOCK",
+    description: "TAB_BLOCK_DESC",
+    // name: "Tab Block",
+    // description: "A block with multiple tabs feature",
     value: "tab",
     rowType: row["b" /* ROW_TYPES */].tabRow,
     builderView: TabSectionView,
