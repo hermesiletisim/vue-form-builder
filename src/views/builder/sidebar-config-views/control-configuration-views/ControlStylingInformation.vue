@@ -1,7 +1,7 @@
 <template>
     <SidebarToggleableContainer headline="Styling/Classes">
         <div :class="styles.FORM.FORM_GROUP">
-            <label>Container Size Class{{$ml.get("CONTAINER_SIZE_CLASS")}}</label>
+            <label>{{$ml.get("CONTAINER_SIZE_CLASS")}}</label>
             <select :class="styles.FORM.FORM_CONTROL" v-model="control.containerClass">
                 <option v-for="(className, classID) in containerClasses"
                         :key="className"
@@ -12,17 +12,17 @@
         </div>
 
         <div :class="styles.FORM.FORM_GROUP">
-            <label>Container Additional Classes{{$ml.get("CONTAINER_ADDITIONAL_CLASSES")}}</label>
+            <label>{{$ml.get("CONTAINER_ADDITIONAL_CLASSES")}}</label>
             <input type="text" :class="styles.FORM.FORM_CONTROL" v-model="control.additionalContainerClass">
         </div>
 
         <div :class="styles.FORM.FORM_GROUP">
-            <label>Control Field Additional Classes{{$ml.get("CONTROL_FIELD_ADDITIONAL_CLASSES")}}</label>
+            <label>{{$ml.get("CONTROL_FIELD_ADDITIONAL_CLASSES")}}</label>
             <input type="text" :class="styles.FORM.FORM_CONTROL" v-model="control.additionalFieldClass">
         </div>
 
         <div :class="styles.FORM.FORM_GROUP">
-            <label>Control-Label Additional Classes{{$ml.get("CONTROL_LABEL_ADDITIONAL_CLASSES")}}</label>
+            <label>{{$ml.get("CONTROL_LABEL_ADDITIONAL_CLASSES")}}</label>
             <input type="text" :class="styles.FORM.FORM_CONTROL" v-model="control.additionalLabelClass">
         </div>
     </SidebarToggleableContainer>
