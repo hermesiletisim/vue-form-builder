@@ -70,7 +70,7 @@
     import ListItem from "@/libraries/list-item.class";
 
     export default {
-        name: "DropdownConfigView",
+        name: "UserConfigView",
         mixins: [CONTROL_SPECIAL_CONFIG_MIXIN],
         data: () => ({
             listDataModes : {

@@ -42,7 +42,7 @@
      * @property {ListItem[]} listOptions
      */
     export default {
-        name: "DropdownControl",
+        name: "UserControl",
         mixins: [CONTROL_FIELD_EXTEND_MIXIN],
         data: () => ({
             listOptions: [],

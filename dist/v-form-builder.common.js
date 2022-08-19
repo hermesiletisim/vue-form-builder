@@ -16250,12 +16250,12 @@ var FileUploaderControl_component = Object(componentNormalizer["a" /* default */
 )
 
 /* harmony default export */ var FileUploaderControl = (FileUploaderControl_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"151ae863-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/UserControl.vue?vue&type=template&id=0c38cff4&scoped=true&
-var UserControlvue_type_template_id_0c38cff4_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('v-select',{attrs:{"options":_vm.listOptions,"label":"text"},nativeOn:{"keyup":function($event){return _vm.getContacts($event.target.value)}}})],1)}
-var UserControlvue_type_template_id_0c38cff4_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"151ae863-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/UserControl.vue?vue&type=template&id=60b6727a&scoped=true&
+var UserControlvue_type_template_id_60b6727a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('v-select',{attrs:{"options":_vm.listOptions,"label":"text"},nativeOn:{"keyup":function($event){return _vm.getContacts($event.target.value)}}})],1)}
+var UserControlvue_type_template_id_60b6727a_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/controls/UserControl.vue?vue&type=template&id=0c38cff4&scoped=true&
+// CONCATENATED MODULE: ./src/views/controls/UserControl.vue?vue&type=template&id=60b6727a&scoped=true&
 
 // EXTERNAL MODULE: /home/hermes/node_modules/axios/index.js
 var axios = __webpack_require__("62c3");
@@ -17930,7 +17930,7 @@ function UserControlvue_type_script_lang_js_objectSpread(target) { for (var i = 
  */
 
 /* harmony default export */ var UserControlvue_type_script_lang_js_ = (_name$mixins$data$wat = {
-  name: "DropdownControl",
+  name: "UserControl",
   mixins: [control_field_extend_mixin["a" /* CONTROL_FIELD_EXTEND_MIXIN */]],
   data: function data() {
     return {
@@ -18060,11 +18060,11 @@ function UserControlvue_type_script_lang_js_objectSpread(target) { for (var i = 
 
 var UserControl_component = Object(componentNormalizer["a" /* default */])(
   controls_UserControlvue_type_script_lang_js_,
-  UserControlvue_type_template_id_0c38cff4_scoped_true_render,
-  UserControlvue_type_template_id_0c38cff4_scoped_true_staticRenderFns,
+  UserControlvue_type_template_id_60b6727a_scoped_true_render,
+  UserControlvue_type_template_id_60b6727a_scoped_true_staticRenderFns,
   false,
   null,
-  "0c38cff4",
+  "60b6727a",
   null
   
 )
@@ -19195,12 +19195,12 @@ var FileUploaderConfigView_component = Object(componentNormalizer["a" /* default
 )
 
 /* harmony default export */ var FileUploaderConfigView = (FileUploaderConfigView_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"151ae863-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/control-configs/UserConfigView.vue?vue&type=template&id=eb99f84a&
-var UserConfigViewvue_type_template_id_eb99f84a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Option-Data-List Mode")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.dataMode),expression:"control.dataMode"}],class:_vm.styles.FORM.FORM_CONTROL,on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.control, "dataMode", $event.target.multiple ? $$selectedVal : $$selectedVal[0])}}},_vm._l((_vm.listDataModes),function(item){return _c('option',{key:item.val,domProps:{"value":item.val,"textContent":_vm._s(item.description)}})}),0)]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(this.control.dataMode === _vm.listDataModes.api.val),expression:"this.control.dataMode === listDataModes.api.val"}]},[_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v(" Rest-API URL "),_c('icon-tooltip',{attrs:{"icon":"informationOutline","text":"Your API-Endpoint URL - GET Method. It must return an Array. Read more on Documentation"}})],1),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.apiURL),expression:"control.apiURL"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","placeholder":"https://your-domain/rest-api/get-list/..."},domProps:{"value":(_vm.control.apiURL)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "apiURL", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v(" Value Key of your Object "),_c('icon-tooltip',{attrs:{"icon":"informationOutline","text":"[{'value': '',...}] => value"}})],1),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.apiValueKey),expression:"control.apiValueKey"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.apiValueKey)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "apiValueKey", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v(" Text Key of your Object "),_c('icon-tooltip',{attrs:{"icon":"informationOutline","text":"[{'text': '',...}] => text"}})],1),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.apiTextKey),expression:"control.apiTextKey"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.apiTextKey)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "apiTextKey", $event.target.value)}}})])])])}
-var UserConfigViewvue_type_template_id_eb99f84a_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"151ae863-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/control-configs/UserConfigView.vue?vue&type=template&id=d6a9bfd6&
+var UserConfigViewvue_type_template_id_d6a9bfd6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Option-Data-List Mode")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.dataMode),expression:"control.dataMode"}],class:_vm.styles.FORM.FORM_CONTROL,on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.control, "dataMode", $event.target.multiple ? $$selectedVal : $$selectedVal[0])}}},_vm._l((_vm.listDataModes),function(item){return _c('option',{key:item.val,domProps:{"value":item.val,"textContent":_vm._s(item.description)}})}),0)]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(this.control.dataMode === _vm.listDataModes.api.val),expression:"this.control.dataMode === listDataModes.api.val"}]},[_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v(" Rest-API URL "),_c('icon-tooltip',{attrs:{"icon":"informationOutline","text":"Your API-Endpoint URL - GET Method. It must return an Array. Read more on Documentation"}})],1),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.apiURL),expression:"control.apiURL"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","placeholder":"https://your-domain/rest-api/get-list/..."},domProps:{"value":(_vm.control.apiURL)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "apiURL", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v(" Value Key of your Object "),_c('icon-tooltip',{attrs:{"icon":"informationOutline","text":"[{'value': '',...}] => value"}})],1),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.apiValueKey),expression:"control.apiValueKey"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.apiValueKey)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "apiValueKey", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v(" Text Key of your Object "),_c('icon-tooltip',{attrs:{"icon":"informationOutline","text":"[{'text': '',...}] => text"}})],1),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.apiTextKey),expression:"control.apiTextKey"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.apiTextKey)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "apiTextKey", $event.target.value)}}})])])])}
+var UserConfigViewvue_type_template_id_d6a9bfd6_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/control-configs/UserConfigView.vue?vue&type=template&id=eb99f84a&
+// CONCATENATED MODULE: ./src/views/control-configs/UserConfigView.vue?vue&type=template&id=d6a9bfd6&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/control-configs/UserConfigView.vue?vue&type=script&lang=js&
 //
@@ -19273,7 +19273,7 @@ var UserConfigViewvue_type_template_id_eb99f84a_staticRenderFns = []
 
 
 /* harmony default export */ var UserConfigViewvue_type_script_lang_js_ = ({
-  name: "DropdownConfigView",
+  name: "UserConfigView",
   mixins: [control_special_config_mixin["a" /* CONTROL_SPECIAL_CONFIG_MIXIN */]],
   data: function data() {
     return {
@@ -19333,8 +19333,8 @@ var UserConfigViewvue_type_template_id_eb99f84a_staticRenderFns = []
 
 var UserConfigView_component = Object(componentNormalizer["a" /* default */])(
   control_configs_UserConfigViewvue_type_script_lang_js_,
-  UserConfigViewvue_type_template_id_eb99f84a_render,
-  UserConfigViewvue_type_template_id_eb99f84a_staticRenderFns,
+  UserConfigViewvue_type_template_id_d6a9bfd6_render,
+  UserConfigViewvue_type_template_id_d6a9bfd6_staticRenderFns,
   false,
   null,
   null,
@@ -19381,8 +19381,8 @@ var UserConfigView_component = Object(componentNormalizer["a" /* default */])(
 
 var CONTROLS = {
   input: {
-    name: "Input Field",
-    description: "Input text single line",
+    name: "INPUT_FIELD",
+    description: "INPUT_FIELD_DESC",
     icon: 'editPencil',
     // Follow ICON in `icon-facade.js` to see how it works.
     configData: {
@@ -19394,8 +19394,8 @@ var CONTROLS = {
     configComponent: InputConfigView
   },
   number: {
-    name: "Number Input Field",
-    description: "Input text single line - Number Only",
+    name: "NUMBER_INPUT_FIELD",
+    description: "NUMBER_INPUT_FIELD_DESC",
     configData: {
       isReal: false,
       // integer or real (float/double)
@@ -19416,8 +19416,8 @@ var CONTROLS = {
     }
   },
   text: {
-    name: "Text Field",
-    description: "Multiple line text field",
+    name: "TEXT_FIELD",
+    description: "TEXT_FIELD_DESC",
     // config data for the input field - it will be merge with the CONTROL_DEFAULT_DATA
     configData: {
       rows: 3 // numeric
@@ -19436,8 +19436,8 @@ var CONTROLS = {
   //     description: "Multiple line text field - Rich Editor (WYSIWYG)",
   // },
   date: {
-    name: "Date Picker",
-    description: "Simple date picker field",
+    name: "DATE_PICKER",
+    description: "DATE_PICKER_DESC",
     configData: {
       format: "DD/MM/YYYY",
       firstDay: DATE_PICKER_START_DATES.monday.val,
@@ -19473,8 +19473,8 @@ var CONTROLS = {
   //     },
   // },
   dropDown: {
-    name: "Dropdown",
-    description: "Dropdown select from a list",
+    name: "DROPDOWN",
+    description: "DROPDOWN_DESC",
     configData: {
       dataMode: DROPDOWN_DATA_MODES.list.val,
       // normal - api
@@ -19545,8 +19545,8 @@ var CONTROLS = {
     configComponent: DropdownConfigView
   },
   checkbox: {
-    name: "Checkbox List",
-    description: "Checkbox list items (Multiple Select)",
+    name: "CHECKBOX_LIST",
+    description: "CHECKBOX_LIST_DESC",
     configData: {
       displayMode: RADIO_CHECKBOX_STYLE.line.val,
       // line by line / next to each others / 2 items per line
@@ -19566,8 +19566,8 @@ var CONTROLS = {
     }
   },
   radio: {
-    name: "Radio List",
-    description: "Radio-Button list items (Single Select)",
+    name: "RADIO_LIST",
+    description: "RADIO_LIST_DESC",
     configData: {
       displayMode: RADIO_CHECKBOX_STYLE.line.val,
       // line by line / next to each others / 2 items per line
@@ -19584,8 +19584,8 @@ var CONTROLS = {
     configComponent: RadioCheckboxConfigView
   },
   fileUploader: {
-    name: "File Uploader",
-    description: "File Uploader Control from vue-upload-component",
+    name: "FILE_UPLOADER",
+    description: "FILE_UPLOADER_DESC",
     disableValidation: true,
     // config data
     configData: {
@@ -19610,8 +19610,8 @@ var CONTROLS = {
     configComponent: FileUploaderConfigView
   },
   label: {
-    name: "Label",
-    description: "Simple label text show up in your Form",
+    name: "LABEL",
+    description: "LABEL_DESC",
     disableValue: true,
     configData: {
       forAttribute: null,
@@ -19625,8 +19625,8 @@ var CONTROLS = {
     configComponent: LabelConfigView
   },
   button: {
-    name: "Button",
-    description: "Simple button for your own purpose",
+    name: "BUTTON",
+    description: "BUTTON_DESC",
     disableValidation: true,
     disableValue: true,
     configData: {
@@ -19646,8 +19646,8 @@ var CONTROLS = {
     configComponent: ButtonConfigView
   },
   emptyBlock: {
-    name: "Empty Block",
-    description: "Empty block to design your section/row.",
+    name: "EMPTY_BLOCK",
+    description: "EMPTY_BLOCK_DESC",
     disableValidation: true,
     disableValue: true,
     fieldComponent: EmptyBlockControl,
@@ -19657,8 +19657,8 @@ var CONTROLS = {
     }
   },
   textBlock: {
-    name: "Text Block",
-    description: "Block with text only (without any controls)",
+    name: "TEXT_BLOCK",
+    description: "TEXT_BLOCK_DESC",
     disableValidation: true,
     disableValue: true,
     // if you provide this, the control field value will not be recorded.

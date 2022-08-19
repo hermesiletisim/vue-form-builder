@@ -43,8 +43,8 @@
  
  const CONTROLS = {
      input: {
-         name: "Input Field",
-         description: "Input text single line",
+         name: "INPUT_FIELD",
+         description: "INPUT_FIELD_DESC",
          icon: 'editPencil', // Follow ICON in `icon-facade.js` to see how it works.
  
          configData: {
@@ -57,8 +57,8 @@
      },
  
      number: {
-         name: "Number Input Field",
-         description: "Input text single line - Number Only",
+         name: "NUMBER_INPUT_FIELD",
+         description: "NUMBER_INPUT_FIELD_DESC",
  
          configData: {
              isReal: false, // integer or real (float/double)
@@ -80,8 +80,8 @@
      },
  
      text: {
-         name: "Text Field",
-         description: "Multiple line text field",
+         name: "TEXT_FIELD",
+         description: "TEXT_FIELD_DESC",
  
          // config data for the input field - it will be merge with the CONTROL_DEFAULT_DATA
          configData: {
@@ -103,8 +103,8 @@
      // },
  
      date: {
-         name: "Date Picker",
-         description: "Simple date picker field",
+         name: "DATE_PICKER",
+         description: "DATE_PICKER_DESC",
  
          configData: {
              format: "DD/MM/YYYY",
@@ -138,8 +138,8 @@
      // },
  
      dropDown: {
-         name: "Dropdown",
-         description: "Dropdown select from a list",
+         name: "DROPDOWN",
+         description: "DROPDOWN_DESC",
  
          configData: {
              dataMode: DROPDOWN_DATA_MODES.list.val, // normal - api
@@ -204,8 +204,8 @@
      },
  
      checkbox: {
-         name: "Checkbox List",
-         description: "Checkbox list items (Multiple Select)",
+         name: "CHECKBOX_LIST",
+         description: "CHECKBOX_LIST_DESC",
  
          configData: {
              displayMode: RADIO_CHECKBOX_STYLE.line.val, // line by line / next to each others / 2 items per line
@@ -225,8 +225,8 @@
      },
  
      radio: {
-         name: "Radio List",
-         description: "Radio-Button list items (Single Select)",
+         name: "RADIO_LIST",
+         description: "RADIO_LIST_DESC",
  
          configData: {
              displayMode: RADIO_CHECKBOX_STYLE.line.val, // line by line / next to each others / 2 items per line
@@ -242,8 +242,8 @@
      },
  
      fileUploader: {
-         name: "File Uploader",
-         description: "File Uploader Control from vue-upload-component",
+         name: "FILE_UPLOADER",
+         description: "FILE_UPLOADER_DESC",
          disableValidation: true,
  
          // config data
@@ -272,8 +272,8 @@
      },
  
      label: {
-         name: "Label",
-         description: "Simple label text show up in your Form",
+         name: "LABEL",
+         description: "LABEL_DESC",
          disableValue: true,
          
          configData: {
@@ -290,8 +290,8 @@
      },
  
      button: {
-         name: "Button",
-         description: "Simple button for your own purpose",
+         name: "BUTTON",
+         description: "BUTTON_DESC",
          disableValidation: true,
          disableValue: true,
  
@@ -314,8 +314,8 @@
      },
  
      emptyBlock: {
-         name: "Empty Block",
-         description: "Empty block to design your section/row.",
+         name: "EMPTY_BLOCK",
+         description: "EMPTY_BLOCK_DESC",
          disableValidation: true,
          disableValue: true,
  
@@ -328,8 +328,8 @@
      },
  
      textBlock: {
-         name: "Text Block",
-         description: "Block with text only (without any controls)",
+         name: "TEXT_BLOCK",
+         description: "TEXT_BLOCK_DESC",
          disableValidation: true,
          disableValue: true, // if you provide this, the control field value will not be recorded.
  
