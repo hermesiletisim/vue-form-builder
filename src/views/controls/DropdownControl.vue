@@ -1,25 +1,24 @@
 <template>
-    <select :id="control.uniqueId"
+    <div>asdasd</div>
+    <!-- <select :id="control.uniqueId"
             :class="controlFieldClass"
             :name="control.name || control.uniqueId"
             @input="updateValue($event.target.value)"
             :multiple="this.control.multiple"
     >
-        <!-- placeholder -->
         <option disabled
                 selected
                 v-text="control.placeholderText"
                 v-if="control.placeholderText"
         ></option>
 
-        <!-- list rendering -->
         <option v-for="optionObj in listOptions"
                 :key="optionObj.value"
                 :value="optionObj.value"
                 v-text="optionObj.text"
                 :selected="value === optionObj.value"
         ></option>
-    </select>
+    </select> -->
 </template>
 
 <script>
