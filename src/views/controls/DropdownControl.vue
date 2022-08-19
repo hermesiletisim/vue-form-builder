@@ -1,6 +1,5 @@
 <template>
-    <div>asdasd</div>
-    <!-- <select :id="control.uniqueId"
+    <select :id="control.uniqueId"
             :class="controlFieldClass"
             :name="control.name || control.uniqueId"
             @input="updateValue($event.target.value)"
@@ -18,7 +17,7 @@
                 v-text="optionObj.text"
                 :selected="value === optionObj.value"
         ></option>
-    </select> -->
+    </select>
 </template>
 
 <script>
