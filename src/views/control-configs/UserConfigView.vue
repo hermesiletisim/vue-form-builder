@@ -19,7 +19,6 @@
                 </option>
 
             </select>
-            <!-- <v-select :options="options" label="title" v-model="control.dataMode"  ></v-select> -->
         </div>
 
         <div v-show="this.control.dataMode === listDataModes.api.val">
@@ -79,23 +78,7 @@
                     description: "API - List Items from your own API",
                 },
             },
-            selected: "api",
-            options:[
-  {
-    "userId": 1,
-    "id": 1,
-    "title": "sunt "
-  },
-  {
-    "userId": 1,
-    "id": 2,
-    "title": "qui est"
-  },
-  {
-    "userId": 1,
-    "id": 3,
-    "title": "ea molestias"
-  }]
+            selected: "api"
         }),
 
         methods: {

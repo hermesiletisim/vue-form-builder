@@ -160,8 +160,8 @@
      },
      
      user: {
-         name: "Kişi",
-         description: "İlgili kişiyi bağlayın",
+         name: "PERSON",
+         description: "PERSON_DESC",
  
          configData: {
              dataMode: DROPDOWN_DATA_MODES.api.val, // normal - api
@@ -182,8 +182,8 @@
      },
  
      organization: {
-         name: "Firma",
-         description: "İlgili firmayı bağlayın",
+         name: "COMPANY",
+         description: "COMPANY_DESC",
  
          configData: {
              dataMode: DROPDOWN_DATA_MODES.api.val, // normal - api

@@ -13,14 +13,34 @@
             ></option>
 
             <option v-for="optionObj in listOptions"
-                    :key="optionObj.value"
+                    :key="optionObj._id"
                     :value="optionObj.value"
-                    v-text="optionObj.text"
+                    v-text="concatNames(optionObj.n, optionObj.sn)"
                     :selected="value === optionObj.value"
             ></option>
-        </select>
-        <button @click="getContacts()">asd</button> -->
-        <v-select :options="listOptions" label="text" @keyup.native="getContacts($event.target.value)"></v-select>
+        </select> -->
+        <!-- <v-select :options="listOptions" label="n" @keyup.native="getContacts($event.target.value)"></v-select> -->
+        <!-- <v-select :id="control.uniqueId" :name="control.name || control.uniqueId" :multiple="this.control.multiple" :options="listOptions" :reduce="item => item.n">
+            <template slot="option" slot-scope="option">
+                {{ option.n }} {{option.sn}} 
+            </template>
+            <template slot="selected-option" slot-scope="option">
+                {{ option.n }} {{option.sn}}
+            </template>
+        </v-select> -->
+        <input :id="control.uniqueId"
+           :type="control.typeAttribute"
+           :class="controlFieldClass"
+           :value="value"
+           v-model="fullName"
+           :name="control.name || control.uniqueId"
+           :placeholder="control.placeholderText"
+           @input="getContacts($event.target.value)"
+        />
+        <ul class="new-dropdown border-0 p-0 autocomplete-results" v-show='listOptions.length>0'>
+            <li class="autocomplete-result" v-if="listOptions.length>0" v-for='(result, i) in listOptions' :key="i" @click="setResult(result)">{{result.n}} {{result.sn}}</li>
+            <li class="autocomplete-result" v-if="listOptions.length<1">NOT FOUND</li>
+        </ul>
     </div>
     
     
@@ -46,9 +66,9 @@
         mixins: [CONTROL_FIELD_EXTEND_MIXIN],
         data: () => ({
             listOptions: [],
-
             dataMode: "",
             apiURL: "",
+            fullName:""
         }),
 
         watch: {
@@ -80,13 +100,15 @@
 
         methods: {
             getContacts(keyWord){
+                this.fullName = keyWord
+               
                 var dataObj={
                     search:keyWord
                 }
                 
                 axios({
                     method:'POST',
-                    url:'/quickFilterContact',
+                    url:'/api/quickFilterContact',
                     baseURL: this.baseUrl,
                     data: dataObj,
                     withCredentials:true
@@ -94,13 +116,37 @@
                     return res
                 }).then((res)=>{
                     if(!res.data.status){
-
+                         
                     }
                     if(res.data.status.code==0){
-                        console.log(res.data);
+                        this.listOptions = res.data.content.contacts
                     }
                 })
+                
+                this.updateValue(keyWord)
                                  
+            },
+            setResult(res){
+                const result = this.listOptions.filter(item => item._id.$oid == res._id.$oid)
+
+                if(result[0].sn !== undefined){
+                    this.fullName = result[0].n + " " + result[0].sn
+                }
+                else{
+                    this.fullName = result[0].n
+                }
+
+                this.listOptions = []
+                
+            },
+            concatNames(name, surname){
+                var fullName = name;
+
+                if(surname !== undefined){
+                    fullName = name + " " + surname
+                }
+                
+                return fullName;
             },
             retrieveOptionLists() {
                 this.dataMode = this.control.dataMode;
@@ -179,6 +225,14 @@
             valueKey() {
                 return this.control.apiValueKey || "value"
             },
+        },
+        
+        watch: {
+            fullName: function() {
+                if(this.fullName == ""){
+                    this.listOptions = []
+                }
+            }
         },
 
         created() {
