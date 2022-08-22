@@ -27,6 +27,7 @@
  import DropdownControl from "@/views/controls/DropdownControl";
  import FileUploaderControl from "@/views/controls/FileUploaderControl";
  import UserControl from "@/views/controls/UserControl";
+ import OrganizationControl from "@/views/controls/OrganizationControl";
  
  // Control-Config-Component
  import InputConfigView from "@/views/control-configs/InputConfigView";
@@ -40,6 +41,7 @@
  import DropdownConfigView from "@/views/control-configs/DropdownConfigView";
  import FileUploaderConfigView from "@/views/control-configs/FileUploaderConfigView";
  import UserConfigView from "@/views/control-configs/UserConfigView";
+ import OrganizationConfigView from "@/views/control-configs/OrganizationConfigView";
  
  const CONTROLS = {
      input: {
@@ -199,8 +201,8 @@
              apiValueKey: "value", // <option value=value>...</option>
          },
  
-         fieldComponent: DropdownControl,
-         configComponent: DropdownConfigView,
+         fieldComponent: OrganizationControl,
+         configComponent: OrganizationConfigView,
      },
  
      checkbox: {
