@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="organization-input">
         <!-- <select :id="control.uniqueId"
             :class="controlFieldClass"
             :name="control.name || control.uniqueId"
@@ -134,7 +134,7 @@
                 
                 this.fullOrgName = result[0].name
                 this.listOptions = []
-                this.updateValue(result[0]._id.$oid)
+                this.updateValue(this.fullOrgName)
             },
             retrieveOptionLists() {
                 this.dataMode = this.control.dataMode;

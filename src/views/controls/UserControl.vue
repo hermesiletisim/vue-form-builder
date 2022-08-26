@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="person-input">
         <!-- <select :id="control.uniqueId"
             :class="controlFieldClass"
             :name="control.name || control.uniqueId"
@@ -123,7 +123,6 @@
                     }
                 })
                 
-                this.updateValue(keyWord)
                                  
             },
             setResult(res){
@@ -135,6 +134,8 @@
                 else{
                     this.fullName = result[0].n
                 }
+
+                this.updateValue(this.fullName)
 
                 this.listOptions = []
                 
