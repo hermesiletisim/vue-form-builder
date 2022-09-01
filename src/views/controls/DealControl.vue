@@ -11,7 +11,7 @@
         />
         <ul class="new-dropdown border-0 p-0 autocomplete-results" v-show='listOptions.length>0'>
             <div v-if="listOptions.length>0">
-                <li class="autocomplete-result" v-for='(result, i) in listOptions' :key="i" @click="setResult(result)">{{result.n}} {{result.sn}}</li>
+                <li class="autocomplete-result" v-for='(result, i) in listOptions' :key="i" @click="setResult(result)">{{result.title}}</li>
             </div>
             <div v-if="listOptions.length<1">
                 <li class="autocomplete-result" >NOT FOUND</li>
