@@ -20,7 +20,7 @@
     import {CONTROL_SPECIAL_CONFIG_MIXIN} from "@/mixins/control-special-config-mixin";
 
     export default {
-        name: "OrganizationConfigView",
+        name: "DealConfigView",
         mixins: [CONTROL_SPECIAL_CONFIG_MIXIN],
 
         computed: {

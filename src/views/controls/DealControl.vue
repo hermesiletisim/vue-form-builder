@@ -1,5 +1,5 @@
 <template>
-    <div class="person-input">
+    <div class="deal-input">
         <input :id="control.uniqueId"
            :type="control.typeAttribute"
            :class="controlFieldClass"
@@ -7,7 +7,7 @@
            v-model="fullName"
            :name="control.name || control.uniqueId"
            :placeholder="control.placeholderText"
-           v-on:keyup="getContacts($event.target.value)"
+           v-on:keyup="getDeals($event.target.value)"
         />
         <ul class="new-dropdown border-0 p-0 autocomplete-results" v-show='listOptions.length>0'>
             <div v-if="listOptions.length>0">
@@ -38,7 +38,7 @@
      * @property {ListItem[]} listOptions
      */
     export default {
-        name: "UserControl",
+        name: "DealControl",
         mixins: [CONTROL_FIELD_EXTEND_MIXIN],
         data: () => ({
             listOptions: [],
@@ -59,7 +59,7 @@
         },
 
         methods: {
-            getContacts(keyWord){
+            getDeals(keyWord){
                 this.fullName = keyWord
                
                 var dataObj={
@@ -68,7 +68,7 @@
                 
                 axios({
                     method:'POST',
-                    url:'/api/quickFilterContact',
+                    url:'/api/quickFilterDeal',
                     baseURL: this.baseUrl,
                     data: dataObj,
                     withCredentials:true
@@ -79,7 +79,7 @@
                          
                     }
                     if(res.data.status.code==0){
-                        this.listOptions = res.data.content.contacts
+                        this.listOptions = res.data.content.deals
                     }
                 })
                                                  
@@ -87,12 +87,8 @@
             setResult(res){
                 const result = this.listOptions.filter(item => item._id.$oid == res._id.$oid)
 
-                if(result[0].sn !== undefined){
-                    this.fullName = result[0].n + " " + result[0].sn
-                }
-                else{
-                    this.fullName = result[0].n
-                }
+                this.fullName = result[0].title
+
                 this.listOptions = []
                 this.updateValue(res._id.$oid)
             },

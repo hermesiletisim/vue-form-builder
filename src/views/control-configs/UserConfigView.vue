@@ -1,65 +1,18 @@
 <template>
     <div>
-        <!-- <div :class="styles.FORM.FORM_GROUP">
-            <label>
-                Multiple Selection?
-                <input type="checkbox" v-model="control.multiple">
-            </label>
-        </div> -->
-
         <div :class="styles.FORM.FORM_GROUP">
-            <label>Option-Data-List Mode</label>
-            <select :class="styles.FORM.FORM_CONTROL"
-                    v-model="control.dataMode">
-
-                <option v-for="item in listDataModes"
-                        :key="item.val"
-                        :value="item.val"
-                        v-text="item.description">
+            <label>Input `type` attribute</label>
+            <select type="text"
+                :class="styles.FORM.FORM_CONTROL"
+                v-model="control.typeAttribute"
+            >
+                <option v-for="item in inputTypeAttributes"
+                    :key="item"
+                    :value="item"
+                    v-text="item">
                 </option>
-
             </select>
         </div>
-
-        <div v-show="this.control.dataMode === listDataModes.api.val">
-            <div :class="styles.FORM.FORM_GROUP">
-                <label>
-                    Rest-API URL
-                    <icon-tooltip icon="informationOutline"
-                                  text="Your API-Endpoint URL - GET Method. It must return an Array. Read more on Documentation" />
-                </label>
-
-                <input type="text"
-                       placeholder="https://your-domain/rest-api/get-list/..."
-                       :class="styles.FORM.FORM_CONTROL"
-                       v-model="control.apiURL">
-            </div>
-
-            <div :class="styles.FORM.FORM_GROUP">
-                <label>
-                    Value Key of your Object
-                    <icon-tooltip icon="informationOutline"
-                                  text="[{'value': '',...}] => value" />
-                </label>
-
-                <input type="text"
-                       :class="styles.FORM.FORM_CONTROL"
-                       v-model="control.apiValueKey">
-            </div>
-
-            <div :class="styles.FORM.FORM_GROUP">
-                <label>
-                    Text Key of your Object
-                    <icon-tooltip icon="informationOutline"
-                                  text="[{'text': '',...}] => text" />
-                </label>
-
-                <input type="text"
-                       :class="styles.FORM.FORM_CONTROL"
-                       v-model="control.apiTextKey">
-            </div>
-        </div>
-
     </div>
 </template>
 

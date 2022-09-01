@@ -28,6 +28,7 @@
  import FileUploaderControl from "@/views/controls/FileUploaderControl";
  import UserControl from "@/views/controls/UserControl";
  import OrganizationControl from "@/views/controls/OrganizationControl";
+ import DealControl from "@/views/controls/DealControl";
  
  // Control-Config-Component
  import InputConfigView from "@/views/control-configs/InputConfigView";
@@ -42,6 +43,7 @@
  import FileUploaderConfigView from "@/views/control-configs/FileUploaderConfigView";
  import UserConfigView from "@/views/control-configs/UserConfigView";
  import OrganizationConfigView from "@/views/control-configs/OrganizationConfigView";
+ import DealConfigView from "@/views/control-configs/DealConfigView";
  
  const CONTROLS = {
      input: {
@@ -204,6 +206,28 @@
          fieldComponent: OrganizationControl,
          configComponent: OrganizationConfigView,
      },
+
+     deal: {
+        name: "DEAL",
+        description: "DEAL_DESC",
+
+        configData: {
+            dataMode: DROPDOWN_DATA_MODES.api.val, // normal - api
+            multiple: false, // is multiple selection
+
+            /**
+             * @var {ListItem[]} items
+             */
+            items: [], // for normal hard-list
+
+            apiURL: "", // for api-request - must be entered
+            apiTextKey: "text", // <option>TEXT</option>
+            apiValueKey: "value", // <option value=value>...</option>
+        },
+
+        fieldComponent: DealControl,
+        configComponent: DealConfigView,
+    },
  
      checkbox: {
          name: "CHECKBOX_LIST",
