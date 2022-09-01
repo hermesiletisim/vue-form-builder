@@ -63,12 +63,12 @@
                 this.fullName = keyWord
                
                 var dataObj={
-                    search:keyWord
+                    dealName:keyWord
                 }
                 
                 axios({
                     method:'POST',
-                    url:'/api/quickFilterDeal',
+                    url:'/quickFilterDeal',
                     baseURL: this.baseUrl,
                     data: dataObj,
                     withCredentials:true
