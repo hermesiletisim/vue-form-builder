@@ -1,13 +1,13 @@
 <template>
-    <div class="form-configuration-block pbottom-10">
-        <button
+    <div>
+        <!-- <button
             :class="styles.BUTTON.PRIMARY"
             @click="open"
             :disabled="!permissions.canEditFormConfigurations"
         >
             <span v-html="$form.getIcon('cog')"></span>
             <span>{{$ml.get("FORM_CONFIGURATIONS")}}</span>
-        </button>
+        </button> -->
     </div>
 </template>
 
