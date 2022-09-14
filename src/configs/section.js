@@ -51,18 +51,18 @@ const SECTION_TYPES = {
         rendererView: RendererToggleableSectionView
     },
 
-    tab: {
-        name: "TAB_BLOCK",
-        description: "TAB_BLOCK_DESC",
-        // name: "Tab Block",
-        // description: "A block with multiple tabs feature",
-        value: "tab",
+    // tab: {
+    //     name: "TAB_BLOCK",
+    //     description: "TAB_BLOCK_DESC",
+    //     // name: "Tab Block",
+    //     // description: "A block with multiple tabs feature",
+    //     value: "tab",
 
-        rowType: ROW_TYPES.tabRow,
-        builderView: TabSectionView,
-        rendererView: RendererTabSectionView,
-        preCustomButtonView: TabSectionPreButtons,
-    }
+    //     rowType: ROW_TYPES.tabRow,
+    //     builderView: TabSectionView,
+    //     rendererView: RendererTabSectionView,
+    //     preCustomButtonView: TabSectionPreButtons,
+    // }
 
     // table: {
     //     name: "Table Block",
