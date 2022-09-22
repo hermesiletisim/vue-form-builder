@@ -1,7 +1,7 @@
 <template>
     <div>
         <div :class="styles.FORM.FORM_GROUP">
-            <label>{{$ml.get("DISPLAY_MODE")}}</label>
+            <label>Display Mode</label>
             <select :class="styles.FORM.FORM_CONTROL"
                     v-model="control.displayMode">
 
@@ -15,7 +15,7 @@
         </div>
 
         <div :class="styles.FORM.FORM_GROUP">
-            <label>{{$ml.get("DISPLAY_POSITION")}}</label>
+            <label>Display Position</label>
             <select :class="styles.FORM.FORM_CONTROL"
                     v-model="control.position">
 
@@ -30,7 +30,7 @@
 
         <div :class="styles.FORM.FORM_GROUP">
             <label>
-                {{$ml.get("LIST_SELECTIONS")}}
+                List Selections
                 <span class="pointer"
                       @click="addListItem"
                       v-html="$form.getIcon('addOutline', '16px', '16px', 'green')">
@@ -42,23 +42,37 @@
 
                 <div class="tool-block">
                     <span class="pointer"
-                          @click="removeListItem(iItem)"
-                          v-html="$form.getIcon('close', '16px', '16px', 'red')">
+                        @click="removeListItem(iItem)"
+                        v-html="$form.getIcon('close', '16px', '16px', 'red')">
                     </span>
                 </div>
 
                 <div :class="styles.FORM.FORM_GROUP">
-                    <label>{{$ml.get("ITEM_VALUE")}}</label>
+                    <label>Item Value</label>
                     <input type="text" :class="styles.FORM.FORM_CONTROL"
-                           placeholder="Radio/Checkbox-Value"
-                           v-model="listItem.value">
+                        placeholder="Radio/Checkbox-Value"
+                        v-model="listItem.value">
                 </div>
 
                 <div :class="styles.FORM.FORM_GROUP">
-                    <label>{{$ml.get("LABEL_TEXT")}}</label>
+                    <label>Label Text</label>
                     <input type="text" :class="styles.FORM.FORM_CONTROL"
-                           placeholder="Label text"
-                           v-model="listItem.text">
+                        placeholder="Label text"
+                        v-model="listItem.text">
+                </div>
+
+                <div v-if="control.type=='radio'" :class="styles.FORM.FORM_GROUP">
+                    <label>Show Section</label>
+                    <select :class="styles.FORM.FORM_CONTROL"
+                        v-model="listItem.show_section">
+
+                        <option v-for="item in listSections"
+                            :key="item.uniqueId"
+                            :value="item.uniqueId"
+                            v-text="item.headline">
+                        </option>
+
+                    </select>
                 </div>
             </div>
         </div>
@@ -68,6 +82,7 @@
 <script>
     import {CONTROL_SPECIAL_CONFIG_MIXIN} from "@/mixins/control-special-config-mixin";
     import {RADIO_CHECKBOX_POSITION, RADIO_CHECKBOX_STYLE} from "@/configs/control-config-enum";
+    import {SHOW_SECTION_LIST} from "@/configs/show-section-list";
     import ListItem from "@/libraries/list-item.class";
 
     export default {
@@ -101,7 +116,9 @@
             /**
              * Configuration for the position
              */
-            listPositions: () => RADIO_CHECKBOX_POSITION
+            listPositions: () => RADIO_CHECKBOX_POSITION,
+
+            listSections: () => SHOW_SECTION_LIST
         }
     }
 </script>

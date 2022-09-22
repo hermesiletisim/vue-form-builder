@@ -30,7 +30,7 @@
                 :disabled="!permissions.canEditSection"
             >
                 <span v-html="$form.getIcon('cog')"></span>
-                <span>{{$ml.get("CONFIGURATION")}}</span>
+                <span>Configuration</span>
             </button>
 
             <button
@@ -39,7 +39,7 @@
                 :disabled="!permissions.canDeleteSection"
             >
                 <span v-html="$form.getIcon('trash')"></span>
-                <span>{{$ml.get("DELETE")}}</span>
+                <span>Delete</span>
             </button>
 
             <component
@@ -57,6 +57,7 @@
     import {STYLE_INJECTION_MIXIN} from "@/mixins/style-injection-mixin";
     import {EVENT_CONSTANTS} from "@/configs/events";
     import {SECTION_TYPES} from "@/configs/section";
+    import {SHOW_SECTION_LIST} from "@/configs/show-section-list";
     import SidebarRenderer from "@/libraries/sidebar-renderer.class";
     import SidebarSectionConfiguration from "@/views/builder/sidebar-config-views/SidebarSectionConfiguration";
 
@@ -110,6 +111,7 @@
 
                 // submit to delete
                 this.$formEvent.$emit(EVENT_CONSTANTS.BUILDER.SECTION.DELETE, this.section.uniqueId)
+                delete SHOW_SECTION_LIST[this.section.uniqueId]
             },
 
             /**
