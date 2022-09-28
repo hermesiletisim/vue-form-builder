@@ -24,8 +24,17 @@ function removeSectionFromList(sectionId) {
     return newArr
 }
 
+function fillSectionList(data) {
+    var arr = []
+    for(let key in data.sections){  
+        arr.push(data.sections[key])
+    }
+    SHOW_SECTION_LIST = arr
+}
+
 export  {
     SHOW_SECTION_LIST,
     removeSectionFromList,
-    updateSectionList
+    updateSectionList,
+    fillSectionList
 }
