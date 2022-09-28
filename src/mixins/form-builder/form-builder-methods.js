@@ -45,10 +45,6 @@
              updateSectionList(this.formData,sectionObject)
              // SHOW_SECTION_LIST[sectionObject.uniqueId] = sectionObject
          },
-         
-         fillList() {
-            fillSectionList(this.formData)
-         },
 
          /**
           * Sort Section and Cache it...

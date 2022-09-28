@@ -74,8 +74,7 @@
     import Vue from 'vue'
     import {CONTROL_SPECIAL_CONFIG_MIXIN} from "@/mixins/control-special-config-mixin";
     import {RADIO_CHECKBOX_POSITION, RADIO_CHECKBOX_STYLE} from "@/configs/control-config-enum";
-    import {SHOW_SECTION_LIST, removeSectionFromList} from "@/configs/show-section-list";
-    import FormBuilderBusiness from "@/mixins/form-builder-mixins";
+    import {SHOW_SECTION_LIST, removeSectionFromList, fillSectionList} from "@/configs/show-section-list";
     import ListItem from "@/libraries/list-item.class";
     import Multiselect from 'vue-multiselect'
 
@@ -83,7 +82,7 @@
 
     export default {
         name: "RadioCheckboxConfigView",
-        mixins: [CONTROL_SPECIAL_CONFIG_MIXIN, FormBuilderBusiness],
+        mixins: [CONTROL_SPECIAL_CONFIG_MIXIN],
         components: {
             Multiselect 
         },
@@ -136,8 +135,8 @@
         },
 
         mounted() {
-
-            this.fillList()
+            
+            fillSectionList(this.formData)
             // for(let i=0; i<this.control.items.length; i++){
             //     console.log(this.control.items[i]);
             //     for(let j=0; j<this.control.items[i].show_section.length; j++){
