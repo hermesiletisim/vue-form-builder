@@ -88,7 +88,7 @@
         },
         data () {
             return {
-                listSections : []
+                listSections : SHOW_SECTION_LIST
             }
         }, 
         methods: {

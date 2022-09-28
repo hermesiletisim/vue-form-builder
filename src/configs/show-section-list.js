@@ -25,11 +25,13 @@ function removeSectionFromList(sectionId) {
 }
 
 function fillSectionList(data) {
+    console.log("girildi metoda");
     var arr = []
     for(let key in data.sections){  
         arr.push(data.sections[key])
     }
-    
+    console.log(arr);
+    SHOW_SECTION_LIST = arr
     return arr
 }
 

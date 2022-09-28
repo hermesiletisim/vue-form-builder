@@ -9795,7 +9795,7 @@ var SidebarSectionConfiguration_component = Object(componentNormalizer["a" /* de
 
 
       this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.SECTION.DELETE, this.section.uniqueId);
-      Object(show_section_list["c" /* updateSectionList */])(null, this.section, "delete");
+      Object(show_section_list["d" /* updateSectionList */])(null, this.section, "delete");
     },
 
     /**
@@ -18638,12 +18638,12 @@ var LabelConfigView_component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var LabelConfigView = (LabelConfigView_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/control-configs/RadioCheckboxConfigView.vue?vue&type=template&id=237ecd81&
-var RadioCheckboxConfigViewvue_type_template_id_237ecd81_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Display Mode")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.displayMode),expression:"control.displayMode"}],class:_vm.styles.FORM.FORM_CONTROL,on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.control, "displayMode", $event.target.multiple ? $$selectedVal : $$selectedVal[0])}}},_vm._l((_vm.listDisplayModes),function(item){return _c('option',{key:item.val,domProps:{"value":item.val,"textContent":_vm._s(item.description)}})}),0)]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Display Position")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.position),expression:"control.position"}],class:_vm.styles.FORM.FORM_CONTROL,on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.control, "position", $event.target.multiple ? $$selectedVal : $$selectedVal[0])}}},_vm._l((_vm.listPositions),function(item){return _c('option',{key:item.val,domProps:{"value":item.val,"textContent":_vm._s(item.description)}})}),0)]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v(" List Selections "),_c('span',{staticClass:"pointer",domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '16px', '16px', 'green'))},on:{"click":_vm.addListItem}})]),_vm._l((_vm.control.items),function(listItem,iItem){return _c('div',{key:iItem,class:['list-selection']},[_c('div',{staticClass:"tool-block"},[_c('span',{staticClass:"pointer",domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '16px', '16px', 'red'))},on:{"click":function($event){return _vm.removeListItem(iItem)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Item Value")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(listItem.value),expression:"listItem.value"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","placeholder":"Radio/Checkbox-Value"},domProps:{"value":(listItem.value)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(listItem, "value", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Label Text")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(listItem.text),expression:"listItem.text"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","placeholder":"Label text"},domProps:{"value":(listItem.text)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(listItem, "text", $event.target.value)}}})]),(_vm.control.type=='radio')?_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Show Section")]),_c('Multiselect',{attrs:{"tag-placeholder":"Add this as new tag","placeholder":"Search or add a tag","label":"headline","track-by":"headline","options":_vm.listSections,"multiple":true,"taggable":false,"close-on-select":false},on:{"open":function($event){return _vm.removeSection()}},model:{value:(listItem.show_section),callback:function ($$v) {_vm.$set(listItem, "show_section", $$v)},expression:"listItem.show_section"}})],1):_vm._e()])})],2)])}
-var RadioCheckboxConfigViewvue_type_template_id_237ecd81_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/control-configs/RadioCheckboxConfigView.vue?vue&type=template&id=7d4a2a42&
+var RadioCheckboxConfigViewvue_type_template_id_7d4a2a42_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Display Mode")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.displayMode),expression:"control.displayMode"}],class:_vm.styles.FORM.FORM_CONTROL,on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.control, "displayMode", $event.target.multiple ? $$selectedVal : $$selectedVal[0])}}},_vm._l((_vm.listDisplayModes),function(item){return _c('option',{key:item.val,domProps:{"value":item.val,"textContent":_vm._s(item.description)}})}),0)]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Display Position")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.position),expression:"control.position"}],class:_vm.styles.FORM.FORM_CONTROL,on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.control, "position", $event.target.multiple ? $$selectedVal : $$selectedVal[0])}}},_vm._l((_vm.listPositions),function(item){return _c('option',{key:item.val,domProps:{"value":item.val,"textContent":_vm._s(item.description)}})}),0)]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v(" List Selections "),_c('span',{staticClass:"pointer",domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '16px', '16px', 'green'))},on:{"click":_vm.addListItem}})]),_vm._l((_vm.control.items),function(listItem,iItem){return _c('div',{key:iItem,class:['list-selection']},[_c('div',{staticClass:"tool-block"},[_c('span',{staticClass:"pointer",domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '16px', '16px', 'red'))},on:{"click":function($event){return _vm.removeListItem(iItem)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Item Value")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(listItem.value),expression:"listItem.value"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","placeholder":"Radio/Checkbox-Value"},domProps:{"value":(listItem.value)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(listItem, "value", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Label Text")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(listItem.text),expression:"listItem.text"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","placeholder":"Label text"},domProps:{"value":(listItem.text)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(listItem, "text", $event.target.value)}}})]),(_vm.control.type=='radio')?_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Show Section")]),_c('Multiselect',{attrs:{"tag-placeholder":"Add this as new tag","placeholder":"Search or add a tag","label":"headline","track-by":"headline","options":_vm.listSections,"multiple":true,"taggable":false,"close-on-select":false},on:{"open":function($event){return _vm.removeSection()}},model:{value:(listItem.show_section),callback:function ($$v) {_vm.$set(listItem, "show_section", $$v)},expression:"listItem.show_section"}})],1):_vm._e()])})],2)])}
+var RadioCheckboxConfigViewvue_type_template_id_7d4a2a42_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/control-configs/RadioCheckboxConfigView.vue?vue&type=template&id=237ecd81&
+// CONCATENATED MODULE: ./src/views/control-configs/RadioCheckboxConfigView.vue?vue&type=template&id=7d4a2a42&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es7.symbol.async-iterator.js
 var es7_symbol_async_iterator = __webpack_require__("ac4d");
@@ -18769,7 +18769,7 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.component('multiselect', 
   },
   data: function data() {
     return {
-      listSections: []
+      listSections: show_section_list["a" /* SHOW_SECTION_LIST */]
     };
   },
   methods: {
@@ -18804,7 +18804,7 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.component('multiselect', 
               var cntrl = _step2.value;
 
               if (cntrl == this.control.uniqueId) {
-                this.listSections = Object(show_section_list["b" /* removeSectionFromList */])(item.uniqueId);
+                this.listSections = Object(show_section_list["c" /* removeSectionFromList */])(item.uniqueId);
               }
             }
           } catch (err) {
@@ -18822,7 +18822,7 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.component('multiselect', 
   },
   mounted: function mounted() {
     console.log(this.formData);
-    this.listSections = Object(show_section_list["a" /* fillSectionList */])(this.formData);
+    this.listSections = Object(show_section_list["b" /* fillSectionList */])(this.formData);
   },
   computed: {
     /**
@@ -18857,8 +18857,8 @@ var vue_multiselect_minvue_type_style_index_0_lang_css_ = __webpack_require__("6
 
 var RadioCheckboxConfigView_component = Object(componentNormalizer["a" /* default */])(
   control_configs_RadioCheckboxConfigViewvue_type_script_lang_js_,
-  RadioCheckboxConfigViewvue_type_template_id_237ecd81_render,
-  RadioCheckboxConfigViewvue_type_template_id_237ecd81_staticRenderFns,
+  RadioCheckboxConfigViewvue_type_template_id_7d4a2a42_render,
+  RadioCheckboxConfigViewvue_type_template_id_7d4a2a42_staticRenderFns,
   false,
   null,
   null,
@@ -28400,7 +28400,7 @@ var FORM_BUILDER_METHODS = {
 
       this.$set(this.formData.sections, sectionObject.uniqueId, sectionObject);
       this.doSortSection();
-      Object(show_section_list["c" /* updateSectionList */])(this.formData, sectionObject); // SHOW_SECTION_LIST[sectionObject.uniqueId] = sectionObject
+      Object(show_section_list["d" /* updateSectionList */])(this.formData, sectionObject); // SHOW_SECTION_LIST[sectionObject.uniqueId] = sectionObject
     },
 
     /**
@@ -32567,10 +32567,10 @@ var substr = 'ab'.substr(-1) === 'b'
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export SHOW_SECTION_LIST */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return removeSectionFromList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return updateSectionList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return fillSectionList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SHOW_SECTION_LIST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return removeSectionFromList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return updateSectionList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return fillSectionList; });
 var SHOW_SECTION_LIST = [];
 
 function updateSectionList(formData, sectionObj, type) {
@@ -32598,12 +32598,15 @@ function removeSectionFromList(sectionId) {
 }
 
 function fillSectionList(data) {
+  console.log("girildi metoda");
   var arr = [];
 
   for (var key in data.sections) {
     arr.push(data.sections[key]);
   }
 
+  console.log(arr);
+  SHOW_SECTION_LIST = arr;
   return arr;
 }
 
