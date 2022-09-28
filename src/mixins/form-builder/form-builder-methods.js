@@ -9,7 +9,7 @@
 
  import {createNewSection, SECTION_DEFAULT_DATA} from "@/configs/section";
  import {dataApplier} from "@/libraries/applier";
- import {SHOW_SECTION_LIST} from "@/configs/show-section-list";
+ import {updateSectionList} from "@/configs/show-section-list";
  
  const FORM_BUILDER_METHODS = {
      data:() => ({
@@ -42,7 +42,8 @@
              // we have to push it from $set otherwise it will not reactive (LOL)
              this.$set(this.formData.sections, sectionObject.uniqueId, sectionObject)
              this.doSortSection()
-             SHOW_SECTION_LIST[sectionObject.uniqueId] = sectionObject
+             updateSectionList(this.formData,sectionObject)
+             // SHOW_SECTION_LIST[sectionObject.uniqueId] = sectionObject
          },
  
          /**

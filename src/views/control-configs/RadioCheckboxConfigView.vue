@@ -63,16 +63,7 @@
 
                 <div v-if="control.type=='radio'" :class="styles.FORM.FORM_GROUP">
                     <label>Show Section</label>
-                    <select :class="styles.FORM.FORM_CONTROL"
-                        v-model="listItem.show_section">
-
-                        <option v-for="item in listSections"
-                            :key="item.uniqueId"
-                            :value="item.uniqueId"
-                            v-text="item.headline">
-                        </option>
-
-                    </select>
+                    <Multiselect v-model="listItem.show_section" @open="removeSection()" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="headline" track-by="headline" :options="listSections" :multiple="true" :taggable="false" :close-on-select="false" ></Multiselect>
                 </div>
             </div>
         </div>
@@ -80,15 +71,26 @@
 </template>
 
 <script>
+    import Vue from 'vue'
     import {CONTROL_SPECIAL_CONFIG_MIXIN} from "@/mixins/control-special-config-mixin";
     import {RADIO_CHECKBOX_POSITION, RADIO_CHECKBOX_STYLE} from "@/configs/control-config-enum";
-    import {SHOW_SECTION_LIST} from "@/configs/show-section-list";
+    import {SHOW_SECTION_LIST, removeSectionFromList} from "@/configs/show-section-list";
     import ListItem from "@/libraries/list-item.class";
+    import Multiselect from 'vue-multiselect'
+
+    Vue.component('multiselect', Multiselect)
 
     export default {
         name: "RadioCheckboxConfigView",
         mixins: [CONTROL_SPECIAL_CONFIG_MIXIN],
-
+        components: {
+            Multiselect 
+        },
+        data () {
+            return {
+                listSections : SHOW_SECTION_LIST
+            }
+        }, 
         methods: {
             /**
              * Add new List-Item for the Current Radio/Checkbox
@@ -104,6 +106,43 @@
              */
             removeListItem(index) {
                 this.control.items.splice(index, 1)
+            },
+
+            removeSection() {
+                
+                for(let item of this.listSections){
+                    for(let cntrl of item.controls){
+                        if(cntrl == this.control.uniqueId){
+                            this.listSections = removeSectionFromList(item.uniqueId)
+                        }
+                    }
+                }
+            },
+
+            sectionExits(item) {
+                var check = false
+                
+                this.listSections.some(function(el) {
+                    
+                    if(el.uniqueId === item.uniqueId){
+                        check = true
+                    }
+
+                }); 
+
+                return check
+            }
+        },
+
+        mounted() {
+            for(let i=0; i<this.control.items.length; i++){
+                console.log(this.control.items[i]);
+                for(let j=0; j<this.control.items[i].show_section.length; j++){
+                    if(!this.sectionExits(this.control.items[i].show_section[j])){
+                        this.control.items[i].show_section.splice(j,1)
+                    }
+                }
+                
             }
         },
 
@@ -118,7 +157,9 @@
              */
             listPositions: () => RADIO_CHECKBOX_POSITION,
 
-            listSections: () => SHOW_SECTION_LIST
+            // listSections: () => SHOW_SECTION_LIST
         }
     }
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
