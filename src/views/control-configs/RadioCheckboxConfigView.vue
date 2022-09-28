@@ -88,7 +88,7 @@
         },
         data () {
             return {
-                listSections : fillSectionList(this.formData)
+                listSections : []
             }
         }, 
         methods: {
@@ -109,7 +109,6 @@
             },
 
             removeSection() {
-                console.log(this.formData);
                 for(let item of this.listSections){
                     for(let cntrl of item.controls){
                         if(cntrl == this.control.uniqueId){
@@ -118,34 +117,11 @@
                     }
                 }
             },
-
-            // sectionExits(item) {
-            //     var check = false
-                
-            //     this.listSections.some(function(el) {
-                    
-            //         if(el.uniqueId === item.uniqueId){
-            //             check = true
-            //         }
-
-            //     }); 
-
-            //     return check
-            // }
         },
 
         mounted() {
 
-            // fillSectionList(this.formData)
-            // for(let i=0; i<this.control.items.length; i++){
-            //     console.log(this.control.items[i]);
-            //     for(let j=0; j<this.control.items[i].show_section.length; j++){
-            //         if(!this.sectionExits(this.control.items[i].show_section[j])){
-            //             this.control.items[i].show_section.splice(j,1)
-            //         }
-            //     }
-                
-            // }
+            this.listSections = fillSectionList(this.formData)
         },
 
         computed: {

@@ -25,13 +25,12 @@ function removeSectionFromList(sectionId) {
 }
 
 function fillSectionList(data) {
-    console.log("girildi");
-    console.log(data);
     var arr = []
     for(let key in data.sections){  
         arr.push(data.sections[key])
     }
-    SHOW_SECTION_LIST = arr
+    
+    return arr
 }
 
 export  {
