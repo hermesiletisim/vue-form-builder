@@ -119,31 +119,31 @@
                 }
             },
 
-            sectionExits(item) {
-                var check = false
+            // sectionExits(item) {
+            //     var check = false
                 
-                this.listSections.some(function(el) {
+            //     this.listSections.some(function(el) {
                     
-                    if(el.uniqueId === item.uniqueId){
-                        check = true
-                    }
+            //         if(el.uniqueId === item.uniqueId){
+            //             check = true
+            //         }
 
-                }); 
+            //     }); 
 
-                return check
-            }
+            //     return check
+            // }
         },
 
         mounted() {
-            for(let i=0; i<this.control.items.length; i++){
-                console.log(this.control.items[i]);
-                for(let j=0; j<this.control.items[i].show_section.length; j++){
-                    if(!this.sectionExits(this.control.items[i].show_section[j])){
-                        this.control.items[i].show_section.splice(j,1)
-                    }
-                }
+            // for(let i=0; i<this.control.items.length; i++){
+            //     console.log(this.control.items[i]);
+            //     for(let j=0; j<this.control.items[i].show_section.length; j++){
+            //         if(!this.sectionExits(this.control.items[i].show_section[j])){
+            //             this.control.items[i].show_section.splice(j,1)
+            //         }
+            //     }
                 
-            }
+            // }
         },
 
         computed: {
