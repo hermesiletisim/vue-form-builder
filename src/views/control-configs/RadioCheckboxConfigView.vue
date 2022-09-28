@@ -109,6 +109,7 @@
             },
 
             removeSection() {
+                console.log(this.formData);
                 for(let item of this.listSections){
                     for(let cntrl of item.controls){
                         if(cntrl == this.control.uniqueId){
@@ -120,7 +121,7 @@
         },
 
         mounted() {
-
+            console.log(this.formData);
             this.listSections = fillSectionList(this.formData)
         },
 
