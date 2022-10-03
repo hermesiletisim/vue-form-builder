@@ -20109,7 +20109,12 @@ function createControlData(controlKey) {
   newData.type = controlKey; // unique ID is a must - I used UUIDv4 => 99% Unique
 
   newData.uniqueId = "control-" + helper["a" /* HELPER */].getUUIDv4();
-  return newData;
+
+  if (document.getElementById(newData.uniqueId) == null) {
+    return newData;
+  }
+
+  return false;
 }
 
 
