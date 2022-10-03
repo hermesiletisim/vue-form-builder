@@ -30225,12 +30225,12 @@ var AddControlControl_component = Object(componentNormalizer["a" /* default */])
 )
 
 /* harmony default export */ var AddControlControl = (AddControlControl_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/ControlView.vue?vue&type=template&id=02aa9a22&
-var ControlViewvue_type_template_id_02aa9a22_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.control.containerClass, 'control-view-wrapper', _vm.control.additionalContainerClass]},[_c('div',{staticClass:"control-view",class:{'active': _vm.isActive}},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.control.isShowLabel),expression:"control.isShowLabel"}],attrs:{"control":_vm.control}}),_c(_vm.controlComponent,{tag:"component",attrs:{"control":_vm.control}})],1),_c('ControlOption',{attrs:{"permissions":_vm.permissions},on:{"delete":_vm.deleteControl,"config":_vm.openConfiguration}})],1)}
-var ControlViewvue_type_template_id_02aa9a22_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/ControlView.vue?vue&type=template&id=01c6b925&
+var ControlViewvue_type_template_id_01c6b925_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.tempControl.containerClass, 'control-view-wrapper', _vm.tempControl.additionalContainerClass]},[_c('div',{staticClass:"control-view",class:{'active': _vm.isActive}},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.tempControl.isShowLabel),expression:"tempControl.isShowLabel"}],attrs:{"control":_vm.tempControl}}),_c(_vm.controlComponent,{tag:"component",attrs:{"control":_vm.tempControl,"sortedSections":_vm.sortedSections}})],1),_c('ControlOption',{attrs:{"permissions":_vm.permissions,"sortedSections":_vm.sortedSections},on:{"delete":_vm.deleteControl,"config":_vm.openConfiguration}})],1)}
+var ControlViewvue_type_template_id_01c6b925_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/ControlView.vue?vue&type=template&id=02aa9a22&
+// CONCATENATED MODULE: ./src/views/builder/ControlView.vue?vue&type=template&id=01c6b925&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/control-views/ControlLabel.vue?vue&type=template&id=02887367&scoped=true&
 var ControlLabelvue_type_template_id_02887367_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"control-label-container"},[_c('label',{class:[_vm.control.additionalLabelClass, _vm.readOnly ? 'bold' : ''],attrs:{"for":_vm.control.uniqueId},domProps:{"textContent":_vm._s(_vm.control.label)}}),(_vm.control.subLabel)?_c('br'):_vm._e(),(_vm.control.subLabel)?_c('small',{domProps:{"textContent":_vm._s(_vm.control.subLabel)}}):_vm._e()])}
@@ -30887,6 +30887,8 @@ var SidebarControlConfiguration_component = Object(componentNormalizer["a" /* de
 //
 //
 //
+//
+//
 
 
 
@@ -30910,11 +30912,13 @@ var SidebarControlConfiguration_component = Object(componentNormalizer["a" /* de
       type: String,
       required: true
     },
-    permissions: Object
+    permissions: Object,
+    sortedSections: Array
   },
   data: function data() {
     return {
-      isActive: false
+      isActive: false,
+      tempControl: {}
     };
   },
   methods: {
@@ -30923,7 +30927,8 @@ var SidebarControlConfiguration_component = Object(componentNormalizer["a" /* de
      */
     deleteControl: function deleteControl() {
       // EMIT to FormBuilder to let it delete the control for us
-      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.DELETE, this.parentId, this.control.uniqueId);
+      this.control = this.tempControl;
+      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.DELETE, this.parentId, this.tempControl.uniqueId);
     },
 
     /**
@@ -30980,7 +30985,11 @@ var SidebarControlConfiguration_component = Object(componentNormalizer["a" /* de
      * This accessor will get the component object to let us inject the right control
      */
     controlComponent: function controlComponent() {
-      // validate input
+      if (this.control == undefined) {
+        this.control = this.tempControl;
+      } // validate input
+
+
       if (!controls["a" /* CONTROLS */][this.control.type] || !controls["a" /* CONTROLS */][this.control.type].fieldComponent) {
         throw new TypeError("Control Type Mapping failed => Can't be rendered. Reason: Your control type ".concat(this.control.type, " doesn't have 'fieldComponent' property"));
       }
@@ -30994,6 +31003,7 @@ var SidebarControlConfiguration_component = Object(componentNormalizer["a" /* de
     this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.SAVE_AND_CLOSE, this.saveConfiguration);
     this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.AFTER_CLOSED, this.closedConfiguration);
     this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.OPENED, this.openedConfiguration);
+    this.tempControl = this.control;
   }
 });
 // CONCATENATED MODULE: ./src/views/builder/ControlView.vue?vue&type=script&lang=js&
@@ -31008,8 +31018,8 @@ var SidebarControlConfiguration_component = Object(componentNormalizer["a" /* de
 
 var ControlView_component = Object(componentNormalizer["a" /* default */])(
   builder_ControlViewvue_type_script_lang_js_,
-  ControlViewvue_type_template_id_02aa9a22_render,
-  ControlViewvue_type_template_id_02aa9a22_staticRenderFns,
+  ControlViewvue_type_template_id_01c6b925_render,
+  ControlViewvue_type_template_id_01c6b925_staticRenderFns,
   false,
   null,
   null,
