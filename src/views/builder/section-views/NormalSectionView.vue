@@ -54,6 +54,9 @@
         data: () => ({
             uniqueArr : []
         }),
+        mounted() {
+            this.uniqueArr = this.section.controls
+        },
         watch:{
             "section.controls":{
                 handler(value){
