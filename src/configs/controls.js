@@ -387,7 +387,7 @@
      'additionalLabelClass': '', // :class for the <label>
  
      'defaultValue': '',
- 
+     'permission': 'editable',
      /**
       * Validation that applied to the control
       * @var {ValidationRule[]} validations
@@ -411,11 +411,8 @@
  
      // unique ID is a must - I used UUIDv4 => 99% Unique
      newData.uniqueId = "control-" + HELPER.getUUIDv4()
-     if(document.getElementById(newData.uniqueId) == null){
-        return newData
-     }
-
-     return false
+ 
+     return newData
  }
  
  export {

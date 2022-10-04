@@ -111,7 +111,8 @@
             changeConfig(config) {
                 this.currentConfig = config
                 this.control.permission = config
-                console.log(this.valueContainer);
+                console.log(this.control);
+                console.log(this.formConfiguration);
             }
         },
         computed: {
