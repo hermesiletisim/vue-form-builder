@@ -1,6 +1,6 @@
 <template>
     <div :class="[control.containerClass, 'control-view-wrapper', control.additionalContainerClass]">
-        <div class="control-view">
+        <div v-if="isConfigurable" class="control-view hover-effect">
             <!-- render the label, readonly should show the label -->
             <ControlLabel
                 v-show="control.isShowLabel || readOnly"
@@ -21,7 +21,43 @@
                 v-else
                 v-text="valueContainer[controlName]"
             />
+            <div class="button-group currentConfig">
+                <span :class="{active:currentConfig=='editable'}" @click="changeConfig('editable')">Editable</span>
+                <span :class="{active:currentConfig=='read-only'}" @click="changeConfig('read-only')">Read-only</span>
+                <span :class="{active:currentConfig=='hidden'}" @click="changeConfig('hidden')">Hidden</span>
+            </div>
+            <!-- validation error -->
+            <template v-if="hasValidationError">
+                <div v-for="(mess, i) in validationErrorMessages"
+                     :key="i"
+                     v-text="mess"
+                     :class="styles.FORM.ERROR_MESSAGE"
+                ></div>
+            </template>
+        </div>
 
+
+        <div v-else class="control-view">
+            <!-- render the label, readonly should show the label -->
+            <ControlLabel
+                v-show="control.isShowLabel || readOnly"
+                :control="control"
+                :read-only="readOnly"
+            />
+
+            <!-- render the exact field -->
+            <component
+                v-if="!readOnly"
+                v-model="valueContainer[controlName]"
+                :is="controlComponent"
+                :control="control"
+                :value-container="valueContainer"
+                :class="validationErrorClasses"
+            />
+            <p
+                v-else
+                v-text="valueContainer[controlName]"
+            />
             <!-- validation error -->
             <template v-if="hasValidationError">
                 <div v-for="(mess, i) in validationErrorMessages"
@@ -65,7 +101,19 @@
               default: false,
             },
         },
-
+        data () {
+            return {
+                isConfigurable: false,
+                currentConfig: ""
+            }
+        },
+        methods:{
+            changeConfig(config) {
+                this.currentConfig = config
+                this.control.permission = config
+                console.log(this.valueContainer);
+            }
+        },
         computed: {
             /**
              * This accessor will get the component object to let us inject the right control
@@ -109,6 +157,44 @@
                 return classes
             },
         },
+        mounted(){
+            var configurable = document.getElementById("configurable")
+            if(configurable != null){
+                this.isConfigurable = true
+            }
+        }
 
     }
 </script>
+
+<style>
+    .button-group {
+        display: none;
+        position:absolute; 
+        top:15%; 
+        left:30%; 
+        box-shadow: 1px 1px 5px 0.1px grey; 
+        background-color:white; 
+        cursor:pointer; 
+        z-index:100;
+    }
+    .currentConfig .active {
+        background:#EFF3F8;
+    }
+    .hover-effect{
+        background-color: yellow;
+    }
+
+    .button-group > span {
+        display:block; 
+        padding: 15px 50px 15px 15px;
+    }
+
+    .button-group > span:hover {
+        background:#EFF3F8;
+    }
+
+    .hover-effect:hover > .button-group {
+        display: block;
+    }
+</style>
