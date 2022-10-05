@@ -64,5 +64,15 @@
         data: () => ({
             formData: null
         }),
+
+        created() {
+            this.$root.$refs.FormRenderer = this
+        },
+
+        methods: {
+            test() {
+                this.$emit("test")
+            }
+        }
     }
 </script>

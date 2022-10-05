@@ -111,8 +111,10 @@
         methods:{
             changeConfig(config) {
                 this.currentConfig = config
-                console.log(this.control);
-                this.$emit('asd', config, this.control.uniqueId)
+                this.control.permission = config
+                this.$root.$refs.FormRenderer.test()
+                // console.log(this.control);
+                // this.$emit('asd', config, this.control.uniqueId)
             }
         },
         computed: {
