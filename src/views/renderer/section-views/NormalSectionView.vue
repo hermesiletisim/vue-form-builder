@@ -14,6 +14,7 @@
                 :value-container="valueContainer"
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
+                @asd="asdasd"
             />
         </div>
     </div>
@@ -35,6 +36,19 @@
         data: () => ({
 
         }),
-
+        methods: {
+            asdasd(x,y) {
+                // console.log("girildi metoda");
+                // console.log(x);
+                // console.log(y);
+                for(let key in this.controls){
+                    if(key == y){
+                        this.controls[key].permission = x
+                    }
+                }
+                // console.log(this.controls);
+                this.$emit("asd")
+            }
+        }
     }
 </script>

@@ -74,11 +74,12 @@
     import {STYLE_INJECTION_MIXIN} from "@/mixins/style-injection-mixin";
     import ControlLabel from "@/views/builder/control-views/ControlLabel";
     import {CONTROLS} from "@/configs/controls";
+    import FormBuilderBusiness from "@/mixins/form-builder-mixins";
 
     export default {
         name: "ControlView",
         components: {ControlLabel},
-        mixins: [STYLE_INJECTION_MIXIN],
+        mixins: [STYLE_INJECTION_MIXIN, FormBuilderBusiness],
         props: {
             control: {
                 type: Object,
@@ -110,9 +111,8 @@
         methods:{
             changeConfig(config) {
                 this.currentConfig = config
-                this.control.permission = config
                 console.log(this.control);
-                console.log(this.formConfiguration);
+                this.$emit('asd', config, this.control.uniqueId)
             }
         },
         computed: {
@@ -163,6 +163,7 @@
             if(configurable != null){
                 this.isConfigurable = true
             }
+            
         }
 
     }
@@ -181,9 +182,6 @@
     }
     .currentConfig .active {
         background:#EFF3F8;
-    }
-    .hover-effect{
-        background-color: yellow;
     }
 
     .button-group > span {

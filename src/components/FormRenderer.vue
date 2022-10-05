@@ -25,6 +25,7 @@
                 :value-container="valueContainer"
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
+                :data="formData"
             />
         </form>
         <template v-else>
@@ -45,6 +46,7 @@
                 :value-container="valueContainer"
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
+                :data="formData"
             />
 
         </template>

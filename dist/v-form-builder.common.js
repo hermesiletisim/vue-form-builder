@@ -1007,6 +1007,365 @@ module.exports = function assign(target, source1) {
 
 /***/ }),
 
+/***/ "16fd":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es7.symbol.async-iterator.js
+var es7_symbol_async_iterator = __webpack_require__("ac4d");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.symbol.js
+var es6_symbol = __webpack_require__("8a81");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.string.iterator.js
+var es6_string_iterator = __webpack_require__("5df3");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.from.js
+var es6_array_from = __webpack_require__("1c4c");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
+var es6_function_name = __webpack_require__("7f7f");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.to-string.js
+var es6_regexp_to_string = __webpack_require__("6b54");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find-index.js
+var es6_array_find_index = __webpack_require__("20d6");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.assign.js
+var es6_object_assign = __webpack_require__("f751");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
+var web_dom_iterable = __webpack_require__("ac6a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find.js
+var es6_array_find = __webpack_require__("7514");
+
+// EXTERNAL MODULE: ./src/configs/events.js
+var events = __webpack_require__("fbe6");
+
+// EXTERNAL MODULE: ./src/libraries/helper.js
+var helper = __webpack_require__("43b3");
+
+// CONCATENATED MODULE: ./src/mixins/form-builder/form-builder-event-handler.js
+
+
+
+
+
+
+
+
+
+
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+/**
+ * [Note] Do not use this mixin for other purpose. This is where I move all the code of FormBuilder to keep easy to:
+ *  - Structuring
+ *  - Refactoring
+ *  - ...
+ *  This file will be handled all the Event (mostly listening) from the children to update the big `formData`
+ *  @author Phat Tran <phattranminh96@gmail.com>
+ */
+
+
+var FORM_BUILDER_EVENT_HANDLER = {
+  methods: {
+    /**
+     * Do mapping for section after row added
+     * @param sectionId
+     * @param rowId
+     */
+    sectionAndRowMapping: function sectionAndRowMapping(sectionId, rowId) {
+      // push it into the section Rows...
+      // I can ensure that sectionId is exists to be retrieved
+      this.formData.sections[sectionId].rows.push(rowId);
+    },
+
+    /**
+     * Push-up section (SORT)
+     * @param sectionObj
+     * @param {Number} type
+     *  - 0 => Up
+     *  - 1 => Down
+     */
+    sectionPushedUp: function sectionPushedUp(sectionObj) {
+      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+      if ( // sort == 0 and push up => stop
+      sectionObj.sortOrder <= 1 && type === 0 || // sort == total_sections and push down => stop
+      sectionObj.sortOrder === this.sortedSections.length && type === 1) {
+        return;
+      } // old sort order to exchange with the upper section
+
+
+      var postSortOrder = sectionObj.sortOrder; // pick section from sort order - Sort Order is unique
+
+      var preSectionOrder = type === 0 ? postSortOrder - 1 : postSortOrder + 1;
+      var preSection = helper["a" /* HELPER */].find(this.formData.sections, "sortOrder", preSectionOrder); // swap now
+
+      this.$set(this.formData.sections[sectionObj.uniqueId], 'sortOrder', preSectionOrder);
+      this.$set(this.formData.sections[preSection.uniqueId], 'sortOrder', postSortOrder); // Sort Again After Swapped Order
+
+      this.doSortSection();
+    },
+
+    /**
+     * Delete a section
+     * @param sectionId
+     */
+    sectionDelete: function sectionDelete(sectionId) {
+      var _this = this;
+
+      // validate input
+      if (!this.formData.sections[sectionId]) {
+        return;
+      } // need to delete all the related control & row
+
+
+      var sectionObj = this.formData.sections[sectionId];
+      sectionObj.rows.forEach(function (rowId) {
+        // delete inner control of the rows
+        var rowItem = _this.formData.rows[rowId];
+        rowItem.controls.forEach(function (controlId) {
+          // delete control by ID :D
+          _this.$delete(_this.formData.controls, controlId);
+        }); // delete this rows.
+
+        _this.$delete(_this.formData.rows, rowItem.uniqueId);
+      }); // delete ($delete to reactive)
+
+      this.$delete(this.formData.sections, sectionId); // Sort Again After Deleted
+
+      this.doSortSection(); // re-index sortOrder
+      // thankfully this still keep reference... :D
+
+      var index = 1;
+
+      var _iterator = _createForOfIteratorHelper(this.sortedSections),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var _sectionObj = _step.value;
+          _sectionObj.sortOrder = index++;
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    },
+
+    /**
+     * Update data for section
+     * @param sectionObj
+     */
+    sectionUpdate: function sectionUpdate(sectionObj) {
+      var sectionId = sectionObj.uniqueId; // validate input
+
+      if (!this.formData.sections.hasOwnProperty(sectionId)) {
+        return;
+      } // update by using the extend . best way
+
+
+      this.formData.sections[sectionId] = Object.assign(this.formData.sections[sectionId], sectionObj);
+    },
+
+    /**
+     * Added new row
+     * @param rowObject
+     */
+    rowNewAdded: function rowNewAdded(rowObject) {
+      // $set => reactive
+      this.$set(this.formData.rows, rowObject.uniqueId, rowObject);
+    },
+
+    /**
+     * Delete a specific row in the section
+     * @param {string} rowId rowId that need to be delete
+     * @param {string} sectionId row's current sectionId
+     */
+    rowDelete: function rowDelete(rowId, sectionId) {
+      // first, delete row in section
+      var indexInSection = helper["a" /* HELPER */].findIndex(this.formData.sections[sectionId].rows, undefined, rowId);
+      this.formData.sections[sectionId].rows.splice(indexInSection, 1); // second, remove row in the big rows
+
+      this.$delete(this.formData.rows, rowId); // lastly, final init to which-ever components listen to the event after deleted
+
+      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.ROW.DELETED, rowId, sectionId);
+    },
+
+    /**
+     * Added new control to a section
+     * @param {string} parentId
+     * @param {Object} controlObj
+     */
+    controlNewAdded: function controlNewAdded(parentId, controlObj) {
+      // add into big list
+      this.$set(this.formData.controls, controlObj.uniqueId, controlObj); // get type of the parent (section / row)
+
+      var type = this.formData.sections.hasOwnProperty(parentId) ? 'section' : 'row';
+      var controlUniqueId = controlObj.uniqueId; // add controlID to section / row
+
+      if (type === 'section') {
+        this.formData.sections[parentId].controls.push(controlUniqueId);
+      } else {
+        this.formData.rows[parentId].controls.push(controlUniqueId);
+      }
+    },
+
+    /**
+     * Delete a control from section/row
+     * @param {string} parentId - Might be SectionId, might be RowId
+     * @param {string} controlId - LOL
+     * @afterHandled Emit an event to notify the deletion is complete
+     */
+    controlDeletion: function controlDeletion(parentId, controlId) {
+      var type = this.formData.sections.hasOwnProperty(parentId) ? 'section' : 'row'; // FIRST: We delete the relationship in section/row
+
+      if (type === 'section') {
+        // find index and delete in section-controls
+        var indexInSection = helper["a" /* HELPER */].findIndex(this.formData.sections[parentId].controls, undefined, controlId);
+        this.formData.sections[parentId].controls.splice(indexInSection, 1);
+      } else {
+        // find index and delete in row-controls
+        var indexInRow = helper["a" /* HELPER */].findIndex(this.formData.rows[parentId].controls, undefined, controlId);
+        this.formData.rows[parentId].controls.splice(indexInRow, 1);
+      } // SECOND: We delete the control object in `controls`
+
+
+      this.$delete(this.formData.controls, controlId); // LAST: Emit DELETED (might be some component will register this??)
+
+      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.DELETED, parentId, controlId);
+    },
+
+    /**
+     * Update a control
+     * @param {String} controlId
+     * @param {Object} controlData
+     */
+    controlUpdated: function controlUpdated(controlId, controlData) {
+      // validate input
+      if (!this.formData.controls.hasOwnProperty(controlId)) {
+        return;
+      } // update by using the extend . best way
+
+
+      this.formData.controls[controlId] = Object.assign(this.formData.controls[controlId], controlData);
+    }
+  },
+  created: function created() {
+    // section events
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SECTION.ADDED_ROW, this.sectionAndRowMapping);
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SECTION.PUSH, this.sectionPushedUp);
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SECTION.DELETE, this.sectionDelete);
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SECTION.UPDATE, this.sectionUpdate); // row events
+
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.ROW.CREATE, this.rowNewAdded);
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.ROW.DELETE, this.rowDelete); // control events
+
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.CREATE, this.controlNewAdded);
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.DELETE, this.controlDeletion);
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.UPDATE, this.controlUpdated);
+  }
+};
+
+// EXTERNAL MODULE: ./src/mixins/form-builder/form-builder-methods.js + 1 modules
+var form_builder_methods = __webpack_require__("bcc7");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.iterator.js
+var es6_array_iterator = __webpack_require__("cadf");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
+var es6_object_keys = __webpack_require__("456d");
+
+// CONCATENATED MODULE: ./src/mixins/form-builder/form-builder-model.js
+
+
+
+
+/**
+ * [Note] Do not use this mixin for other purpose. This is where I move all the code of FormBuilder to keep easy to:
+ *  - Structuring
+ *  - Refactoring
+ *  - ...
+ *  This file will be handle the v-model of the FormBuilder.
+ *  @author Phat Tran <phattranminh96@gmail.com>
+ */
+var EMIT_EVENT = "change";
+
+var deepEqual = __webpack_require__("7fae"); // TO CHECK THE DEEPEST VALUES OF THE FORM...
+
+
+var FORM_BUILDER_MODEL = {
+  props: {
+    value: Object
+  },
+  model: {
+    event: EMIT_EVENT,
+    props: "value"
+  },
+  watch: {
+    /**
+     * For Update New Configuration After User Changed the Form
+     */
+    formData: {
+      deep: true,
+      // deep watcher - because we have a long-tree object
+      handler: function handler(newFormData) {
+        this.$emit(EMIT_EVENT, newFormData);
+      }
+    },
+
+    /**
+     * For Update the New Configuration After User Applied new DATA into v-model
+     */
+    value: {
+      deep: true,
+      handler: function handler(newFormData, oldFormData) {
+        // because this is in the initialize => no data at first
+        if (typeof oldFormData === 'undefined') {
+          return;
+        } // we have to create a new formConfig for the "unexpected value" like: {}, null, undefined
+        // only available for null and empty object data
+
+
+        if (!newFormData || !Object.keys(newFormData).length) {
+          return this.mapping();
+        } // this time object have data, we have to make sure everything
+
+
+        if (deepEqual(newFormData, oldFormData)) {
+          return;
+        } // okay this time object is fully new and we need to do mapping again
+
+
+        return this.mapping(newFormData);
+      }
+    }
+  }
+};
+
+// EXTERNAL MODULE: ./src/mixins/style-injection-mixin.js
+var style_injection_mixin = __webpack_require__("28fe");
+
+// CONCATENATED MODULE: ./src/mixins/form-builder-mixins.js
+
+
+
+
+/* harmony default export */ var form_builder_mixins = __webpack_exports__["a"] = ([FORM_BUILDER_EVENT_HANDLER, form_builder_methods["a" /* FORM_BUILDER_METHODS */], FORM_BUILDER_MODEL, style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]]);
+
+/***/ }),
+
 /***/ "1af6":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2215,7 +2574,7 @@ var FormIcon = {
   }
 };
 
-// EXTERNAL MODULE: ./src/components/FormBuilder.vue + 50 modules
+// EXTERNAL MODULE: ./src/components/FormBuilder.vue + 47 modules
 var FormBuilder = __webpack_require__("6a29");
 
 // EXTERNAL MODULE: ./src/components/FormRenderer.vue + 24 modules
@@ -10034,348 +10393,9 @@ var SectionContainer_component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var SectionContainer = (SectionContainer_component.exports);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es7.symbol.async-iterator.js
-var es7_symbol_async_iterator = __webpack_require__("ac4d");
+// EXTERNAL MODULE: ./src/mixins/form-builder-mixins.js + 2 modules
+var form_builder_mixins = __webpack_require__("16fd");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.symbol.js
-var es6_symbol = __webpack_require__("8a81");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.string.iterator.js
-var es6_string_iterator = __webpack_require__("5df3");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.from.js
-var es6_array_from = __webpack_require__("1c4c");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
-var es6_function_name = __webpack_require__("7f7f");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.to-string.js
-var es6_regexp_to_string = __webpack_require__("6b54");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find-index.js
-var es6_array_find_index = __webpack_require__("20d6");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
-var web_dom_iterable = __webpack_require__("ac6a");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find.js
-var es6_array_find = __webpack_require__("7514");
-
-// EXTERNAL MODULE: ./src/libraries/helper.js
-var helper = __webpack_require__("43b3");
-
-// CONCATENATED MODULE: ./src/mixins/form-builder/form-builder-event-handler.js
-
-
-
-
-
-
-
-
-
-
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-/**
- * [Note] Do not use this mixin for other purpose. This is where I move all the code of FormBuilder to keep easy to:
- *  - Structuring
- *  - Refactoring
- *  - ...
- *  This file will be handled all the Event (mostly listening) from the children to update the big `formData`
- *  @author Phat Tran <phattranminh96@gmail.com>
- */
-
-
-var FORM_BUILDER_EVENT_HANDLER = {
-  methods: {
-    /**
-     * Do mapping for section after row added
-     * @param sectionId
-     * @param rowId
-     */
-    sectionAndRowMapping: function sectionAndRowMapping(sectionId, rowId) {
-      // push it into the section Rows...
-      // I can ensure that sectionId is exists to be retrieved
-      this.formData.sections[sectionId].rows.push(rowId);
-    },
-
-    /**
-     * Push-up section (SORT)
-     * @param sectionObj
-     * @param {Number} type
-     *  - 0 => Up
-     *  - 1 => Down
-     */
-    sectionPushedUp: function sectionPushedUp(sectionObj) {
-      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-
-      if ( // sort == 0 and push up => stop
-      sectionObj.sortOrder <= 1 && type === 0 || // sort == total_sections and push down => stop
-      sectionObj.sortOrder === this.sortedSections.length && type === 1) {
-        return;
-      } // old sort order to exchange with the upper section
-
-
-      var postSortOrder = sectionObj.sortOrder; // pick section from sort order - Sort Order is unique
-
-      var preSectionOrder = type === 0 ? postSortOrder - 1 : postSortOrder + 1;
-      var preSection = helper["a" /* HELPER */].find(this.formData.sections, "sortOrder", preSectionOrder); // swap now
-
-      this.$set(this.formData.sections[sectionObj.uniqueId], 'sortOrder', preSectionOrder);
-      this.$set(this.formData.sections[preSection.uniqueId], 'sortOrder', postSortOrder); // Sort Again After Swapped Order
-
-      this.doSortSection();
-    },
-
-    /**
-     * Delete a section
-     * @param sectionId
-     */
-    sectionDelete: function sectionDelete(sectionId) {
-      var _this = this;
-
-      // validate input
-      if (!this.formData.sections[sectionId]) {
-        return;
-      } // need to delete all the related control & row
-
-
-      var sectionObj = this.formData.sections[sectionId];
-      sectionObj.rows.forEach(function (rowId) {
-        // delete inner control of the rows
-        var rowItem = _this.formData.rows[rowId];
-        rowItem.controls.forEach(function (controlId) {
-          // delete control by ID :D
-          _this.$delete(_this.formData.controls, controlId);
-        }); // delete this rows.
-
-        _this.$delete(_this.formData.rows, rowItem.uniqueId);
-      }); // delete ($delete to reactive)
-
-      this.$delete(this.formData.sections, sectionId); // Sort Again After Deleted
-
-      this.doSortSection(); // re-index sortOrder
-      // thankfully this still keep reference... :D
-
-      var index = 1;
-
-      var _iterator = _createForOfIteratorHelper(this.sortedSections),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var _sectionObj = _step.value;
-          _sectionObj.sortOrder = index++;
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-    },
-
-    /**
-     * Update data for section
-     * @param sectionObj
-     */
-    sectionUpdate: function sectionUpdate(sectionObj) {
-      var sectionId = sectionObj.uniqueId; // validate input
-
-      if (!this.formData.sections.hasOwnProperty(sectionId)) {
-        return;
-      } // update by using the extend . best way
-
-
-      this.formData.sections[sectionId] = Object.assign(this.formData.sections[sectionId], sectionObj);
-    },
-
-    /**
-     * Added new row
-     * @param rowObject
-     */
-    rowNewAdded: function rowNewAdded(rowObject) {
-      // $set => reactive
-      this.$set(this.formData.rows, rowObject.uniqueId, rowObject);
-    },
-
-    /**
-     * Delete a specific row in the section
-     * @param {string} rowId rowId that need to be delete
-     * @param {string} sectionId row's current sectionId
-     */
-    rowDelete: function rowDelete(rowId, sectionId) {
-      // first, delete row in section
-      var indexInSection = helper["a" /* HELPER */].findIndex(this.formData.sections[sectionId].rows, undefined, rowId);
-      this.formData.sections[sectionId].rows.splice(indexInSection, 1); // second, remove row in the big rows
-
-      this.$delete(this.formData.rows, rowId); // lastly, final init to which-ever components listen to the event after deleted
-
-      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.ROW.DELETED, rowId, sectionId);
-    },
-
-    /**
-     * Added new control to a section
-     * @param {string} parentId
-     * @param {Object} controlObj
-     */
-    controlNewAdded: function controlNewAdded(parentId, controlObj) {
-      // add into big list
-      this.$set(this.formData.controls, controlObj.uniqueId, controlObj); // get type of the parent (section / row)
-
-      var type = this.formData.sections.hasOwnProperty(parentId) ? 'section' : 'row';
-      var controlUniqueId = controlObj.uniqueId; // add controlID to section / row
-
-      if (type === 'section') {
-        this.formData.sections[parentId].controls.push(controlUniqueId);
-      } else {
-        this.formData.rows[parentId].controls.push(controlUniqueId);
-      }
-    },
-
-    /**
-     * Delete a control from section/row
-     * @param {string} parentId - Might be SectionId, might be RowId
-     * @param {string} controlId - LOL
-     * @afterHandled Emit an event to notify the deletion is complete
-     */
-    controlDeletion: function controlDeletion(parentId, controlId) {
-      var type = this.formData.sections.hasOwnProperty(parentId) ? 'section' : 'row'; // FIRST: We delete the relationship in section/row
-
-      if (type === 'section') {
-        // find index and delete in section-controls
-        var indexInSection = helper["a" /* HELPER */].findIndex(this.formData.sections[parentId].controls, undefined, controlId);
-        this.formData.sections[parentId].controls.splice(indexInSection, 1);
-      } else {
-        // find index and delete in row-controls
-        var indexInRow = helper["a" /* HELPER */].findIndex(this.formData.rows[parentId].controls, undefined, controlId);
-        this.formData.rows[parentId].controls.splice(indexInRow, 1);
-      } // SECOND: We delete the control object in `controls`
-
-
-      this.$delete(this.formData.controls, controlId); // LAST: Emit DELETED (might be some component will register this??)
-
-      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.DELETED, parentId, controlId);
-    },
-
-    /**
-     * Update a control
-     * @param {String} controlId
-     * @param {Object} controlData
-     */
-    controlUpdated: function controlUpdated(controlId, controlData) {
-      // validate input
-      if (!this.formData.controls.hasOwnProperty(controlId)) {
-        return;
-      } // update by using the extend . best way
-
-
-      this.formData.controls[controlId] = Object.assign(this.formData.controls[controlId], controlData);
-    }
-  },
-  created: function created() {
-    // section events
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SECTION.ADDED_ROW, this.sectionAndRowMapping);
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SECTION.PUSH, this.sectionPushedUp);
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SECTION.DELETE, this.sectionDelete);
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SECTION.UPDATE, this.sectionUpdate); // row events
-
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.ROW.CREATE, this.rowNewAdded);
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.ROW.DELETE, this.rowDelete); // control events
-
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.CREATE, this.controlNewAdded);
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.DELETE, this.controlDeletion);
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.UPDATE, this.controlUpdated);
-  }
-};
-
-// EXTERNAL MODULE: ./src/mixins/form-builder/form-builder-methods.js + 1 modules
-var form_builder_methods = __webpack_require__("bcc7");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.iterator.js
-var es6_array_iterator = __webpack_require__("cadf");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
-var es6_object_keys = __webpack_require__("456d");
-
-// CONCATENATED MODULE: ./src/mixins/form-builder/form-builder-model.js
-
-
-
-
-/**
- * [Note] Do not use this mixin for other purpose. This is where I move all the code of FormBuilder to keep easy to:
- *  - Structuring
- *  - Refactoring
- *  - ...
- *  This file will be handle the v-model of the FormBuilder.
- *  @author Phat Tran <phattranminh96@gmail.com>
- */
-var EMIT_EVENT = "change";
-
-var deepEqual = __webpack_require__("7fae"); // TO CHECK THE DEEPEST VALUES OF THE FORM...
-
-
-var FORM_BUILDER_MODEL = {
-  props: {
-    value: Object
-  },
-  model: {
-    event: EMIT_EVENT,
-    props: "value"
-  },
-  watch: {
-    /**
-     * For Update New Configuration After User Changed the Form
-     */
-    formData: {
-      deep: true,
-      // deep watcher - because we have a long-tree object
-      handler: function handler(newFormData) {
-        this.$emit(EMIT_EVENT, newFormData);
-      }
-    },
-
-    /**
-     * For Update the New Configuration After User Applied new DATA into v-model
-     */
-    value: {
-      deep: true,
-      handler: function handler(newFormData, oldFormData) {
-        // because this is in the initialize => no data at first
-        if (typeof oldFormData === 'undefined') {
-          return;
-        } // we have to create a new formConfig for the "unexpected value" like: {}, null, undefined
-        // only available for null and empty object data
-
-
-        if (!newFormData || !Object.keys(newFormData).length) {
-          return this.mapping();
-        } // this time object have data, we have to make sure everything
-
-
-        if (deepEqual(newFormData, oldFormData)) {
-          return;
-        } // okay this time object is fully new and we need to do mapping again
-
-
-        return this.mapping(newFormData);
-      }
-    }
-  }
-};
-
-// CONCATENATED MODULE: ./src/mixins/form-builder-mixins.js
-
-
-
-
-/* harmony default export */ var form_builder_mixins = ([FORM_BUILDER_EVENT_HANDLER, form_builder_methods["a" /* FORM_BUILDER_METHODS */], FORM_BUILDER_MODEL, style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]]);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/FormConfiguration.vue?vue&type=template&id=5260620b&
 var FormConfigurationvue_type_template_id_5260620b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')}
 var FormConfigurationvue_type_template_id_5260620b_staticRenderFns = []
@@ -11044,7 +11064,7 @@ var GlobalModal_component = Object(componentNormalizer["a" /* default */])(
     SectionContainer: SectionContainer,
     AddSectionControl: AddSectionControl
   },
-  mixins: form_builder_mixins,
+  mixins: form_builder_mixins["a" /* default */],
   props: {
     permissions: {
       type: Object,
@@ -28436,6 +28456,8 @@ var FORM_BUILDER_METHODS = {
      * Do Mapping Before Rendering/Showing Up
      */
     mapping: function mapping(value) {
+      console.log("mapping girildi");
+      console.log(value);
       this.formData = Object.assign({}, this.formData, applier_dataApplier(value));
       this.doSortSection();
     },
@@ -31937,22 +31959,25 @@ var TabSectionPreButtons_component = Object(componentNormalizer["a" /* default *
 )
 
 /* harmony default export */ var TabSectionPreButtons = (TabSectionPreButtons_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/section-views/NormalSectionView.vue?vue&type=template&id=5f6e0b87&
-var NormalSectionViewvue_type_template_id_5f6e0b87_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"normal-section"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.section.isShowHeadline),expression:"section.isShowHeadline"}],staticClass:"headline-block"},[_c('h2',{class:_vm.section.headlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.headline)}}),_c('p',{class:_vm.section.subHeadlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.subHeadline)}})]),_c('div',{class:_vm.containerClasses},_vm._l((_vm.section.controls),function(controlId){return _c('ControlView',{key:controlId,attrs:{"control":_vm.controls[controlId],"parent-id":_vm.section.uniqueId,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors,"read-only":_vm.readOnly}})}),1)])}
-var NormalSectionViewvue_type_template_id_5f6e0b87_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/section-views/NormalSectionView.vue?vue&type=template&id=2f4ad953&
+var NormalSectionViewvue_type_template_id_2f4ad953_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"normal-section"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.section.isShowHeadline),expression:"section.isShowHeadline"}],staticClass:"headline-block"},[_c('h2',{class:_vm.section.headlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.headline)}}),_c('p',{class:_vm.section.subHeadlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.subHeadline)}})]),_c('div',{class:_vm.containerClasses},_vm._l((_vm.section.controls),function(controlId){return _c('ControlView',{key:controlId,attrs:{"control":_vm.controls[controlId],"parent-id":_vm.section.uniqueId,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors,"read-only":_vm.readOnly},on:{"asd":_vm.asdasd}})}),1)])}
+var NormalSectionViewvue_type_template_id_2f4ad953_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/renderer/section-views/NormalSectionView.vue?vue&type=template&id=5f6e0b87&
+// CONCATENATED MODULE: ./src/views/renderer/section-views/NormalSectionView.vue?vue&type=template&id=2f4ad953&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/ControlView.vue?vue&type=template&id=11fa7328&
-var ControlViewvue_type_template_id_11fa7328_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.control.containerClass, 'control-view-wrapper', _vm.control.additionalContainerClass]},[(_vm.isConfigurable)?_c('div',{staticClass:"control-view hover-effect"},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.control.isShowLabel || _vm.readOnly),expression:"control.isShowLabel || readOnly"}],attrs:{"control":_vm.control,"read-only":_vm.readOnly}}),(!_vm.readOnly)?_c(_vm.controlComponent,{tag:"component",class:_vm.validationErrorClasses,attrs:{"control":_vm.control,"value-container":_vm.valueContainer},model:{value:(_vm.valueContainer[_vm.controlName]),callback:function ($$v) {_vm.$set(_vm.valueContainer, _vm.controlName, $$v)},expression:"valueContainer[controlName]"}}):_c('p',{domProps:{"textContent":_vm._s(_vm.valueContainer[_vm.controlName])}}),_c('div',{staticClass:"button-group currentConfig"},[_c('span',{class:{active:_vm.currentConfig=='editable'},on:{"click":function($event){return _vm.changeConfig('editable')}}},[_vm._v("Editable")]),_c('span',{class:{active:_vm.currentConfig=='read-only'},on:{"click":function($event){return _vm.changeConfig('read-only')}}},[_vm._v("Read-only")]),_c('span',{class:{active:_vm.currentConfig=='hidden'},on:{"click":function($event){return _vm.changeConfig('hidden')}}},[_vm._v("Hidden")])]),(_vm.hasValidationError)?_vm._l((_vm.validationErrorMessages),function(mess,i){return _c('div',{key:i,class:_vm.styles.FORM.ERROR_MESSAGE,domProps:{"textContent":_vm._s(mess)}})}):_vm._e()],2):_c('div',{staticClass:"control-view"},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.control.isShowLabel || _vm.readOnly),expression:"control.isShowLabel || readOnly"}],attrs:{"control":_vm.control,"read-only":_vm.readOnly}}),(!_vm.readOnly)?_c(_vm.controlComponent,{tag:"component",class:_vm.validationErrorClasses,attrs:{"control":_vm.control,"value-container":_vm.valueContainer},model:{value:(_vm.valueContainer[_vm.controlName]),callback:function ($$v) {_vm.$set(_vm.valueContainer, _vm.controlName, $$v)},expression:"valueContainer[controlName]"}}):_c('p',{domProps:{"textContent":_vm._s(_vm.valueContainer[_vm.controlName])}}),(_vm.hasValidationError)?_vm._l((_vm.validationErrorMessages),function(mess,i){return _c('div',{key:i,class:_vm.styles.FORM.ERROR_MESSAGE,domProps:{"textContent":_vm._s(mess)}})}):_vm._e()],2)])}
-var ControlViewvue_type_template_id_11fa7328_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/ControlView.vue?vue&type=template&id=373c9b5f&
+var ControlViewvue_type_template_id_373c9b5f_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.control.containerClass, 'control-view-wrapper', _vm.control.additionalContainerClass]},[(_vm.isConfigurable)?_c('div',{staticClass:"control-view hover-effect"},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.control.isShowLabel || _vm.readOnly),expression:"control.isShowLabel || readOnly"}],attrs:{"control":_vm.control,"read-only":_vm.readOnly}}),(!_vm.readOnly)?_c(_vm.controlComponent,{tag:"component",class:_vm.validationErrorClasses,attrs:{"control":_vm.control,"value-container":_vm.valueContainer},model:{value:(_vm.valueContainer[_vm.controlName]),callback:function ($$v) {_vm.$set(_vm.valueContainer, _vm.controlName, $$v)},expression:"valueContainer[controlName]"}}):_c('p',{domProps:{"textContent":_vm._s(_vm.valueContainer[_vm.controlName])}}),_c('div',{staticClass:"button-group currentConfig"},[_c('span',{class:{active:_vm.currentConfig=='editable'},on:{"click":function($event){return _vm.changeConfig('editable')}}},[_vm._v("Editable")]),_c('span',{class:{active:_vm.currentConfig=='read-only'},on:{"click":function($event){return _vm.changeConfig('read-only')}}},[_vm._v("Read-only")]),_c('span',{class:{active:_vm.currentConfig=='hidden'},on:{"click":function($event){return _vm.changeConfig('hidden')}}},[_vm._v("Hidden")])]),(_vm.hasValidationError)?_vm._l((_vm.validationErrorMessages),function(mess,i){return _c('div',{key:i,class:_vm.styles.FORM.ERROR_MESSAGE,domProps:{"textContent":_vm._s(mess)}})}):_vm._e()],2):_c('div',{staticClass:"control-view"},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.control.isShowLabel || _vm.readOnly),expression:"control.isShowLabel || readOnly"}],attrs:{"control":_vm.control,"read-only":_vm.readOnly}}),(!_vm.readOnly)?_c(_vm.controlComponent,{tag:"component",class:_vm.validationErrorClasses,attrs:{"control":_vm.control,"value-container":_vm.valueContainer},model:{value:(_vm.valueContainer[_vm.controlName]),callback:function ($$v) {_vm.$set(_vm.valueContainer, _vm.controlName, $$v)},expression:"valueContainer[controlName]"}}):_c('p',{domProps:{"textContent":_vm._s(_vm.valueContainer[_vm.controlName])}}),(_vm.hasValidationError)?_vm._l((_vm.validationErrorMessages),function(mess,i){return _c('div',{key:i,class:_vm.styles.FORM.ERROR_MESSAGE,domProps:{"textContent":_vm._s(mess)}})}):_vm._e()],2)])}
+var ControlViewvue_type_template_id_373c9b5f_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/renderer/ControlView.vue?vue&type=template&id=11fa7328&
+// CONCATENATED MODULE: ./src/views/renderer/ControlView.vue?vue&type=template&id=373c9b5f&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
+
+// EXTERNAL MODULE: ./src/mixins/form-builder-mixins.js + 2 modules
+var form_builder_mixins = __webpack_require__("16fd");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/ControlView.vue?vue&type=script&lang=js&
 
@@ -32031,12 +32056,13 @@ var es6_function_name = __webpack_require__("7f7f");
 
 
 
+
 /* harmony default export */ var renderer_ControlViewvue_type_script_lang_js_ = ({
   name: "ControlView",
   components: {
     ControlLabel: ControlLabel
   },
-  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
+  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */], form_builder_mixins["a" /* default */]],
   props: {
     control: {
       type: Object,
@@ -32071,9 +32097,8 @@ var es6_function_name = __webpack_require__("7f7f");
   methods: {
     changeConfig: function changeConfig(config) {
       this.currentConfig = config;
-      this.control.permission = config;
       console.log(this.control);
-      console.log(this.formConfiguration);
+      this.$emit('asd', config, this.control.uniqueId);
     }
   },
   computed: {
@@ -32142,8 +32167,8 @@ var ControlViewvue_type_style_index_0_lang_css_ = __webpack_require__("223b");
 
 var renderer_ControlView_component = Object(componentNormalizer["a" /* default */])(
   views_renderer_ControlViewvue_type_script_lang_js_,
-  ControlViewvue_type_template_id_11fa7328_render,
-  ControlViewvue_type_template_id_11fa7328_staticRenderFns,
+  ControlViewvue_type_template_id_373c9b5f_render,
+  ControlViewvue_type_template_id_373c9b5f_staticRenderFns,
   false,
   null,
   null,
@@ -32206,6 +32231,7 @@ var RENDERER_SECTION_VIEW_MIXIN = {
 //
 //
 //
+//
 
 /**
  * @property {Object} section
@@ -32220,6 +32246,21 @@ var RENDERER_SECTION_VIEW_MIXIN = {
   mixins: [RENDERER_SECTION_VIEW_MIXIN],
   data: function data() {
     return {};
+  },
+  methods: {
+    asdasd: function asdasd(x, y) {
+      // console.log("girildi metoda");
+      // console.log(x);
+      // console.log(y);
+      for (var key in this.controls) {
+        if (key == y) {
+          this.controls[key].permission = x;
+        }
+      } // console.log(this.controls);
+
+
+      this.$emit("asd");
+    }
   }
 });
 // CONCATENATED MODULE: ./src/views/renderer/section-views/NormalSectionView.vue?vue&type=script&lang=js&
@@ -32234,8 +32275,8 @@ var RENDERER_SECTION_VIEW_MIXIN = {
 
 var section_views_NormalSectionView_component = Object(componentNormalizer["a" /* default */])(
   views_renderer_section_views_NormalSectionViewvue_type_script_lang_js_,
-  NormalSectionViewvue_type_template_id_5f6e0b87_render,
-  NormalSectionViewvue_type_template_id_5f6e0b87_staticRenderFns,
+  NormalSectionViewvue_type_template_id_2f4ad953_render,
+  NormalSectionViewvue_type_template_id_2f4ad953_staticRenderFns,
   false,
   null,
   null,
@@ -34892,12 +34933,12 @@ var src_0 = __webpack_require__("b635");
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FormRenderer.vue?vue&type=template&id=106fa4c5&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.styles.CONTAINER.FLUID, 'form-padding', 'vue-form-renderer']},[(_vm.formData.formConfig.renderFormTag)?_c('form',{attrs:{"action":_vm.formData.formConfig.formActionURL,"method":_vm.formData.formConfig.formMethod,"id":_vm.formTagId},on:{"submit":function($event){$event.preventDefault();}}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.formData.formConfig.isShowHeadline),expression:"formData.formConfig.isShowHeadline"}],staticClass:"form-headline-container"},[_c('h1',{domProps:{"textContent":_vm._s(_vm.formData.formConfig.headline)}}),_c('p',{domProps:{"textContent":_vm._s(_vm.formData.formConfig.subHeadline)}})]),_vm._l((_vm.sortedSections),function(sectionData){return _c('SectionContainer',{key:sectionData.uniqueId,attrs:{"section":sectionData,"rows":_vm.formData.rows,"controls":_vm.formData.controls,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors,"read-only":_vm.readOnly}})})],2):[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.formData.formConfig.isShowHeadline),expression:"formData.formConfig.isShowHeadline"}],staticClass:"form-headline-container"},[_c('h1',{domProps:{"textContent":_vm._s(_vm.formData.formConfig.headline)}}),_c('p',{domProps:{"textContent":_vm._s(_vm.formData.formConfig.subHeadline)}})]),_vm._l((_vm.sortedSections),function(sectionData){return _c('SectionContainer',{key:sectionData.uniqueId,attrs:{"section":sectionData,"rows":_vm.formData.rows,"controls":_vm.formData.controls,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors,"read-only":_vm.readOnly}})})]],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FormRenderer.vue?vue&type=template&id=a7de18b2&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.styles.CONTAINER.FLUID, 'form-padding', 'vue-form-renderer']},[(_vm.formData.formConfig.renderFormTag)?_c('form',{attrs:{"action":_vm.formData.formConfig.formActionURL,"method":_vm.formData.formConfig.formMethod,"id":_vm.formTagId},on:{"submit":function($event){$event.preventDefault();}}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.formData.formConfig.isShowHeadline),expression:"formData.formConfig.isShowHeadline"}],staticClass:"form-headline-container"},[_c('h1',{domProps:{"textContent":_vm._s(_vm.formData.formConfig.headline)}}),_c('p',{domProps:{"textContent":_vm._s(_vm.formData.formConfig.subHeadline)}})]),_vm._l((_vm.sortedSections),function(sectionData){return _c('SectionContainer',{key:sectionData.uniqueId,attrs:{"section":sectionData,"rows":_vm.formData.rows,"controls":_vm.formData.controls,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors,"read-only":_vm.readOnly,"data":_vm.formData}})})],2):[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.formData.formConfig.isShowHeadline),expression:"formData.formConfig.isShowHeadline"}],staticClass:"form-headline-container"},[_c('h1',{domProps:{"textContent":_vm._s(_vm.formData.formConfig.headline)}}),_c('p',{domProps:{"textContent":_vm._s(_vm.formData.formConfig.subHeadline)}})]),_vm._l((_vm.sortedSections),function(sectionData){return _c('SectionContainer',{key:sectionData.uniqueId,attrs:{"section":sectionData,"rows":_vm.formData.rows,"controls":_vm.formData.controls,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors,"read-only":_vm.readOnly,"data":_vm.formData}})})]],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FormRenderer.vue?vue&type=template&id=106fa4c5&
+// CONCATENATED MODULE: ./src/components/FormRenderer.vue?vue&type=template&id=a7de18b2&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
@@ -35760,15 +35801,18 @@ var VALIDATION_MIXIN = {
 
 
 /* harmony default export */ var form_renderer_mixins = ([CONFIGURATION, MODEL, style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */], form_builder_methods["a" /* FORM_BUILDER_METHODS */], VALIDATION_MIXIN]);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/SectionContainer.vue?vue&type=template&id=472dad7a&scoped=true&
-var SectionContainervue_type_template_id_472dad7a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section-container"},[_c(_vm.sectionViewComponent,{key:_vm.section.uniqueId,tag:"component",attrs:{"section":_vm.section,"rows":_vm.rows,"controls":_vm.controls,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors,"read-only":_vm.readOnly}})],1)}
-var SectionContainervue_type_template_id_472dad7a_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"65ef42ad-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/SectionContainer.vue?vue&type=template&id=7f619eed&scoped=true&
+var SectionContainervue_type_template_id_7f619eed_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section-container"},[_c(_vm.sectionViewComponent,{key:_vm.section.uniqueId,tag:"component",attrs:{"section":_vm.section,"rows":_vm.rows,"controls":_vm.controls,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors,"read-only":_vm.readOnly},on:{"asd":_vm.asdasd}})],1)}
+var SectionContainervue_type_template_id_7f619eed_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/renderer/SectionContainer.vue?vue&type=template&id=472dad7a&scoped=true&
+// CONCATENATED MODULE: ./src/views/renderer/SectionContainer.vue?vue&type=template&id=7f619eed&scoped=true&
 
 // EXTERNAL MODULE: ./src/configs/section.js + 119 modules
 var section = __webpack_require__("dd3c");
+
+// EXTERNAL MODULE: ./src/mixins/form-builder-mixins.js + 2 modules
+var form_builder_mixins = __webpack_require__("16fd");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/SectionContainer.vue?vue&type=script&lang=js&
 //
@@ -35786,20 +35830,30 @@ var section = __webpack_require__("dd3c");
 //
 //
 //
+//
+
 
 /* harmony default export */ var SectionContainervue_type_script_lang_js_ = ({
   name: "SectionContainer",
+  mixins: form_builder_mixins["a" /* default */],
   props: {
     section: Object,
     rows: Object,
     controls: Object,
     valueContainer: Object,
     validationErrors: Object,
-    readOnly: Boolean
+    readOnly: Boolean,
+    data: Object
   },
   computed: {
     sectionViewComponent: function sectionViewComponent() {
       return section["b" /* SECTION_TYPES */][this.section.type].rendererView;
+    }
+  },
+  methods: {
+    asdasd: function asdasd() {
+      console.log("----------------");
+      this.mapping(this.data);
     }
   }
 });
@@ -35818,17 +35872,19 @@ var componentNormalizer = __webpack_require__("2877");
 
 var component = Object(componentNormalizer["a" /* default */])(
   renderer_SectionContainervue_type_script_lang_js_,
-  SectionContainervue_type_template_id_472dad7a_scoped_true_render,
-  SectionContainervue_type_template_id_472dad7a_scoped_true_staticRenderFns,
+  SectionContainervue_type_template_id_7f619eed_scoped_true_render,
+  SectionContainervue_type_template_id_7f619eed_scoped_true_staticRenderFns,
   false,
   null,
-  "472dad7a",
+  "7f619eed",
   null
   
 )
 
 /* harmony default export */ var SectionContainer = (component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FormRenderer.vue?vue&type=script&lang=js&
+//
+//
 //
 //
 //
