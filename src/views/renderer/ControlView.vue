@@ -112,9 +112,8 @@
             changeConfig(config) {
                 this.currentConfig = config
                 this.control.permission = config
-                this.$root.$refs.FormRenderer.test()
-                // console.log(this.control);
-                // this.$emit('asd', config, this.control.uniqueId)
+
+                this.$emit('asd')
             }
         },
         computed: {

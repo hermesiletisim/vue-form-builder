@@ -37,15 +37,13 @@
 
         }),
         methods: {
-            asdasd(x,y) {
-                // console.log("girildi metoda");
-                // console.log(x);
-                // console.log(y);
-                for(let key in this.controls){
-                    if(key == y){
-                        this.controls[key].permission = x
-                    }
-                }
+            asdasd() {
+
+                // for(let key in this.controls){
+                //     if(key == y){
+                //         this.controls[key].permission = x
+                //     }
+                // }
                 // console.log(this.controls);
                 this.$emit("asd")
             }

@@ -28,7 +28,6 @@
             valueContainer: Object,
             validationErrors: Object,
             readOnly: Boolean,
-            data: Object
         },
 
         computed: {
@@ -39,8 +38,9 @@
 
         methods: {
             asdasd() {
-                console.log("----------------");
-                this.mapping(this.data)
+                // console.log("----------------");
+                // console.log(this.controls);
+                this.$emit("asd")
             }
         }
     }

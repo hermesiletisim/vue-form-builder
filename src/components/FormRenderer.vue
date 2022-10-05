@@ -25,7 +25,7 @@
                 :value-container="valueContainer"
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
-                :data="formData"
+                @asd="test"
             />
         </form>
         <template v-else>
@@ -46,7 +46,7 @@
                 :value-container="valueContainer"
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
-                :data="formData"
+                @asd="test"
             />
 
         </template>
@@ -71,7 +71,8 @@
 
         methods: {
             test() {
-                this.$emit("test")
+                // console.log(this.formData);
+                this.$emit("test",this.formData)
             }
         }
     }
