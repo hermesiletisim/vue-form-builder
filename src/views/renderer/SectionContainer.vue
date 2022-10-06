@@ -39,10 +39,8 @@
         },
 
         methods: {
-            asdasd() {
-                // console.log("----------------");
-                console.log(this.controls);
-                this.$emit("asd")
+            asdasd(id, step, config) {
+                this.$emit("asd", id, step, config)
             }
         },
 

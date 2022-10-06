@@ -115,7 +115,6 @@
             changeConfig(config, controlId) {
                 if(this.control.uniqueId == controlId) {
                     this.currentConfig = config
-                    // this.control.permission[this.currentStep] = config
                 }
                 // console.log(this.control);
                 this.$emit('asd',controlId,this.currentStep,config)
@@ -179,7 +178,6 @@
 
         watch: {
             currentStep: function(val) {
-                console.log(val);
                 if(this.control.permission[val]) {
                     this.currentConfig = this.control.permission[val]
                 }
@@ -188,11 +186,6 @@
                 }
             }
         },
-
-        created() {
-            // console.log("control view", this.currentStep);
-        }
-
     }
 </script>
 

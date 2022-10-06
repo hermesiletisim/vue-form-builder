@@ -72,8 +72,15 @@
         },
 
         methods: {
-            test() {
-                this.$emit("test",this.formData)
+            test(id, step, config) {
+                let obj = {
+                    id: id,
+                    step: step,
+                    config: config
+                }
+                console.log(obj);
+                console.log(this.controls);
+                this.$emit("test",obj)
             }
         }
     }
