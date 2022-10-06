@@ -387,7 +387,7 @@
      'additionalLabelClass': '', // :class for the <label>
  
      'defaultValue': '',
-     'permission': 'editable',
+     'permission': {},
      /**
       * Validation that applied to the control
       * @var {ValidationRule[]} validations

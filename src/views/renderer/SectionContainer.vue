@@ -9,6 +9,7 @@
             :value-container="valueContainer"
             :validation-errors="validationErrors"
             :read-only="readOnly"
+            :current-step="currentStep"
             @asd="asdasd"
         />
     </div>
@@ -28,6 +29,7 @@
             valueContainer: Object,
             validationErrors: Object,
             readOnly: Boolean,
+            currentStep: String
         },
 
         computed: {
@@ -42,6 +44,10 @@
                 // console.log(this.controls);
                 this.$emit("asd")
             }
+        },
+
+        created() {
+            // console.log(this.currentStep);
         }
     }
 </script>

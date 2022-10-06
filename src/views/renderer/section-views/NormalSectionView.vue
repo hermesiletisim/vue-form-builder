@@ -14,6 +14,7 @@
                 :value-container="valueContainer"
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
+                :current-step="currentStep"
                 @asd="asdasd"
             />
         </div>
@@ -29,6 +30,7 @@
      * @property {Object} controls ControlId - ControlData
      * @property {Array} section.rows
      * @property {Array} section.controls
+     * @property {String} currentStep
      */
     export default {
         name: "NormalSectionView",
@@ -47,6 +49,10 @@
                 // console.log(this.controls);
                 this.$emit("asd")
             }
+        },
+
+        created() {
+            // console.log("normal section ", this.currentStep);
         }
     }
 </script>

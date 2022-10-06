@@ -25,6 +25,7 @@
                 :value-container="valueContainer"
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
+                :current-step="currentStep"
                 @asd="test"
             />
         </form>
@@ -46,6 +47,7 @@
                 :value-container="valueContainer"
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
+                :current-step="currentStep"
                 @asd="test"
             />
 
@@ -71,7 +73,6 @@
 
         methods: {
             test() {
-                // console.log(this.formData);
                 this.$emit("test",this.formData)
             }
         }

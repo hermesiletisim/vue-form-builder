@@ -32,6 +32,7 @@
                     :value-container="valueContainer"
                     :validation-errors="validationErrors"
                     :read-only="readOnly"
+                    :current-step="currentStep"
                 />
             </div>
         </transition>
@@ -46,5 +47,9 @@
     export default {
         name: "ToggleableSectionView",
         mixins: [RENDERER_SECTION_VIEW_MIXIN, TOGGLEABLE_MIXIN],
+
+        created() {
+            // console.log("toggle section ", this.currentStep);
+        }
     }
 </script>

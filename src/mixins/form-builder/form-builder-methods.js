@@ -9,7 +9,7 @@
 
  import {createNewSection, SECTION_DEFAULT_DATA} from "@/configs/section";
  import {dataApplier} from "@/libraries/applier";
- import {updateSectionList, fillSectionList} from "@/configs/show-section-list";
+ import {updateSectionList} from "@/configs/show-section-list";
  
  const FORM_BUILDER_METHODS = {
      data:() => ({
@@ -43,9 +43,8 @@
              this.$set(this.formData.sections, sectionObject.uniqueId, sectionObject)
              this.doSortSection()
              updateSectionList(this.formData,sectionObject)
-             // SHOW_SECTION_LIST[sectionObject.uniqueId] = sectionObject
          },
-
+ 
          /**
           * Sort Section and Cache it...
           */

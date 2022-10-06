@@ -74,12 +74,11 @@
     import {STYLE_INJECTION_MIXIN} from "@/mixins/style-injection-mixin";
     import ControlLabel from "@/views/builder/control-views/ControlLabel";
     import {CONTROLS} from "@/configs/controls";
-    import FormBuilderBusiness from "@/mixins/form-builder-mixins";
 
     export default {
         name: "ControlView",
         components: {ControlLabel},
-        mixins: [STYLE_INJECTION_MIXIN, FormBuilderBusiness],
+        mixins: [STYLE_INJECTION_MIXIN],
         props: {
             control: {
                 type: Object,
@@ -101,6 +100,10 @@
               type: Boolean,
               default: false,
             },
+            currentStep: {
+                type: String,
+                required: true
+            }
         },
         data () {
             return {
@@ -111,16 +114,18 @@
         methods:{
             changeConfig(config) {
                 this.currentConfig = config
-                this.control.permission = config
-
+                this.control.permission[this.currentStep] = config
+                // console.log(this.control);
                 this.$emit('asd')
             }
         },
         computed: {
+            
             /**
              * This accessor will get the component object to let us inject the right control
              */
             controlComponent() {
+                
                 // validate input
                 if (!CONTROLS[this.control.type] || !CONTROLS[this.control.type].fieldComponent) {
                     throw new TypeError(`Control Type Mapping failed => Can't be rendered. Reason: Your control type ${this.control.type} doesn't have 'fieldComponent' property`)
@@ -165,6 +170,21 @@
                 this.isConfigurable = true
             }
             
+            if(this.control.permission[this.currentStep]) {
+                this.currentConfig = this.control.permission[this.currentStep]
+            }
+        },
+
+        watch: {
+            currentStep: function(val) {
+                if(this.control.permission[val]) {
+                    this.currentConfig = this.control.permission[val]
+                }
+            }
+        },
+
+        created() {
+            // console.log("control view", this.currentStep);
         }
 
     }
