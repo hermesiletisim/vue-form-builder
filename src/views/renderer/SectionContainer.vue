@@ -41,7 +41,7 @@
         methods: {
             asdasd() {
                 // console.log("----------------");
-                // console.log(this.controls);
+                console.log(this.controls);
                 this.$emit("asd")
             }
         },

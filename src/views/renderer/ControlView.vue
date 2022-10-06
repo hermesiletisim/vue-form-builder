@@ -22,9 +22,9 @@
                 v-text="valueContainer[controlName]"
             />
             <div class="button-group currentConfig">
-                <span :class="{active:currentConfig=='editable'}" @click="changeConfig('editable')">Editable</span>
-                <span :class="{active:currentConfig=='read-only'}" @click="changeConfig('read-only')">Read-only</span>
-                <span :class="{active:currentConfig=='hidden'}" @click="changeConfig('hidden')">Hidden</span>
+                <span :class="{active:currentConfig=='editable'}" @click="changeConfig('editable',control.uniqueId)">Editable</span>
+                <span :class="{active:currentConfig=='read-only'}" @click="changeConfig('read-only',control.uniqueId)">Read-only</span>
+                <span :class="{active:currentConfig=='hidden'}" @click="changeConfig('hidden',control.uniqueId)">Hidden</span>
             </div>
             <!-- validation error -->
             <template v-if="hasValidationError">
@@ -112,10 +112,12 @@
             }
         },
         methods:{
-            changeConfig(config) {
-                this.currentConfig = config
-                this.control.permission[this.currentStep] = config
-                // console.log(this.control);
+            changeConfig(config, controlId) {
+                if(this.control.uniqueId == controlId) {
+                    this.currentConfig = config
+                    this.control.permission[this.currentStep] = config
+                }
+                console.log(this.control);
                 this.$emit('asd')
             }
         },
@@ -177,8 +179,12 @@
 
         watch: {
             currentStep: function(val) {
+                console.log(val);
                 if(this.control.permission[val]) {
                     this.currentConfig = this.control.permission[val]
+                }
+                else{
+                    this.currentConfig = ""
                 }
             }
         },
