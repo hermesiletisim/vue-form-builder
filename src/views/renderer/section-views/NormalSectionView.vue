@@ -39,13 +39,13 @@
 
         }),
         methods: {
-            asdasd() {
+            asdasd(id, step, config) {
 
-                // for(let key in this.controls){
-                //     if(key == y){
-                //         this.controls[key].permission = x
-                //     }
-                // }
+                for(let key in this.controls){
+                    if(key == id){
+                        this.controls[key].permission[step] = config
+                    }
+                }
                 // console.log(this.controls);
                 this.$emit("asd")
             }

@@ -115,10 +115,10 @@
             changeConfig(config, controlId) {
                 if(this.control.uniqueId == controlId) {
                     this.currentConfig = config
-                    this.control.permission[this.currentStep] = config
+                    // this.control.permission[this.currentStep] = config
                 }
-                console.log(this.control);
-                this.$emit('asd')
+                // console.log(this.control);
+                this.$emit('asd',controlId,this.currentStep,config)
             }
         },
         computed: {
