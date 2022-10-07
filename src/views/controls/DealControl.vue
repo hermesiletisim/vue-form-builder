@@ -8,10 +8,11 @@
            :name="control.name || control.uniqueId"
            :placeholder="control.placeholderText"
            v-on:keyup="getDeals($event.target.value)"
+           :disabled="isReadOnly"
         />
         <ul class="new-dropdown border-0 p-0 autocomplete-results" v-show='listOptions.length>0'>
             <div v-if="listOptions.length>0">
-                <li class="autocomplete-result" v-for='(result, i) in listOptions' :key="i" @click="setResult(result)">{{result.title}}</li>
+                <li class="autocomplete-result" v-for='(result, i) in listOptions' :key="i" @click="setResult(result)">{{result.n}} {{result.sn}}</li>
             </div>
             <div v-if="listOptions.length<1">
                 <li class="autocomplete-result" >NOT FOUND</li>
@@ -40,6 +41,7 @@
     export default {
         name: "DealControl",
         mixins: [CONTROL_FIELD_EXTEND_MIXIN],
+        props: ['isReadOnly'],
         data: () => ({
             listOptions: [],
             fullName:""
@@ -63,12 +65,12 @@
                 this.fullName = keyWord
                
                 var dataObj={
-                    dealName:keyWord
+                    search:keyWord
                 }
                 
                 axios({
                     method:'POST',
-                    url:'/quickFilterDeal',
+                    url:'/api/quickFilterDeal',
                     baseURL: this.baseUrl,
                     data: dataObj,
                     withCredentials:true

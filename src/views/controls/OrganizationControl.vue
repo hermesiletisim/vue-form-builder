@@ -8,6 +8,7 @@
            :name="control.name || control.uniqueId"
            :placeholder="control.placeholderText"
            v-on:keyup="getOrganizations($event.target.value)"
+           :disabled="isReadOnly"
         />
         <ul class="new-dropdown border-0 p-0 autocomplete-results" v-show='listOptions.length>0'>
             <div v-if="listOptions.length>0">
@@ -38,6 +39,7 @@
     export default {
         name: "UserControl",
         mixins: [CONTROL_FIELD_EXTEND_MIXIN],
+        props: ['isReadOnly'],
         data: () => ({
             listOptions: [],
             fullOrgName:""
@@ -66,7 +68,7 @@
                 
                 axios({
                     method:'POST',
-                    url:'/quickFilterOrganization',
+                    url:'/api/quickFilterOrganizations',
                     baseURL: this.baseUrl,
                     data: dataObj,
                     withCredentials:true

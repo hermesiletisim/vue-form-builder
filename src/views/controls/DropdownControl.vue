@@ -4,6 +4,7 @@
             :name="control.name || control.uniqueId"
             @input="updateValue($event.target.value)"
             :multiple="this.control.multiple"
+            :disabled="isReadOnly"
     >
         <option disabled
                 selected
@@ -35,6 +36,8 @@
     export default {
         name: "DropdownControl",
         mixins: [CONTROL_FIELD_EXTEND_MIXIN],
+        props: ['isReadOnly'],
+
         data: () => ({
             listOptions: [],
 

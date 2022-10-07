@@ -1,11 +1,13 @@
 <template>
     <div :class="[control.containerClass, 'control-view-wrapper', control.additionalContainerClass]">
         <div v-if="isConfigurable" class="control-view hover-effect">
+
             <!-- render the label, readonly should show the label -->
             <ControlLabel
                 v-show="control.isShowLabel || readOnly"
                 :control="control"
                 :read-only="readOnly"
+                :isHidden="isHidden"
             />
 
             <!-- render the exact field -->
@@ -16,11 +18,10 @@
                 :control="control"
                 :value-container="valueContainer"
                 :class="validationErrorClasses"
+                :isReadOnly="isDisabled"
             />
-            <p
-                v-else
-                v-text="valueContainer[controlName]"
-            />
+            <p v-else v-text="valueContainer[controlName]" />
+
             <div class="button-group currentConfig">
                 <span :class="{active:currentConfig=='editable'}" @click="changeConfig('editable',control.uniqueId)">Editable</span>
                 <span :class="{active:currentConfig=='read-only'}" @click="changeConfig('read-only',control.uniqueId)">Read-only</span>
@@ -108,13 +109,16 @@
         data () {
             return {
                 isConfigurable: false,
-                currentConfig: ""
+                currentConfig: "",
+                isDisabled: false,
+                isHidden: false
             }
         },
         methods:{
             changeConfig(config, controlId) {
                 if(this.control.uniqueId == controlId) {
                     this.currentConfig = config
+                    // this.control.permission[this.currentStep] = config // Deployda bu satır kaldırılacak !!!
                 }
                 // console.log(this.control);
                 this.$emit('asd',controlId,this.currentStep,config)
@@ -184,6 +188,20 @@
                 else{
                     this.currentConfig = ""
                 }
+            },
+            currentConfig: function(val) {
+                if(val == 'read-only') {
+                    this.isDisabled = true
+                    this.isHidden = false
+                }
+                else if(val == 'hidden') {
+                    this.isDisabled = false
+                    this.isHidden = true
+                }
+                else {
+                    this.isDisabled = false
+                    this.isHidden = false
+                }
             }
         },
     }
@@ -216,4 +234,5 @@
     .hover-effect:hover > .button-group {
         display: block;
     }
+
 </style>
