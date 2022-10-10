@@ -94,6 +94,7 @@ const SECTION_DEFAULT_DATA = {
     type: '',
     rows: [], // array of rowId
     controls: [], // array of controlIds
+    permission: {}
 };
 
 /**

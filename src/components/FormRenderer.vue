@@ -18,6 +18,7 @@
             <!-- sections of the form -->
             <SectionContainer
                 v-for="(sectionData) in sortedSections"
+                :id="sectionData.uniqueId"
                 :section="sectionData"
                 :rows="formData.rows"
                 :controls="formData.controls"
@@ -26,7 +27,8 @@
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
                 :current-step="currentStep"
-                @asd="test"
+                @changeControlPermission="changeControlPermission"
+                @changeSectionPermission="changeSectionPermission"
             />
         </form>
         <template v-else>
@@ -40,6 +42,7 @@
             <!-- sections of the form -->
             <SectionContainer
                 v-for="(sectionData) in sortedSections"
+                :id="sectionData.uniqueId"
                 :section="sectionData"
                 :rows="formData.rows"
                 :controls="formData.controls"
@@ -48,7 +51,8 @@
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
                 :current-step="currentStep"
-                @asd="test"
+                @changeControlPermission="changeControlPermission"
+                @changeSectionPermission="changeSectionPermission"
             />
 
         </template>
@@ -72,15 +76,23 @@
         },
 
         methods: {
-            test(id, step, config) {
+            changeControlPermission(id, step, config) {
                 let obj = {
                     id: id,
                     step: step,
                     config: config
                 }
-                console.log(obj);
-                console.log(this.controls);
-                this.$emit("test",obj)
+                // console.log(this.formData);
+                this.$emit("changeControlPermission",obj)
+            },
+            changeSectionPermission(id, step, config) {
+                let obj = {
+                    id: id,
+                    step: step,
+                    config: config
+                }
+                // console.log(this.formData);
+                this.$emit("changeSectionPermission",obj)
             }
         }
     }

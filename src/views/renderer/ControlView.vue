@@ -121,7 +121,7 @@
                     // this.control.permission[this.currentStep] = config // Deployda bu satır kaldırılacak !!!
                 }
                 // console.log(this.control);
-                this.$emit('asd',controlId,this.currentStep,config)
+                this.$emit('changeControlPermission',controlId,this.currentStep,config)
             }
         },
         computed: {

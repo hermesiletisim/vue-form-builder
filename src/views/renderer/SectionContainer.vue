@@ -10,9 +10,11 @@
             :validation-errors="validationErrors"
             :read-only="readOnly"
             :current-step="currentStep"
-            @asd="asdasd"
+            @changeControlPermission="changeControlPermission"
+            @changeSectionPermission="changeSectionPermission"
         />
     </div>
+    
 </template>
 
 <script>
@@ -39,13 +41,16 @@
         },
 
         methods: {
-            asdasd(id, step, config) {
-                this.$emit("asd", id, step, config)
+            changeControlPermission(id, step, config) {
+                this.$emit("changeControlPermission", id, step, config)
+            },
+            changeSectionPermission(id, step, config) {
+                this.$emit("changeSectionPermission", id, step, config)
             }
         },
 
         created() {
-            // console.log(this.currentStep);
+            // console.log(this.section);
         }
     }
 </script>
