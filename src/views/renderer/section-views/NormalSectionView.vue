@@ -20,28 +20,32 @@
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
                 :current-step="currentStep"
+                :sectionConfig="section.permission[currentStep]"
                 @changeControlPermission="changeControlPermission"
             />
         </div>
     </div>
     <div class="normal-section" v-else>
-        <div class="headline-block" v-show="section.isShowHeadline">
-            <h2 :class="section.headlineAdditionalClass" v-text="section.headline"></h2>
-            <p :class="section.subHeadlineAdditionalClass" v-text="section.subHeadline"></p>
-        </div>
+        <div v-if="!isHidden">
+            <div class="headline-block" v-show="section.isShowHeadline">
+                <h2 :class="section.headlineAdditionalClass" v-text="section.headline"></h2>
+                <p :class="section.subHeadlineAdditionalClass" v-text="section.subHeadline"></p>
+            </div>
 
-        <div :class="containerClasses">
-            <ControlView
-                v-for="controlId in section.controls"
-                :key="controlId"
-                :control="controls[controlId]"
-                :parent-id="section.uniqueId"
-                :value-container="valueContainer"
-                :validation-errors="validationErrors"
-                :read-only="readOnly"
-                :current-step="currentStep"
-                @changeControlPermission="changeControlPermission"
-            />
+            <div :class="containerClasses">
+                <ControlView
+                    v-for="controlId in section.controls"
+                    :key="controlId"
+                    :control="controls[controlId]"
+                    :parent-id="section.uniqueId"
+                    :value-container="valueContainer"
+                    :validation-errors="validationErrors"
+                    :read-only="readOnly"
+                    :current-step="currentStep"
+                    :sectionConfig="section.permission[currentStep]"
+                    @changeControlPermission="changeControlPermission"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -63,7 +67,9 @@
         data () {
             return {
                 currentSectionConfig: "",
-                isConfigurable: false
+                isConfigurable: false,
+                isDisabled: false,
+                isHidden: false
             }
         },
         methods: {
@@ -74,10 +80,11 @@
             changeConfig(config, sectionId) {
                 if(this.section.uniqueId == sectionId) {
                     this.currentSectionConfig = config
-                    // this.section.permission[this.currentStep] = config // Deployda bu satır kaldırılacak !!!
+                    this.section.permission[this.currentStep] = config // Deployda bu satır kaldırılacak !!!
                 }
                 // console.log(this.control);
                 this.$emit('changeSectionPermission',sectionId,this.currentStep,config)
+                
             }
         },
 
@@ -90,20 +97,20 @@
                     this.currentSectionConfig = ""
                 }
             },
-            // currentConfig: function(val) {
-            //     if(val == 'read-only') {
-            //         this.isDisabled = true
-            //         this.isHidden = false
-            //     }
-            //     else if(val == 'hidden') {
-            //         this.isDisabled = false
-            //         this.isHidden = true
-            //     }
-            //     else {
-            //         this.isDisabled = false
-            //         this.isHidden = false
-            //     }
-            // }
+            currentSectionConfig: function(val) {
+                if(val == 'read-only') {
+                    this.isDisabled = true
+                    this.isHidden = false
+                }
+                else if(val == 'hidden') {
+                    this.isDisabled = false
+                    this.isHidden = true
+                }
+                else {
+                    this.isDisabled = false
+                    this.isHidden = false
+                }
+            },
         },
 
         mounted(){
@@ -113,7 +120,7 @@
             }
             
             if(this.section.permission[this.currentStep]) {
-                this.currentConfig = this.section.permission[this.currentStep]
+                this.currentSectionConfig = this.section.permission[this.currentStep]
             }
         },
 

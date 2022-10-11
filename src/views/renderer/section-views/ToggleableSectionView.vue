@@ -1,5 +1,5 @@
 <template>
-    <div class="toggleable-section withHover">
+    <div v-if="isConfigurable" class="toggleable-section withHover">
         <div class="headline-block hover-section">
             <h2 :class="section.headlineAdditionalClass">
                 <!-- chevron icon to show/hide -->
@@ -38,11 +38,54 @@
                     :validation-errors="validationErrors"
                     :read-only="readOnly"
                     :current-step="currentStep"
+                    :sectionConfig="section.permission[currentStep]"
                     @changeControlPermission="changeControlPermission"
                 />
             </div>
         </transition>
 
+    </div>
+    <div v-else class="toggleable-section">
+        <div v-if="!isHidden">
+            <div class="headline-block">
+                <h2 :class="section.headlineAdditionalClass">
+                    <!-- chevron icon to show/hide -->
+                    <span class="toggle-item"
+                    v-html="isVisible ? iconClose : iconOpen"
+                    @click="isVisible = !isVisible">
+                    </span>
+
+                    <!-- headline -->
+                    <span v-text="section.headline"
+                        v-show="section.isShowHeadline">
+                    </span>
+
+                    <!-- subheadline -->
+                    <small :class="[section.subHeadlineAdditionalClass, 'toggleable-sub-headline']"
+                        v-text="section.subHeadline"
+                        v-show="section.isShowHeadline">
+                    </small>
+                </h2>
+            </div>
+
+            <!-- Rows - BLock it for animation -->
+            <transition name="slide">
+                <div v-show="isVisible" :class="containerClasses">
+                    <ControlView
+                        v-for="controlId in section.controls"
+                        :key="controlId"
+                        :control="controls[controlId]"
+                        :parent-id="section.uniqueId"
+                        :value-container="valueContainer"
+                        :validation-errors="validationErrors"
+                        :read-only="readOnly"
+                        :current-step="currentStep"
+                        :sectionConfig="section.permission[currentStep]"
+                        @changeControlPermission="changeControlPermission"
+                    />
+                </div>
+            </transition>
+        </div>
     </div>
 </template>
 
@@ -56,7 +99,9 @@
         data () {
             return {
                 currentSectionConfig: "",
-                isConfigurable: false
+                isConfigurable: false,
+                isHidden: false,
+                isDisabled: false
             }
         },
         methods: {
@@ -82,20 +127,20 @@
                     this.currentSectionConfig = ""
                 }
             },
-            // currentConfig: function(val) {
-            //     if(val == 'read-only') {
-            //         this.isDisabled = true
-            //         this.isHidden = false
-            //     }
-            //     else if(val == 'hidden') {
-            //         this.isDisabled = false
-            //         this.isHidden = true
-            //     }
-            //     else {
-            //         this.isDisabled = false
-            //         this.isHidden = false
-            //     }
-            // }
+            currentSectionConfig: function(val) {
+                if(val == 'read-only') {
+                    this.isDisabled = true
+                    this.isHidden = false
+                }
+                else if(val == 'hidden') {
+                    this.isDisabled = false
+                    this.isHidden = true
+                }
+                else {
+                    this.isDisabled = false
+                    this.isHidden = false
+                }
+            }
         },
 
         mounted(){
@@ -105,7 +150,7 @@
             }
             
             if(this.section.permission[this.currentStep]) {
-                this.currentConfig = this.section.permission[this.currentStep]
+                this.currentSectionConfig = this.section.permission[this.currentStep]
             }
         }
     }

@@ -39,34 +39,54 @@
 
 
         <div v-else class="control-view">
-            <!-- render the label, readonly should show the label -->
-            <ControlLabel
-                v-show="control.isShowLabel || readOnly"
-                :control="control"
-                :read-only="readOnly"
-            />
+            <div v-if="!isHidden">
+                <!-- render the label, readonly should show the label -->
+                <ControlLabel
+                    v-show="control.isShowLabel || readOnly"
+                    :control="control"
+                    :read-only="readOnly"
+                />
 
-            <!-- render the exact field -->
-            <component
-                v-if="!readOnly"
-                v-model="valueContainer[controlName]"
-                :is="controlComponent"
-                :control="control"
-                :value-container="valueContainer"
-                :class="validationErrorClasses"
-            />
-            <p
-                v-else
-                v-text="valueContainer[controlName]"
-            />
-            <!-- validation error -->
-            <template v-if="hasValidationError">
-                <div v-for="(mess, i) in validationErrorMessages"
-                     :key="i"
-                     v-text="mess"
-                     :class="styles.FORM.ERROR_MESSAGE"
-                ></div>
-            </template>
+                <!-- render the exact field -->
+                <component
+                    v-model="valueContainer[controlName]"
+                    :is="controlComponent"
+                    :control="control"
+                    :value-container="valueContainer"
+                    :class="validationErrorClasses"
+                    :isReadOnly="isDisabled"
+                />
+                <!-- <p
+                    v-else
+                    v-text="valueContainer[controlName]"
+                /> -->
+                <!-- validation error -->
+                <template v-if="hasValidationError">
+                    <div v-for="(mess, i) in validationErrorMessages"
+                        :key="i"
+                        v-text="mess"
+                        :class="styles.FORM.ERROR_MESSAGE"
+                    ></div>
+                </template>
+            </div>
+        </div>
+
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Kontrollerde değişiklik yapabilmeniz için ilgili bölümün ayarını değiştirmelisiniz!</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -104,6 +124,10 @@
             currentStep: {
                 type: String,
                 required: true
+            },
+            sectionConfig: {
+                type: String,
+                required: false
             }
         },
         data () {
@@ -116,6 +140,10 @@
         },
         methods:{
             changeConfig(config, controlId) {
+                if((config !== this.sectionConfig) && (this.sectionConfig == 'read-only' || this.sectionConfig == 'hidden')) {
+                    $('#staticBackdrop').modal('show')
+                    return false
+                }
                 if(this.control.uniqueId == controlId) {
                     this.currentConfig = config
                     // this.control.permission[this.currentStep] = config // Deployda bu satır kaldırılacak !!!
@@ -175,7 +203,7 @@
                 this.isConfigurable = true
             }
             
-            if(this.control.permission[this.currentStep]) {
+            if(this.control.permission[this.currentStep] && (this.sectionConfig != 'read-only' && this.sectionConfig != 'hidden')) {
                 this.currentConfig = this.control.permission[this.currentStep]
             }
         },
@@ -201,6 +229,25 @@
                 else {
                     this.isDisabled = false
                     this.isHidden = false
+                }
+            },
+            sectionConfig:{
+                immediate: true,
+                handler(val) {
+                    if(val == 'read-only') {
+                        this.isDisabled = true
+                        this.isHidden = false
+                    }
+                    else if(val == 'hidden') {
+                        this.isDisabled = false
+                        this.isHidden = true
+                    }
+                    else {
+                        this.isDisabled = false
+                        this.isHidden = false
+                    }
+
+                    this.changeConfig(val, this.control.uniqueId)
                 }
             }
         },
