@@ -80,7 +80,7 @@
             changeConfig(config, sectionId) {
                 if(this.section.uniqueId == sectionId) {
                     this.currentSectionConfig = config
-                    this.section.permission[this.currentStep] = config // Deployda bu satır kaldırılacak !!!
+                    // this.section.permission[this.currentStep] = config // Deployda bu satır kaldırılacak !!!
                 }
                 // console.log(this.control);
                 this.$emit('changeSectionPermission',sectionId,this.currentStep,config)
