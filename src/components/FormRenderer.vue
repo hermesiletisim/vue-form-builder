@@ -16,7 +16,7 @@
             </div>
 
             <!-- sections of the form -->
-            <SectionContainer v-if="sectionData.permission[currentStep] != 'hidden'"
+            <SectionContainer
                 v-for="(sectionData) in sortedSections"
                 :id="sectionData.uniqueId"
                 :section="sectionData"
@@ -41,7 +41,6 @@
 
             <!-- sections of the form -->
             <SectionContainer
-                v-if="sectionData.permission[currentStep] != 'hidden'"
                 v-for="(sectionData) in sortedSections"
                 :id="sectionData.uniqueId"
                 :section="sectionData"
