@@ -46,7 +46,7 @@
 
     </div>
     <div v-else class="toggleable-section">
-        <div v-if="!isHidden">
+        <div v-show="!isHidden">
             <div class="headline-block">
                 <h2 :class="section.headlineAdditionalClass">
                     <!-- chevron icon to show/hide -->

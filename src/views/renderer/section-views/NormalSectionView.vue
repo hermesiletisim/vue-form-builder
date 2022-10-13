@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="normal-section" v-else>
-        <div v-if="!isHidden">
+        <div v-show="!isHidden">
             <div class="headline-block" v-show="section.isShowHeadline">
                 <h2 :class="section.headlineAdditionalClass" v-text="section.headline"></h2>
                 <p :class="section.subHeadlineAdditionalClass" v-text="section.subHeadline"></p>

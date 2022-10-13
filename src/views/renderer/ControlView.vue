@@ -39,7 +39,7 @@
 
 
         <div v-else class="control-view">
-            <div v-if="!isHidden">
+            <div v-show="!isHidden">
                 <!-- render the label, readonly should show the label -->
                 <ControlLabel
                     v-show="control.isShowLabel || readOnly"
