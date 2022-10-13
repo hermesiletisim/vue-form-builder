@@ -146,7 +146,7 @@
                 }
                 if(this.control.uniqueId == controlId) {
                     this.currentConfig = config
-                    // this.control.permission[this.currentStep] = config // Deployda bu satır kaldırılacak !!!
+                    this.control.permission[this.currentStep] = config // Deployda bu satır kaldırılacak !!!
                 }
                 // console.log(this.control);
                 this.$emit('changeControlPermission',controlId,this.currentStep,config)
