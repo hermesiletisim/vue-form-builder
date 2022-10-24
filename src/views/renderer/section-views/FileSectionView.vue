@@ -53,7 +53,7 @@
              getCloudApiTokens() {
                  axios({
                      method: 'GET',
-                     url: '/api/getAllDefaultCloudApiTokens',
+                     url: '/getAllDefaultCloudApiTokens',
                      baseURL: this.baseUrl,
                  }).then(response => {
                  

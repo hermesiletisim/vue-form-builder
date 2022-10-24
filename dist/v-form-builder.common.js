@@ -46002,13 +46002,6 @@ module.exports = function availableTypedArrays() {
 
 /***/ }),
 
-/***/ "7232":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "7333":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -62002,17 +61995,6 @@ var FORM_BUILDER_METHODS = {
 
 /***/ }),
 
-/***/ "bce3":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FileSectionView_vue_vue_type_style_index_0_id_5d9a84cf_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("7232");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FileSectionView_vue_vue_type_style_index_0_id_5d9a84cf_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FileSectionView_vue_vue_type_style_index_0_id_5d9a84cf_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FileSectionView_vue_vue_type_style_index_0_id_5d9a84cf_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
 /***/ "bd25":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -63509,6 +63491,13 @@ module.exports = function (C, x) {
 
 /***/ }),
 
+/***/ "cdc0":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "ce10":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -63789,6 +63778,17 @@ var STYLES = {
   }
 };
 
+
+/***/ }),
+
+/***/ "d644":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FileSectionView_vue_vue_type_style_index_0_id_04af498c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cdc0");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FileSectionView_vue_vue_type_style_index_0_id_04af498c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FileSectionView_vue_vue_type_style_index_0_id_04af498c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FileSectionView_vue_vue_type_style_index_0_id_04af498c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -77136,12 +77136,12 @@ var section_views_TableSectionView_component = Object(componentNormalizer["a" /*
 )
 
 /* harmony default export */ var section_views_TableSectionView = (section_views_TableSectionView_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96d1b2ea-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/section-views/FileSectionView.vue?vue&type=template&id=5d9a84cf&scoped=true&
-var FileSectionViewvue_type_template_id_5d9a84cf_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"file-section"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.section.isShowHeadline),expression:"section.isShowHeadline"}],staticClass:"headline-block p5"},[_c('h2',{class:_vm.section.headlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.headline)}}),_c('p',{class:_vm.section.subHeadlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.subHeadline)}})]),_c('div',{staticClass:"row md-layout control-list-container"},[_c('h2',[_vm._v("Dosya")]),_c('div',{staticClass:"input-group w-100 mt-2"},[_c('div',{staticClass:"custom-file"},[_c('input',{staticClass:"custom-file-input",attrs:{"type":"file","id":"inputGroupFile02"},on:{"change":function($event){return _vm.chooseFile($event)}}}),_c('label',{staticClass:"custom-file-label mb-0",attrs:{"for":"inputGroupFile02","aria-describedby":"inputGroupFileAddon02"}},[_vm._v(_vm._s(_vm.file.name || "Seçili dosya yok"))])]),_vm._m(0)])])])}
-var FileSectionViewvue_type_template_id_5d9a84cf_scoped_true_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"input-group-append"},[_c('button',{staticClass:"btn mcBgDark text-white px-5",attrs:{"type":"button","id":"inputGroupFileAddon04"}},[_vm._v("Yükle")])])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96d1b2ea-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/section-views/FileSectionView.vue?vue&type=template&id=04af498c&scoped=true&
+var FileSectionViewvue_type_template_id_04af498c_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"file-section"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.section.isShowHeadline),expression:"section.isShowHeadline"}],staticClass:"headline-block p5"},[_c('h2',{class:_vm.section.headlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.headline)}}),_c('p',{class:_vm.section.subHeadlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.subHeadline)}})]),_c('div',{staticClass:"row md-layout control-list-container"},[_c('h2',[_vm._v("Dosya")]),_c('div',{staticClass:"input-group w-100 mt-2"},[_c('div',{staticClass:"custom-file"},[_c('input',{staticClass:"custom-file-input",attrs:{"type":"file","id":"inputGroupFile02"},on:{"change":function($event){return _vm.chooseFile($event)}}}),_c('label',{staticClass:"custom-file-label mb-0",attrs:{"for":"inputGroupFile02","aria-describedby":"inputGroupFileAddon02"}},[_vm._v(_vm._s(_vm.file.name || "Seçili dosya yok"))])]),_vm._m(0)])])])}
+var FileSectionViewvue_type_template_id_04af498c_scoped_true_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"input-group-append"},[_c('button',{staticClass:"btn mcBgDark text-white px-5",attrs:{"type":"button","id":"inputGroupFileAddon04"}},[_vm._v("Yükle")])])}]
 
 
-// CONCATENATED MODULE: ./src/views/renderer/section-views/FileSectionView.vue?vue&type=template&id=5d9a84cf&scoped=true&
+// CONCATENATED MODULE: ./src/views/renderer/section-views/FileSectionView.vue?vue&type=template&id=04af498c&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/axios/index.js
 var axios = __webpack_require__("bc3a");
@@ -77213,7 +77213,7 @@ function FileSectionViewvue_type_script_lang_js_objectSpread(target) { for (var 
 
       axios_default()({
         method: 'GET',
-        url: '/api/getAllDefaultCloudApiTokens',
+        url: '/getAllDefaultCloudApiTokens',
         baseURL: this.baseUrl
       }).then(function (response) {
         if (response.data.content) {
@@ -77264,8 +77264,8 @@ function FileSectionViewvue_type_script_lang_js_objectSpread(target) { for (var 
 });
 // CONCATENATED MODULE: ./src/views/renderer/section-views/FileSectionView.vue?vue&type=script&lang=js&
  /* harmony default export */ var views_renderer_section_views_FileSectionViewvue_type_script_lang_js_ = (renderer_section_views_FileSectionViewvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/views/renderer/section-views/FileSectionView.vue?vue&type=style&index=0&id=5d9a84cf&scoped=true&lang=css&
-var FileSectionViewvue_type_style_index_0_id_5d9a84cf_scoped_true_lang_css_ = __webpack_require__("bce3");
+// EXTERNAL MODULE: ./src/views/renderer/section-views/FileSectionView.vue?vue&type=style&index=0&id=04af498c&scoped=true&lang=css&
+var FileSectionViewvue_type_style_index_0_id_04af498c_scoped_true_lang_css_ = __webpack_require__("d644");
 
 // CONCATENATED MODULE: ./src/views/renderer/section-views/FileSectionView.vue
 
@@ -77278,11 +77278,11 @@ var FileSectionViewvue_type_style_index_0_id_5d9a84cf_scoped_true_lang_css_ = __
 
 var section_views_FileSectionView_component = Object(componentNormalizer["a" /* default */])(
   views_renderer_section_views_FileSectionViewvue_type_script_lang_js_,
-  FileSectionViewvue_type_template_id_5d9a84cf_scoped_true_render,
-  FileSectionViewvue_type_template_id_5d9a84cf_scoped_true_staticRenderFns,
+  FileSectionViewvue_type_template_id_04af498c_scoped_true_render,
+  FileSectionViewvue_type_template_id_04af498c_scoped_true_staticRenderFns,
   false,
   null,
-  "5d9a84cf",
+  "04af498c",
   null
   
 )
@@ -77312,24 +77312,30 @@ var section_views_FileSectionView_component = Object(componentNormalizer["a" /* 
 
 var SECTION_TYPES = {
   normal: {
-    name: "Normal Block",
-    description: "Normal block with a headline",
+    name: "NORMAL_BLOCK",
+    description: "NORMAL_BLOCK_DESC",
+    // name: "Normal Block",
+    // description: "Normal block with a headline",
     value: 'normal',
     rowType: configs_row["b" /* ROW_TYPES */].normal,
     builderView: NormalSectionView,
     rendererView: section_views_NormalSectionView
   },
   toggleable: {
-    name: "Toggleable Block",
-    description: "Section block with toggle (display/hide) feature",
+    name: "TOGGLEABLE_BLOCK",
+    description: "TOGGLEABLE_BLOCK_DESC",
+    // name: "Toggle Block",
+    // description: "Section block with toggle (display/hide) feature",
     value: 'toggleable',
     rowType: configs_row["b" /* ROW_TYPES */].normal,
     builderView: ToggleableSectionView,
     rendererView: section_views_ToggleableSectionView
   },
   // tab: {
-  //     name: "Tab Block",
-  //     description: "A block with multiple tabs feature",
+  //     name: "TAB_BLOCK",
+  //     description: "TAB_BLOCK_DESC",
+  //     // name: "Tab Block",
+  //     // description: "A block with multiple tabs feature",
   //     value: "tab",
   //     rowType: ROW_TYPES.tabRow,
   //     builderView: TabSectionView,
@@ -77337,16 +77343,16 @@ var SECTION_TYPES = {
   //     preCustomButtonView: TabSectionPreButtons,
   // }
   table: {
-    name: "Table Block",
-    description: "Section block built from a table",
+    name: "TABLE_BLOCK",
+    description: "TABLE_BLOCK_DESC",
     value: 'table',
     rowType: configs_row["b" /* ROW_TYPES */].tableRow,
     builderView: TableSectionView,
     rendererView: section_views_TableSectionView
   },
   file: {
-    name: "File Block",
-    description: "Section block with add file feature",
+    name: "FILE_BLOCK",
+    description: "FILE_BLOCK_DESC",
     value: 'file',
     rowType: configs_row["b" /* ROW_TYPES */].fileRow,
     builderView: FileSectionView,
