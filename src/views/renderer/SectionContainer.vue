@@ -10,6 +10,8 @@
             :validation-errors="validationErrors"
             :read-only="readOnly"
             :current-step="currentStep"
+            :customerFiles="customerFiles"
+            :cloudApiTokens="cloudApiTokens"
             @changeControlPermission="changeControlPermission"
             @changeSectionPermission="changeSectionPermission"
         />
@@ -31,7 +33,9 @@
             valueContainer: Object,
             validationErrors: Object,
             readOnly: Boolean,
-            currentStep: String
+            currentStep: String,
+            customerFiles: Array,
+            cloudApiTokens: Array
         },
 
         computed: {

@@ -5,7 +5,6 @@
             <p :class="section.subHeadlineAdditionalClass" v-text="section.subHeadline"></p>
         </div>
         <div class="row md-layout control-list-container">
-            <h2>Dosya</h2>
             <div class="input-group w-100 mt-2">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="inputGroupFile02" @change="chooseFile($event)">

@@ -29,6 +29,16 @@
              required: true,
          },
  
+         cloudApiTokens: {
+             type: Array,
+             required: false,
+         },
+ 
+         customerFiles: {
+             type: Array,
+             required: false,
+         },
+ 
      },
  
      watch: {

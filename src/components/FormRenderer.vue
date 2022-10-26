@@ -29,6 +29,8 @@
                 :current-step="currentStep"
                 @changeControlPermission="changeControlPermission"
                 @changeSectionPermission="changeSectionPermission"
+                :cloudApiTokens="[]"
+                :customerFiles="[]"
             />
         </form>
         <template v-else>
@@ -53,6 +55,8 @@
                 :current-step="currentStep"
                 @changeControlPermission="changeControlPermission"
                 @changeSectionPermission="changeSectionPermission"
+                :cloudApiTokens="cloudApiTokens"
+                :customerFiles="customerFiles"
             />
 
         </template>

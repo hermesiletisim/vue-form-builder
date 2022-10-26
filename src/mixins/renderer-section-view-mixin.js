@@ -15,7 +15,9 @@ const RENDERER_SECTION_VIEW_MIXIN = {
         valueContainer: Object,
         validationErrors: Object,
         readOnly: Boolean,
-        currentStep: String
+        currentStep: String,
+        customerFiles: Array,
+        cloudApiTokens: Array
     },
 
     data: () => ({
