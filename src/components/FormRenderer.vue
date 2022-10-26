@@ -86,7 +86,6 @@
                     step: step,
                     config: config
                 }
-                // console.log(this.formData);
                 this.$emit("changeControlPermission",obj)
             },
             changeSectionPermission(id, step, config) {
@@ -97,6 +96,12 @@
                 }
                 // console.log(this.formData);
                 this.$emit("changeSectionPermission",obj)
+            },
+            submitFile(file) {
+                this.$emit("submitFile",file)
+            },
+            deleteFile(id) {
+                this.$emit("deleteFile",id)
             }
         }
     }

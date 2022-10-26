@@ -38,7 +38,7 @@
                          <label class="custom-file-label mb-0" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">{{file.name || "Seçili dosya yok"}}</label>
                      </div>
                      <div class="input-group-append">
-                         <button class="btn mcBgDark text-white px-5" type="button" id="inputGroupFileAddon04" :disabled="isDisabled">Yükle</button>
+                         <button class="btn mcBgDark text-white px-5" type="button" id="inputGroupFileAddon04" :disabled="isDisabled" @click="submitFile()">Yükle</button>
                      </div>
                  </div>
              </div>
@@ -48,8 +48,10 @@
                          <h5 class="modalTitle">Ekli Dosyalar</h5>
                          <i data-placement="bottom" class="fa fa-info-circle fileInfo text-muted mx-2" style="cursor:pointer;"></i>
                          <div class="fileInfoContext px-2 py-2" >
-                             <i class="fa fa-info-circle text-muted"></i>
-                             <p>İndirilemeyen dosyalar için drive üçüncü taraf çerezlerini etkinleştirmeyi deneyin.</p>
+                             <p><i class="fa fa-info-circle fa-2x text-muted"></i></p>
+                             <p>
+                                 İndirilemeyen dosyalar için drive üçüncü taraf çerezlerini etkinleştirmeyi deneyin.
+                             </p>
                          </div>
                      </div>
                      <div v-if="customerFiles.length>0" class="col-12 py-2 fileList w-100 m-0 fileScroll">
@@ -67,7 +69,7 @@
                                      </button>
                                  </router-link>
                              
-                                 <button class="btn btn-light text-danger" :disabled="isDisabled" @click="deleteFile(index,file._id.$oid)"> 
+                                 <button class="btn btn-light text-danger" :disabled="isDisabled" @click="deleteFile(file._id.$oid)"> 
                                      <span class="fas fa-trash-alt"></span>
                                  </button>
                              </div>
@@ -101,8 +103,6 @@
  
  <script>
      import {RENDERER_SECTION_VIEW_MIXIN} from "@/mixins/renderer-section-view-mixin";
-     import axios from 'axios'
-     import {mapState} from 'vuex'
  
      /**
       * @property {Object} section
@@ -127,11 +127,6 @@
                  isHidden: false
              }
          },
-         computed: {
-           ...mapState([
-               'baseUrl'
-             ]),
-         },
          methods: {
              changeConfig(config, sectionId) {
                  if(this.section.uniqueId == sectionId) {
@@ -139,13 +134,17 @@
                      this.section.permission[this.currentStep] = config // Deployda bu satır kaldırılacak !!!
                  }
  
-                 // console.log(this.control);
                  this.$emit('changeSectionPermission',sectionId,this.currentStep,config)
-                 
              },
              chooseFile(event){
                  this.file = event.target.files[0]
              },
+             submitFile() {
+                 this.$root.$refs.FormRenderer.submitFile(this.file)
+             },
+             deleteFile(id) {
+                 this.$root.$refs.FormRenderer.deleteFile(id)
+             }
          },
  
          watch: {
@@ -186,7 +185,6 @@
          },
  
          mounted(){
-             // this.getCloudApiTokens()
              var configurable = document.getElementById("configurable")
              if(configurable != null){
                  this.isConfigurable = true
@@ -200,9 +198,6 @@
              if(this.section.permission[this.currentStep]) {
                  this.currentSectionConfig = this.section.permission[this.currentStep]
              }
- 
-             console.log(this.customerFiles);
-             console.log(this.cloudApiTokens);
          },
  
      }
