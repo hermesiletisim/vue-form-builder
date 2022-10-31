@@ -68,7 +68,7 @@
                 
                 axios({
                     method:'POST',
-                    url:'/api/quickFilterOrganizations',
+                    url:'/quickFilterOrganizations',
                     baseURL: this.baseUrl,
                     data: dataObj,
                     withCredentials:true

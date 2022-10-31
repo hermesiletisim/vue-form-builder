@@ -70,7 +70,7 @@
                 
                 axios({
                     method:'POST',
-                    url:'/api/quickFilterContact',
+                    url:'/quickFilterContact',
                     baseURL: this.baseUrl,
                     data: dataObj,
                     withCredentials:true
