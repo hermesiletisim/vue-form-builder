@@ -80,9 +80,10 @@
                     }
                     if(res.data.status.code==0){
                         this.listOptions = res.data.content.organizations
+                        console.log(this.listOptions);
                     }
                 })
-                                                 
+                                              
             },
             setResult(res){
                 const result = this.listOptions.filter(item => item._id.$oid == res._id.$oid)
