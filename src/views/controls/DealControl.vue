@@ -65,7 +65,7 @@
                 this.fullName = keyWord
                
                 var dataObj={
-                    search:keyWord
+                    dealName:keyWord
                 }
                 
                 axios({
