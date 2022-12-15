@@ -68,7 +68,7 @@
                 
                 axios({
                     method:'POST',
-                    url:'/quickFilterOrganizations',
+                    url:'/quickFilterOrganization',
                     baseURL: this.baseUrl,
                     data: dataObj,
                     withCredentials:true
@@ -80,7 +80,6 @@
                     }
                     if(res.data.status.code==0){
                         this.listOptions = res.data.content.organizations
-                        console.log(this.listOptions);
                     }
                 })
                                               
