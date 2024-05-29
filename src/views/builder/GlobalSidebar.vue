@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar">
+    <div class="sidebar pt-5">
         <span class="close"
               @click="close"
               v-html="$form.getIcon('close', '24px', '24px', '#000')">
@@ -24,7 +24,7 @@
     import {EVENT_CONSTANTS} from "@/configs/events";
     import {ALERT_DIALOG} from "@/libraries/alert-dialog";
 
-    const SIDEBAR_WIDTH_SIZE = "300px"
+    const SIDEBAR_WIDTH_SIZE = "325px"
 
     export default {
         name: "GlobalSidebar",
