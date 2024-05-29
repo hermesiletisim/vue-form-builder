@@ -39965,7 +39965,7 @@ var TOGGLEABLE_MIXIN = {
       return '#000';
     },
     iconSize: function iconSize() {
-      return '32px';
+      return '24px';
     },
     iconClose: function iconClose() {
       return this.$form.getIcon('chevronUp', this.iconSize, this.iconSize, this.iconColor);
@@ -43741,7 +43741,7 @@ var alert_dialog = __webpack_require__("caca");
 //
 
 
-var SIDEBAR_WIDTH_SIZE = "300px";
+var SIDEBAR_WIDTH_SIZE = "325px";
 /* harmony default export */ var GlobalSidebarvue_type_script_lang_js_ = ({
   name: "GlobalSidebar",
   props: {
@@ -63727,17 +63727,17 @@ var STYLES = {
   ROW: "row md-layout",
   COLUMNS: {
     COL1: "col-md-1 md-layout-item md-size-5",
-    COL2: "col-md-2 md-layout-item md-size-10",
-    COL3: "col-md-3 md-layout-item md-size-25",
-    COL4: "col-md-4 md-layout-item md-size-33",
-    COL5: "col-md-5 md-layout-item md-size-40",
-    COL6: "col-md-6 md-layout-item md-size-50",
-    COL7: "col-md-7 md-layout-item md-size-60",
-    COL8: "col-md-8 md-layout-item md-size-66",
-    COL9: "col-md-9 md-layout-item md-size-75",
-    COL10: "col-md-10 md-layout-item md-size-90",
-    COL11: "col-md-11 md-layout-item md-size-95",
-    COL12: "col-md-12 md-layout-item md-size-100"
+	COL2: "col-md-2 md-layout-item md-size-10",
+	COL3: "col-md-3 md-layout-item md-size-25",
+	COL4: "col-md-4 md-layout-item md-size-33",
+	// COL5: "col-md-5 md-layout-item md-size-40",
+	COL6: "col-md-6 md-layout-item md-size-50",
+	// COL7: "col-md-7 md-layout-item md-size-60",
+	// COL8: "col-md-8 md-layout-item md-size-66",
+	// COL9: "col-md-9 md-layout-item md-size-75",
+	// COL10: "col-md-10 md-layout-item md-size-90",
+	// COL11: "col-md-11 md-layout-item md-size-95",
+	COL12: "col-md-12 md-layout-item md-size-100",
   },
 
   /**
