@@ -34,7 +34,8 @@
     "vue-property-decorator": "^8.4.2",
     "vue-select": "^3.20.0",
     "vue-upload-component": "^2.8.22",
-    "vuedraggable": "^2.23.2"
+    "vuedraggable": "^2.23.2",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.3",

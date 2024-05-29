@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar pt-5">
+    <div class="sidebar">
         <span class="close"
               @click="close"
               v-html="$form.getIcon('close', '24px', '24px', '#000')">
@@ -134,3 +134,8 @@
         }
     }
 </script>
+<style>
+.sidebar{
+ margin-top: 55px;
+}
+</style>
